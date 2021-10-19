@@ -92,10 +92,6 @@ class Stock
     @@stocks.each do |stock|
     return stock if stock.seedstock == stockid
   end
-###### 4. CLASS METHOD: returns @@stocks ######
-  def Stock.stocks
-    return @@stocks
-  end
   end
     
 end

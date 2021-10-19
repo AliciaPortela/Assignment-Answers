@@ -33,7 +33,27 @@ class Cross
 
 
 ###### METHODS ######
-###### 1. CLASS METHOD: creating new instances in Cross Class from cross_data.tsv and from Stock class ######
+###### 1. INSTANCE METHOD: for checking if there is linckage between genes ######
+  def checking_linckage()
+    # must apply a chi-square test to check the linckage between genes
+    # calculating the total real number of descendents 
+    total_sum = @F2wild.to_f + @F2P1.to_f + @F2P2.to_f + @F2P1P2.to_f
+    
+    # calculating expected observations
+    expected_F2wild = 9.0/16.0*total_sum.to_f
+    expected_F2P1 = 3.0/16.0*total_sum.to_f
+    expected_F2P2 = 3.0/16.0*total_sum.to_f
+    expectedF2P1P2 = 1.0/16.0*total_sum.to_f
+    
+    # chi-square value (following chi-square formula)
+    chi_square = ((@F2wild.to_f - expected_F2wild)**2/expected_F2wild)+((@F2P1.to_f - expected_F2P1)**2/expected_F2P1)+((@F2P2.to_f - expected_F2P2)**2/expected_F2P2)+((F1P1P2.to_f - expectedF2P1P2)**2/expectedF2P1P2)
+    # chi-square value por p < 0.05
+    if chi_square > 7.815
+        puts "Recording: #{@parent1.geneid.genename} is genetically linked to #{@parent2.geneid.genename} with chisquare score #{chi_square}"
+    end
+  end
+    
+###### 2. CLASS METHOD: creating new instances in Cross Class from cross_data.tsv and from Stock class ######
   # this function takes 2 arguments, the list of stock objects and the file name
   def Cross.new_crosses(file_name)
     # opening file with open method
@@ -74,4 +94,5 @@ class Cross
     end
     return crosses
   end
+  
 end
