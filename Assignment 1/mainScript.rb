@@ -37,6 +37,10 @@ File.open("new_file.tsv", "w") do |file|
 end
 
 ###### CHECKING LINKED GENES IN CROSS CLASS ######
-checking_linckage()
+crosses.values.each do |cross|
+  cross.checking_linckage()
+  
+end
+
 
 

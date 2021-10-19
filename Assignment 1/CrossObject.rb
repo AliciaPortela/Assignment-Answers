@@ -46,7 +46,7 @@ class Cross
     expectedF2P1P2 = 1.0/16.0*total_sum.to_f
     
     # chi-square value (following chi-square formula)
-    chi_square = ((@F2wild.to_f - expected_F2wild)**2/expected_F2wild)+((@F2P1.to_f - expected_F2P1)**2/expected_F2P1)+((@F2P2.to_f - expected_F2P2)**2/expected_F2P2)+((F1P1P2.to_f - expectedF2P1P2)**2/expectedF2P1P2)
+    chi_square = ((@F2wild.to_f - expected_F2wild)**2/expected_F2wild)+((@F2P1.to_f - expected_F2P1)**2/expected_F2P1)+((@F2P2.to_f - expected_F2P2)**2/expected_F2P2)+((@F2P1P2.to_f - expectedF2P1P2)**2/expectedF2P1P2)
     # chi-square value por p < 0.05
     if chi_square > 7.815
         puts "Recording: #{@parent1.geneid.genename} is genetically linked to #{@parent2.geneid.genename} with chisquare score #{chi_square}"
