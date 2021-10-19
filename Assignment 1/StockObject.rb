@@ -44,7 +44,7 @@ class Stock
       # warning message with interpolated attribute
       puts "WARNING: we have run out of Seed Stock #{@seedstock}"#code
     end
-    
+    return @gramsremaining
     
   end
 ###### 2. CLASS METHOD: creating new instances in Stock Class from seed_stock_data.tsv and from Gene class ######

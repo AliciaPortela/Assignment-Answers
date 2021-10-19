@@ -23,13 +23,18 @@ puts "#{crosses}\n"
 
 ###### PLANTING 7 GRAMS OF SEEDS IN EACH OBJECT OF STOCK CLASS AND WRITING RESULT IN NEW .tsv FILE ######
 # iterating over each value of stocks hash and applying the planting.seed method to each one
-file = File.open("new_file.tsv", "w")
+File.open("new_file.tsv", "w") do |file|
   # writing the header of the new_file
   file.write("Seed_Stock\tMutant_Gene_ID\tLast_Planted\tStorage\tGrams_Remaining\n")
   stocks.values.each do |seed|
     # writing de rest of the content of the file 
-    file.write("#{seed.seedstock}\t#{seed.geneid.geneid}\t#{Time.now.strftime("%d/%m/%Y")}\t#{seed.storage}\t#{seed.planting_seeds(7)}")
+    file.write (seed.seedstock + "\t")
+    file.write (seed.geneid.geneid + "\t")
+    file.write (Time.now.strftime("%d/%m/%Y" + "\t"))
+    file.write (seed.storage + "\t")
+    file.write (seed.planting_seeds(7).to_s + "\n")
   end
+end
 
 
 
