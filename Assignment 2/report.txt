@@ -1,0 +1,926 @@
+---------Analysis of direct and indirect interactions between a set of co-expressed genes----------
+
+For the 168 co-expressed genes, direct and indirect interactions between them have been analysed through PSICQUIC REST API
+
+SCHEMATIC REPRESENTATION OF INTERACTIONS:
+-Direct interactions: A-B, in which A and B are genes that belong to the co-expressed set of genes
+-Indirect interactions: A-B-C, in which A and C are genes that belong to the co-expressed set of genes, but not B, which is the intermediary
+
+CRITERIA FOR SEARCHING FOR INTERACTIONS:
+1. Arabidopsis thaliana species, filtered by a regex
+2. MIscore > 0.485, as mentioned in 10.1093/database/bau131
+
+RESULTS:
+In total, 66 networks have been found
+Below, it is shown one by one the networks, with the following information:
+1. Number of network
+2. Type (direct/indirect) of interaction
+3. Members of the network
+4. KEGG annotations: KEGG ID and KEGG pathway
+5. GO annotations: GO ID and GO terms
+
+----------------------------------------------------------------------------------------------------------
+Network number 1
+Indirect interaction
+Members: AT1G69960 and AT5G54270, with AT5G54270 as intermediary
+
+KEGG annotations:
+The AT1G69960 member has KEGG ID: ath04136 and KEGG pathway: Autophagy - other
+The AT5G54270 member has KEGG ID: ath01100 and KEGG pathway: Metabolic pathways
+
+GO annotations:
+The AT1G69960 member has GO ID: GO:2000012 and GO terms: regulation of auxin polar transport
+The AT5G54270 member has GO ID: GO:0009644 and GO terms: response to high light intensity
+----------------------------------------------------------------------------------------------------------
+
+----------------------------------------------------------------------------------------------------------
+Network number 2
+Indirect interaction
+Members: AT5G13860 and AT2G45170, with AT2G45170 as intermediary
+
+KEGG annotations:
+The AT5G13860 member has KEGG ID: ath04144 and KEGG pathway: Endocytosis
+The AT2G45170 member has KEGG ID: ath04136 and KEGG pathway: Autophagy - other
+
+GO annotations:
+The AT5G13860 member has GO ID: GO:0015031 and GO terms: protein transport
+The AT2G45170 member has GO ID: GO:0006914 and GO terms: autophagy
+----------------------------------------------------------------------------------------------------------
+
+----------------------------------------------------------------------------------------------------------
+Network number 3
+Indirect interaction
+Members: AT2G21730 and AT5G04140, with AT4G17090 as intermediary
+
+KEGG annotations:
+The AT2G21730 member has KEGG ID: ath01110 and KEGG pathway: Biosynthesis of secondary metabolites
+The AT4G17090 member has KEGG ID: ath01110 and KEGG pathway: Biosynthesis of secondary metabolites
+The AT5G04140 member has KEGG ID: ath00910 and KEGG pathway: Nitrogen metabolism
+
+GO annotations:
+The AT2G21730 member has GO ID: GO:0009809 and GO terms: lignin biosynthetic process
+The AT4G17090 member has GO ID: GO:0000272 and GO terms: polysaccharide catabolic process
+The AT5G04140 member has GO ID: GO:0006541 and GO terms: glutamine metabolic process
+----------------------------------------------------------------------------------------------------------
+
+----------------------------------------------------------------------------------------------------------
+Network number 4
+Indirect interaction
+Members: AT3G26090 and AT1G15820, with AT1G29920 as intermediary
+
+KEGG annotations:
+The AT1G29920 member has KEGG ID: ath01100 and KEGG pathway: Metabolic pathways
+The AT1G15820 member has KEGG ID: ath01100 and KEGG pathway: Metabolic pathways
+
+GO annotations:
+The AT3G26090 member has GO ID: GO:0006355 and GO terms: regulation of transcription, DNA-templated
+The AT1G29920 member has GO ID: GO:0018298 and GO terms: protein-chromophore linkage
+The AT1G15820 member has GO ID: GO:0018298 and GO terms: protein-chromophore linkage
+----------------------------------------------------------------------------------------------------------
+
+----------------------------------------------------------------------------------------------------------
+Network number 5
+Indirect interaction
+Members: AT3G08530 and AT1G03130, with AT4G02770 as intermediary
+
+KEGG annotations:
+The AT3G08530 member has KEGG ID: ath04144 and KEGG pathway: Endocytosis
+The AT4G02770 member has KEGG ID: ath01100 and KEGG pathway: Metabolic pathways
+The AT1G03130 member has KEGG ID: ath01100 and KEGG pathway: Metabolic pathways
+
+GO annotations:
+The AT3G08530 member has GO ID: GO:0016192 and GO terms: vesicle-mediated transport
+The AT4G02770 member has GO ID: GO:0015979 and GO terms: photosynthesis
+The AT1G03130 member has GO ID: GO:0015979 and GO terms: photosynthesis
+----------------------------------------------------------------------------------------------------------
+
+----------------------------------------------------------------------------------------------------------
+Network number 6
+Indirect interaction
+Members: AT4G33030 and AT4G17090, with AT4G17090 as intermediary
+
+KEGG annotations:
+The AT4G33030 member has KEGG ID: ath01250 and KEGG pathway: Biosynthesis of nucleotide sugars
+The AT4G17090 member has KEGG ID: ath01110 and KEGG pathway: Biosynthesis of secondary metabolites
+
+GO annotations:
+The AT4G33030 member has GO ID: GO:0009247 and GO terms: glycolipid biosynthetic process
+The AT4G17090 member has GO ID: GO:0000272 and GO terms: polysaccharide catabolic process
+----------------------------------------------------------------------------------------------------------
+
+----------------------------------------------------------------------------------------------------------
+Network number 7
+Indirect interaction
+Members: AT5G56510 and AT1G23740, with AT1G23740 as intermediary
+
+KEGG annotations:
+There are not any KEGG ID/pathway for any member of this network
+
+GO annotations:
+The AT5G56510 member has GO ID: GO:0006417 and GO terms: regulation of translation
+The AT1G23740 member has GO ID: GO:0009409 and GO terms: response to cold
+----------------------------------------------------------------------------------------------------------
+
+----------------------------------------------------------------------------------------------------------
+Network number 8
+Indirect interaction
+Members: AT1G53090 and AT2G46340, with AT2G46340 as intermediary
+
+KEGG annotations:
+The AT2G46340 member has KEGG ID: ath04712 and KEGG pathway: Circadian rhythm - plant
+
+GO annotations:
+The AT1G53090 member has GO ID: GO:0009640 and GO terms: photomorphogenesis
+The AT2G46340 member has GO ID: GO:0009640 and GO terms: photomorphogenesis
+----------------------------------------------------------------------------------------------------------
+
+----------------------------------------------------------------------------------------------------------
+Network number 9
+Indirect interaction
+Members: AT1G56070 and AT4G17460, with AT4G17460 as intermediary
+
+KEGG annotations:
+There are not any KEGG ID/pathway for any member of this network
+
+GO annotations:
+The AT1G56070 member has GO ID: GO:0006412 and GO terms: translation
+The AT4G17460 member has GO ID: GO:0048467 and GO terms: gynoecium development
+----------------------------------------------------------------------------------------------------------
+
+----------------------------------------------------------------------------------------------------------
+Network number 10
+Indirect interaction
+Members: AT5G52640 and AT4G12830, with AT4G12830 as intermediary
+
+KEGG annotations:
+The AT5G52640 member has KEGG ID: ath04626 and KEGG pathway: Plant-pathogen interaction
+
+GO annotations:
+The AT5G52640 member has GO ID: GO:0006457 and GO terms: protein folding
+----------------------------------------------------------------------------------------------------------
+
+----------------------------------------------------------------------------------------------------------
+Network number 11
+Indirect interaction
+Members: AT5G11950 and AT2G21330, with AT2G21330 as intermediary
+
+KEGG annotations:
+The AT2G21330 member has KEGG ID: ath01230 and KEGG pathway: Biosynthesis of amino acids
+
+GO annotations:
+The AT5G11950 member has GO ID: GO:0009691 and GO terms: cytokinin biosynthetic process
+The AT2G21330 member has GO ID: GO:0006096 and GO terms: glycolytic process
+----------------------------------------------------------------------------------------------------------
+
+----------------------------------------------------------------------------------------------------------
+Network number 12
+Indirect interaction
+Members: AT4G20790 and AT4G22890, with AT5G38990 as intermediary
+
+KEGG annotations:
+There are not any KEGG ID/pathway for any member of this network
+
+GO annotations:
+The AT5G38990 member has GO ID: GO:0010038 and GO terms: response to metal ion
+The AT4G22890 member has GO ID: GO:0009773 and GO terms: photosynthetic electron transport in photosystem I
+----------------------------------------------------------------------------------------------------------
+
+----------------------------------------------------------------------------------------------------------
+Network number 13
+Indirect interaction
+Members: AT5G65430 and AT1G37130, with AT2G18700 as intermediary
+
+KEGG annotations:
+The AT2G18700 member has KEGG ID: ath01110 and KEGG pathway: Biosynthesis of secondary metabolites
+The AT1G37130 member has KEGG ID: ath01100 and KEGG pathway: Metabolic pathways
+
+GO annotations:
+The AT5G65430 member has GO ID: GO:0009409 and GO terms: response to cold
+The AT2G18700 member has GO ID: GO:0005992 and GO terms: trehalose biosynthetic process
+The AT1G37130 member has GO ID: GO:0006809 and GO terms: nitric oxide biosynthetic process
+----------------------------------------------------------------------------------------------------------
+
+----------------------------------------------------------------------------------------------------------
+Network number 14
+Indirect interaction
+Members: AT5G17790 and AT4G19170, with AT4G19170 as intermediary
+
+KEGG annotations:
+The AT4G19170 member has KEGG ID: ath01110 and KEGG pathway: Biosynthesis of secondary metabolites
+
+GO annotations:
+The AT5G17790 member has GO ID: GO:0009733 and GO terms: response to auxin
+The AT4G19170 member has GO ID: GO:0016121 and GO terms: carotene catabolic process
+----------------------------------------------------------------------------------------------------------
+
+----------------------------------------------------------------------------------------------------------
+Network number 15
+Indirect interaction
+Members: AT5G44120 and AT5G65010, with AT5G65010 as intermediary
+
+KEGG annotations:
+The AT5G65010 member has KEGG ID: ath01230 and KEGG pathway: Biosynthesis of amino acids
+
+GO annotations:
+The AT5G44120 member has GO ID: GO:0010431 and GO terms: seed maturation
+The AT5G65010 member has GO ID: GO:0006541 and GO terms: glutamine metabolic process
+----------------------------------------------------------------------------------------------------------
+
+----------------------------------------------------------------------------------------------------------
+Network number 16
+Indirect interaction
+Members: AT2G28960 and AT3G01500, with AT3G28220 as intermediary
+
+KEGG annotations:
+The AT3G01500 member has KEGG ID: ath01100 and KEGG pathway: Metabolic pathways
+
+GO annotations:
+The AT2G28960 member has GO ID: GO:0030244 and GO terms: cellulose biosynthetic process
+The AT3G01500 member has GO ID: GO:0015976 and GO terms: carbon utilization
+----------------------------------------------------------------------------------------------------------
+
+----------------------------------------------------------------------------------------------------------
+Network number 17
+Indirect interaction
+Members: AT3G62870 and AT4G33010, with AT2G26080 as intermediary
+
+KEGG annotations:
+The AT3G62870 member has KEGG ID: ath03010 and KEGG pathway: Ribosome
+The AT2G26080 member has KEGG ID: ath01200 and KEGG pathway: Carbon metabolism
+The AT4G33010 member has KEGG ID: ath01200 and KEGG pathway: Carbon metabolism
+
+GO annotations:
+The AT3G62870 member has GO ID: GO:0042254 and GO terms: ribosome biogenesis
+The AT2G26080 member has GO ID: GO:0000398 and GO terms: mRNA splicing, via spliceosome
+The AT4G33010 member has GO ID: GO:0006546 and GO terms: glycine catabolic process
+----------------------------------------------------------------------------------------------------------
+
+----------------------------------------------------------------------------------------------------------
+Network number 18
+Indirect interaction
+Members: AT3G49580 and AT2G17880, with AT4G02770 as intermediary
+
+KEGG annotations:
+The AT4G02770 member has KEGG ID: ath01100 and KEGG pathway: Metabolic pathways
+
+GO annotations:
+The AT3G49580 member has GO ID: GO:0098869 and GO terms: cellular oxidant detoxification
+The AT4G02770 member has GO ID: GO:0015979 and GO terms: photosynthesis
+----------------------------------------------------------------------------------------------------------
+
+----------------------------------------------------------------------------------------------------------
+Network number 19
+Indirect interaction
+Members: AT1G25320 and AT3G49160, with AT3G49160 as intermediary
+
+KEGG annotations:
+The AT3G49160 member has KEGG ID: ath01240 and KEGG pathway: Biosynthesis of cofactors
+
+GO annotations:
+The AT3G49160 member has GO ID: GO:0007064 and GO terms: mitotic sister chromatid cohesion
+----------------------------------------------------------------------------------------------------------
+
+----------------------------------------------------------------------------------------------------------
+Network number 20
+Indirect interaction
+Members: AT4G02930 and AT4G21210, with AT2G26740 as intermediary
+
+KEGG annotations:
+The AT4G02930 member has KEGG ID: ath04626 and KEGG pathway: Plant-pathogen interaction
+
+GO annotations:
+The AT4G02930 member has GO ID: GO:0046686 and GO terms: response to cadmium ion
+The AT2G26740 member has GO ID: GO:0009414 and GO terms: response to water deprivation
+----------------------------------------------------------------------------------------------------------
+
+----------------------------------------------------------------------------------------------------------
+Network number 21
+Indirect interaction
+Members: AT2G23070 and AT5G14740, with AT2G39730 as intermediary
+
+KEGG annotations:
+The AT2G23070 member has KEGG ID: ath04712 and KEGG pathway: Circadian rhythm - plant
+The AT5G14740 member has KEGG ID: ath01100 and KEGG pathway: Metabolic pathways
+
+GO annotations:
+The AT2G23070 member has GO ID: GO:2000028 and GO terms: regulation of photoperiodism, flowering
+The AT2G39730 member has GO ID: GO:0009416 and GO terms: response to light stimulus
+The AT5G14740 member has GO ID: GO:0015976 and GO terms: carbon utilization
+----------------------------------------------------------------------------------------------------------
+
+----------------------------------------------------------------------------------------------------------
+Network number 22
+Indirect interaction
+Members: AT4G34840 and AT4G37980, with AT5G54270 as intermediary
+
+KEGG annotations:
+The AT4G34840 member has KEGG ID: ath01100 and KEGG pathway: Metabolic pathways
+The AT5G54270 member has KEGG ID: ath01100 and KEGG pathway: Metabolic pathways
+The AT4G37980 member has KEGG ID: ath01110 and KEGG pathway: Biosynthesis of secondary metabolites
+
+GO annotations:
+The AT4G34840 member has GO ID: GO:0009116 and GO terms: nucleoside metabolic process
+The AT5G54270 member has GO ID: GO:0009644 and GO terms: response to high light intensity
+The AT4G37980 member has GO ID: GO:0033512 and GO terms: L-lysine catabolic process to acetyl-CoA via saccharopine
+----------------------------------------------------------------------------------------------------------
+
+----------------------------------------------------------------------------------------------------------
+Network number 23
+Indirect interaction
+Members: AT2G23070 and AT2G39730, with AT2G39730 as intermediary
+
+KEGG annotations:
+The AT2G23070 member has KEGG ID: ath04712 and KEGG pathway: Circadian rhythm - plant
+
+GO annotations:
+The AT2G23070 member has GO ID: GO:2000028 and GO terms: regulation of photoperiodism, flowering
+The AT2G39730 member has GO ID: GO:0009416 and GO terms: response to light stimulus
+----------------------------------------------------------------------------------------------------------
+
+----------------------------------------------------------------------------------------------------------
+Network number 24
+Indirect interaction
+Members: AT4G11960 and AT1G20020, with AT4G02770 as intermediary
+
+KEGG annotations:
+The AT4G02770 member has KEGG ID: ath01100 and KEGG pathway: Metabolic pathways
+The AT1G20020 member has KEGG ID: ath01100 and KEGG pathway: Metabolic pathways
+
+GO annotations:
+The AT4G11960 member has GO ID: GO:0009773 and GO terms: photosynthetic electron transport in photosystem I
+The AT4G02770 member has GO ID: GO:0015979 and GO terms: photosynthesis
+The AT1G20020 member has GO ID: GO:0006260 and GO terms: DNA replication
+----------------------------------------------------------------------------------------------------------
+
+----------------------------------------------------------------------------------------------------------
+Network number 25
+Indirect interaction
+Members: AT4G34840 and AT2G34420, with AT5G54270 as intermediary
+
+KEGG annotations:
+The AT4G34840 member has KEGG ID: ath01100 and KEGG pathway: Metabolic pathways
+The AT5G54270 member has KEGG ID: ath01100 and KEGG pathway: Metabolic pathways
+The AT2G34420 member has KEGG ID: ath01100 and KEGG pathway: Metabolic pathways
+
+GO annotations:
+The AT4G34840 member has GO ID: GO:0009116 and GO terms: nucleoside metabolic process
+The AT5G54270 member has GO ID: GO:0009644 and GO terms: response to high light intensity
+The AT2G34420 member has GO ID: GO:0032875 and GO terms: regulation of DNA endoreduplication
+----------------------------------------------------------------------------------------------------------
+
+----------------------------------------------------------------------------------------------------------
+Network number 26
+Indirect interaction
+Members: AT4G32520 and AT4G37800, with AT4G37800 as intermediary
+
+KEGG annotations:
+The AT4G32520 member has KEGG ID: ath01240 and KEGG pathway: Biosynthesis of cofactors
+
+GO annotations:
+The AT4G32520 member has GO ID: GO:0019953 and GO terms: sexual reproduction
+The AT4G37800 member has GO ID: GO:0006355 and GO terms: regulation of transcription, DNA-templated
+----------------------------------------------------------------------------------------------------------
+
+----------------------------------------------------------------------------------------------------------
+Network number 27
+Indirect interaction
+Members: AT1G27300 and AT4G28780, with AT4G28780 as intermediary
+
+KEGG annotations:
+There are not any KEGG ID/pathway for any member of this network
+
+GO annotations:
+The AT1G27300 member has GO ID: GO:0006412 and GO terms: translation
+The AT4G28780 member has GO ID: GO:0016042 and GO terms: lipid catabolic process
+----------------------------------------------------------------------------------------------------------
+
+----------------------------------------------------------------------------------------------------------
+Network number 28
+Indirect interaction
+Members: AT1G24510 and AT1G12900, with AT1G12900 as intermediary
+
+KEGG annotations:
+The AT1G12900 member has KEGG ID: ath01200 and KEGG pathway: Carbon metabolism
+
+GO annotations:
+The AT1G24510 member has GO ID: GO:0006457 and GO terms: protein folding
+The AT1G12900 member has GO ID: GO:0006006 and GO terms: glucose metabolic process
+----------------------------------------------------------------------------------------------------------
+
+----------------------------------------------------------------------------------------------------------
+Network number 29
+Indirect interaction
+Members: AT5G42980 and AT3G55800, with AT4G22890 as intermediary
+
+KEGG annotations:
+The AT3G55800 member has KEGG ID: ath01200 and KEGG pathway: Carbon metabolism
+
+GO annotations:
+The AT5G42980 member has GO ID: GO:0010188 and GO terms: response to microbial phytotoxin
+The AT4G22890 member has GO ID: GO:0009773 and GO terms: photosynthetic electron transport in photosystem I
+The AT3G55800 member has GO ID: GO:0005975 and GO terms: carbohydrate metabolic process
+----------------------------------------------------------------------------------------------------------
+
+----------------------------------------------------------------------------------------------------------
+Network number 30
+Indirect interaction
+Members: AT1G53090 and AT5G15850, with AT2G46340 as intermediary
+
+KEGG annotations:
+The AT2G46340 member has KEGG ID: ath04712 and KEGG pathway: Circadian rhythm - plant
+
+GO annotations:
+The AT1G53090 member has GO ID: GO:0009640 and GO terms: photomorphogenesis
+The AT2G46340 member has GO ID: GO:0009640 and GO terms: photomorphogenesis
+The AT5G15850 member has GO ID: GO:0000398 and GO terms: mRNA splicing, via spliceosome
+----------------------------------------------------------------------------------------------------------
+
+----------------------------------------------------------------------------------------------------------
+Network number 31
+Indirect interaction
+Members: AT4G34840 and AT3G27690, with AT5G54270 as intermediary
+
+KEGG annotations:
+The AT4G34840 member has KEGG ID: ath01100 and KEGG pathway: Metabolic pathways
+The AT5G54270 member has KEGG ID: ath01100 and KEGG pathway: Metabolic pathways
+The AT3G27690 member has KEGG ID: ath01100 and KEGG pathway: Metabolic pathways
+
+GO annotations:
+The AT4G34840 member has GO ID: GO:0009116 and GO terms: nucleoside metabolic process
+The AT5G54270 member has GO ID: GO:0009644 and GO terms: response to high light intensity
+The AT3G27690 member has GO ID: GO:0018298 and GO terms: protein-chromophore linkage
+----------------------------------------------------------------------------------------------------------
+
+----------------------------------------------------------------------------------------------------------
+Network number 32
+Indirect interaction
+Members: AT4G01800 and AT2G26080, with AT2G26080 as intermediary
+
+KEGG annotations:
+The AT4G01800 member has KEGG ID: ath03060 and KEGG pathway: Protein export
+The AT2G26080 member has KEGG ID: ath01200 and KEGG pathway: Carbon metabolism
+
+GO annotations:
+The AT4G01800 member has GO ID: GO:0006605 and GO terms: protein targeting
+The AT2G26080 member has GO ID: GO:0000398 and GO terms: mRNA splicing, via spliceosome
+----------------------------------------------------------------------------------------------------------
+
+----------------------------------------------------------------------------------------------------------
+Network number 33
+Indirect interaction
+Members: AT3G27960 and AT5G20250, with AT5G20250 as intermediary
+
+KEGG annotations:
+The AT5G20250 member has KEGG ID: ath01100 and KEGG pathway: Metabolic pathways
+
+GO annotations:
+The AT3G27960 member has GO ID: GO:0031347 and GO terms: regulation of defense response
+The AT5G20250 member has GO ID: GO:0006979 and GO terms: response to oxidative stress
+----------------------------------------------------------------------------------------------------------
+
+----------------------------------------------------------------------------------------------------------
+Network number 34
+Indirect interaction
+Members: AT4G23810 and AT1G54040, with AT1G54040 as intermediary
+
+KEGG annotations:
+There are not any KEGG ID/pathway for any member of this network
+
+GO annotations:
+The AT4G23810 member has GO ID: GO:0006367 and GO terms: transcription initiation from RNA polymerase II promoter
+The AT1G54040 member has GO ID: GO:0009753 and GO terms: response to jasmonic acid
+----------------------------------------------------------------------------------------------------------
+
+----------------------------------------------------------------------------------------------------------
+Network number 35
+Indirect interaction
+Members: AT3G48750 and AT3G21870, with AT3G21870 as intermediary
+
+KEGG annotations:
+There are not any KEGG ID/pathway for any member of this network
+
+GO annotations:
+The AT3G48750 member has GO ID: GO:0098725 and GO terms: symmetric cell division
+The AT3G21870 member has GO ID: GO:0000079 and GO terms: regulation of cyclin-dependent protein serine/threonine kinase activity
+----------------------------------------------------------------------------------------------------------
+
+----------------------------------------------------------------------------------------------------------
+Network number 36
+Indirect interaction
+Members: AT1G35670 and AT3G48360, with AT3G48360 as intermediary
+
+KEGG annotations:
+The AT1G35670 member has KEGG ID: ath04626 and KEGG pathway: Plant-pathogen interaction
+
+GO annotations:
+The AT1G35670 member has GO ID: GO:0080092 and GO terms: regulation of pollen tube growth
+The AT3G48360 member has GO ID: GO:0006857 and GO terms: oligopeptide transport
+----------------------------------------------------------------------------------------------------------
+
+----------------------------------------------------------------------------------------------------------
+Network number 37
+Indirect interaction
+Members: AT3G51460 and AT1G61520, with AT1G61520 as intermediary
+
+KEGG annotations:
+The AT3G51460 member has KEGG ID: ath04070 and KEGG pathway: Phosphatidylinositol signaling system
+The AT1G61520 member has KEGG ID: ath01100 and KEGG pathway: Metabolic pathways
+
+GO annotations:
+The AT3G51460 member has GO ID: GO:0048768 and GO terms: root hair cell tip growth
+The AT1G61520 member has GO ID: GO:0018298 and GO terms: protein-chromophore linkage
+----------------------------------------------------------------------------------------------------------
+
+----------------------------------------------------------------------------------------------------------
+Network number 38
+Indirect interaction
+Members: AT2G01570 and AT2G43010, with AT2G43010 as intermediary
+
+KEGG annotations:
+The AT2G01570 member has KEGG ID: ath04075 and KEGG pathway: Plant hormone signal transduction
+The AT2G43010 member has KEGG ID: ath04075 and KEGG pathway: Plant hormone signal transduction
+
+GO annotations:
+The AT2G01570 member has GO ID: GO:0010218 and GO terms: response to far red light
+The AT2G43010 member has GO ID: GO:0010244 and GO terms: response to low fluence blue light stimulus by blue low-fluence system
+----------------------------------------------------------------------------------------------------------
+
+----------------------------------------------------------------------------------------------------------
+Network number 39
+Indirect interaction
+Members: AT2G28960 and AT3G28220, with AT3G01500 as intermediary
+
+KEGG annotations:
+The AT3G01500 member has KEGG ID: ath01100 and KEGG pathway: Metabolic pathways
+
+GO annotations:
+The AT2G28960 member has GO ID: GO:0030244 and GO terms: cellulose biosynthetic process
+The AT3G01500 member has GO ID: GO:0015976 and GO terms: carbon utilization
+----------------------------------------------------------------------------------------------------------
+
+----------------------------------------------------------------------------------------------------------
+Network number 40
+Indirect interaction
+Members: AT4G20360 and AT2G26740, with AT2G26740 as intermediary
+
+KEGG annotations:
+The AT4G20360 member has KEGG ID: ath04626 and KEGG pathway: Plant-pathogen interaction
+
+GO annotations:
+The AT4G20360 member has GO ID: GO:0006421 and GO terms: asparaginyl-tRNA aminoacylation
+The AT2G26740 member has GO ID: GO:0009414 and GO terms: response to water deprivation
+----------------------------------------------------------------------------------------------------------
+
+----------------------------------------------------------------------------------------------------------
+Network number 41
+Indirect interaction
+Members: AT4G09820 and AT1G71030, with AT1G71030 as intermediary
+
+KEGG annotations:
+There are not any KEGG ID/pathway for any member of this network
+
+GO annotations:
+The AT4G09820 member has GO ID: GO:0006869 and GO terms: lipid transport
+The AT1G71030 member has GO ID: GO:0010023 and GO terms: proanthocyanidin biosynthetic process
+----------------------------------------------------------------------------------------------------------
+
+----------------------------------------------------------------------------------------------------------
+Network number 42
+Indirect interaction
+Members: AT4G09570 and AT3G54050, with AT3G54050 as intermediary
+
+KEGG annotations:
+The AT4G09570 member has KEGG ID: ath04626 and KEGG pathway: Plant-pathogen interaction
+The AT3G54050 member has KEGG ID: ath01200 and KEGG pathway: Carbon metabolism
+
+GO annotations:
+The AT4G09570 member has GO ID: GO:0009789 and GO terms: positive regulation of abscisic acid-activated signaling pathway
+The AT3G54050 member has GO ID: GO:0005975 and GO terms: carbohydrate metabolic process
+----------------------------------------------------------------------------------------------------------
+
+----------------------------------------------------------------------------------------------------------
+Network number 43
+Indirect interaction
+Members: AT3G48930 and AT2G18700, with AT2G18700 as intermediary
+
+KEGG annotations:
+The AT3G48930 member has KEGG ID: ath03010 and KEGG pathway: Ribosome
+The AT2G18700 member has KEGG ID: ath01110 and KEGG pathway: Biosynthesis of secondary metabolites
+
+GO annotations:
+The AT3G48930 member has GO ID: GO:0006351 and GO terms: transcription, DNA-templated
+The AT2G18700 member has GO ID: GO:0005992 and GO terms: trehalose biosynthetic process
+----------------------------------------------------------------------------------------------------------
+
+----------------------------------------------------------------------------------------------------------
+Network number 44
+Indirect interaction
+Members: AT4G26090 and AT3G45780, with AT3G45780 as intermediary
+
+KEGG annotations:
+The AT4G26090 member has KEGG ID: ath04626 and KEGG pathway: Plant-pathogen interaction
+
+GO annotations:
+The AT4G26090 member has GO ID: GO:0009626 and GO terms: plant-type hypersensitive response
+The AT3G45780 member has GO ID: GO:0050896 and GO terms: response to stimulus
+----------------------------------------------------------------------------------------------------------
+
+----------------------------------------------------------------------------------------------------------
+Network number 45
+Indirect interaction
+Members: AT3G62870 and AT1G68570, with AT4G33010 as intermediary
+
+KEGG annotations:
+The AT3G62870 member has KEGG ID: ath03010 and KEGG pathway: Ribosome
+The AT4G33010 member has KEGG ID: ath01200 and KEGG pathway: Carbon metabolism
+
+GO annotations:
+The AT3G62870 member has GO ID: GO:0042254 and GO terms: ribosome biogenesis
+The AT4G33010 member has GO ID: GO:0006546 and GO terms: glycine catabolic process
+The AT1G68570 member has GO ID: GO:0006857 and GO terms: oligopeptide transport
+----------------------------------------------------------------------------------------------------------
+
+----------------------------------------------------------------------------------------------------------
+Network number 46
+Indirect interaction
+Members: AT2G25000 and AT2G30950, with AT2G30950 as intermediary
+
+KEGG annotations:
+There are not any KEGG ID/pathway for any member of this network
+
+GO annotations:
+The AT2G25000 member has GO ID: GO:0009751 and GO terms: response to salicylic acid
+The AT2G30950 member has GO ID: GO:0010027 and GO terms: thylakoid membrane organization
+----------------------------------------------------------------------------------------------------------
+
+----------------------------------------------------------------------------------------------------------
+Network number 47
+Indirect interaction
+Members: AT1G22920 and AT3G62410, with AT3G62410 as intermediary
+
+KEGG annotations:
+There are not any KEGG ID/pathway for any member of this network
+
+GO annotations:
+The AT1G22920 member has GO ID: GO:0010093 and GO terms: specification of floral organ identity
+The AT3G62410 member has GO ID: GO:0009744 and GO terms: response to sucrose
+----------------------------------------------------------------------------------------------------------
+
+----------------------------------------------------------------------------------------------------------
+Network number 48
+Indirect interaction
+Members: AT3G07780 and AT3G16250, with AT3G16250 as intermediary
+
+KEGG annotations:
+There are not any KEGG ID/pathway for any member of this network
+
+GO annotations:
+The AT3G07780 member has GO ID: GO:0046740 and GO terms: transport of virus in host, cell to cell
+The AT3G16250 member has GO ID: GO:0006355 and GO terms: regulation of transcription, DNA-templated
+----------------------------------------------------------------------------------------------------------
+
+----------------------------------------------------------------------------------------------------------
+Network number 49
+Direct interaction
+Members: AT1G09340 and AT3G63140
+
+KEGG annotations:
+There are not any KEGG ID/pathway for any member of this network
+
+GO annotations:
+The AT1G09340 member has GO ID: GO:0006364 and GO terms: rRNA processing
+The AT3G63140 member has GO ID: GO:0006364 and GO terms: rRNA processing
+----------------------------------------------------------------------------------------------------------
+
+----------------------------------------------------------------------------------------------------------
+Network number 50
+Direct interaction
+Members: AT3G63140 and AT1G09340
+
+KEGG annotations:
+There are not any KEGG ID/pathway for any member of this network
+
+GO annotations:
+The AT3G63140 member has GO ID: GO:0006364 and GO terms: rRNA processing
+The AT1G09340 member has GO ID: GO:0006364 and GO terms: rRNA processing
+----------------------------------------------------------------------------------------------------------
+
+----------------------------------------------------------------------------------------------------------
+Network number 51
+Indirect interaction
+Members: AT3G55630 and AT1G02640, with AT1G02640 as intermediary
+
+KEGG annotations:
+The AT3G55630 member has KEGG ID: ath01240 and KEGG pathway: Biosynthesis of cofactors
+
+GO annotations:
+The AT3G55630 member has GO ID: GO:0006730 and GO terms: one-carbon metabolic process
+The AT1G02640 member has GO ID: GO:0005975 and GO terms: carbohydrate metabolic process
+----------------------------------------------------------------------------------------------------------
+
+----------------------------------------------------------------------------------------------------------
+Network number 52
+Indirect interaction
+Members: AT2G32290 and AT3G47340, with AT3G47340 as intermediary
+
+KEGG annotations:
+The AT2G32290 member has KEGG ID: ath01110 and KEGG pathway: Biosynthesis of secondary metabolites
+The AT3G47340 member has KEGG ID: ath01230 and KEGG pathway: Biosynthesis of amino acids
+
+GO annotations:
+The AT2G32290 member has GO ID: GO:0000272 and GO terms: polysaccharide catabolic process
+The AT3G47340 member has GO ID: GO:0006096 and GO terms: glycolytic process
+----------------------------------------------------------------------------------------------------------
+
+----------------------------------------------------------------------------------------------------------
+Network number 53
+Indirect interaction
+Members: AT5G42980 and AT5G35630, with AT4G22890 as intermediary
+
+KEGG annotations:
+The AT5G35630 member has KEGG ID: ath01230 and KEGG pathway: Biosynthesis of amino acids
+
+GO annotations:
+The AT5G42980 member has GO ID: GO:0010188 and GO terms: response to microbial phytotoxin
+The AT4G22890 member has GO ID: GO:0009773 and GO terms: photosynthetic electron transport in photosystem I
+The AT5G35630 member has GO ID: GO:0006542 and GO terms: glutamine biosynthetic process
+----------------------------------------------------------------------------------------------------------
+
+----------------------------------------------------------------------------------------------------------
+Network number 54
+Indirect interaction
+Members: AT3G47620 and AT1G29910, with AT4G02770 as intermediary
+
+KEGG annotations:
+The AT4G02770 member has KEGG ID: ath01100 and KEGG pathway: Metabolic pathways
+The AT1G29910 member has KEGG ID: ath01100 and KEGG pathway: Metabolic pathways
+
+GO annotations:
+The AT3G47620 member has GO ID: GO:0015031 and GO terms: protein transport
+The AT4G02770 member has GO ID: GO:0015979 and GO terms: photosynthesis
+The AT1G29910 member has GO ID: GO:0018298 and GO terms: protein-chromophore linkage
+----------------------------------------------------------------------------------------------------------
+
+----------------------------------------------------------------------------------------------------------
+Network number 55
+Indirect interaction
+Members: AT1G29060 and AT1G69870, with AT1G69870 as intermediary
+
+KEGG annotations:
+The AT1G29060 member has KEGG ID: ath04130 and KEGG pathway: SNARE interactions in vesicular transport
+
+GO annotations:
+The AT1G29060 member has GO ID: GO:0015031 and GO terms: protein transport
+The AT1G69870 member has GO ID: GO:0006355 and GO terms: regulation of transcription, DNA-templated
+----------------------------------------------------------------------------------------------------------
+
+----------------------------------------------------------------------------------------------------------
+Network number 56
+Indirect interaction
+Members: AT2G22425 and AT5G43750, with AT5G43750 as intermediary
+
+KEGG annotations:
+The AT2G22425 member has KEGG ID: ath03060 and KEGG pathway: Protein export
+
+GO annotations:
+The AT2G22425 member has GO ID: GO:0006465 and GO terms: signal peptide processing
+The AT5G43750 member has GO ID: GO:0006979 and GO terms: response to oxidative stress
+----------------------------------------------------------------------------------------------------------
+
+----------------------------------------------------------------------------------------------------------
+Network number 57
+Indirect interaction
+Members: AT5G42980 and AT3G50820, with AT4G22890 as intermediary
+
+KEGG annotations:
+The AT3G50820 member has KEGG ID: ath01100 and KEGG pathway: Metabolic pathways
+
+GO annotations:
+The AT5G42980 member has GO ID: GO:0010188 and GO terms: response to microbial phytotoxin
+The AT4G22890 member has GO ID: GO:0009773 and GO terms: photosynthetic electron transport in photosystem I
+The AT3G50820 member has GO ID: GO:0035304 and GO terms: regulation of protein dephosphorylation
+----------------------------------------------------------------------------------------------------------
+
+----------------------------------------------------------------------------------------------------------
+Network number 58
+Indirect interaction
+Members: AT1G26830 and AT4G37610, with AT3G48360 as intermediary
+
+KEGG annotations:
+The AT1G26830 member has KEGG ID: ath04120 and KEGG pathway: Ubiquitin mediated proteolysis
+
+GO annotations:
+The AT1G26830 member has GO ID: GO:0006511 and GO terms: ubiquitin-dependent protein catabolic process
+The AT3G48360 member has GO ID: GO:0006857 and GO terms: oligopeptide transport
+The AT4G37610 member has GO ID: GO:0009751 and GO terms: response to salicylic acid
+----------------------------------------------------------------------------------------------------------
+
+----------------------------------------------------------------------------------------------------------
+Network number 59
+Indirect interaction
+Members: AT3G17210 and AT3G61260, with AT3G61260 as intermediary
+
+KEGG annotations:
+There are not any KEGG ID/pathway for any member of this network
+
+GO annotations:
+The AT3G17210 member has GO ID: GO:0050832 and GO terms: defense response to fungus
+The AT3G61260 member has GO ID: GO:0009751 and GO terms: response to salicylic acid
+----------------------------------------------------------------------------------------------------------
+
+----------------------------------------------------------------------------------------------------------
+Network number 60
+Indirect interaction
+Members: AT4G20790 and AT5G38990, with AT5G38990 as intermediary
+
+KEGG annotations:
+There are not any KEGG ID/pathway for any member of this network
+
+GO annotations:
+The AT5G38990 member has GO ID: GO:0010038 and GO terms: response to metal ion
+----------------------------------------------------------------------------------------------------------
+
+----------------------------------------------------------------------------------------------------------
+Network number 61
+Indirect interaction
+Members: AT3G26090 and AT1G29920, with AT1G29920 as intermediary
+
+KEGG annotations:
+The AT1G29920 member has KEGG ID: ath01100 and KEGG pathway: Metabolic pathways
+
+GO annotations:
+The AT3G26090 member has GO ID: GO:0006355 and GO terms: regulation of transcription, DNA-templated
+The AT1G29920 member has GO ID: GO:0018298 and GO terms: protein-chromophore linkage
+----------------------------------------------------------------------------------------------------------
+
+----------------------------------------------------------------------------------------------------------
+Network number 62
+Indirect interaction
+Members: AT1G76850 and AT4G02770, with AT4G02770 as intermediary
+
+KEGG annotations:
+The AT4G02770 member has KEGG ID: ath01100 and KEGG pathway: Metabolic pathways
+
+GO annotations:
+The AT1G76850 member has GO ID: GO:0015031 and GO terms: protein transport
+The AT4G02770 member has GO ID: GO:0015979 and GO terms: photosynthesis
+----------------------------------------------------------------------------------------------------------
+
+----------------------------------------------------------------------------------------------------------
+Network number 63
+Indirect interaction
+Members: AT3G47010 and AT5G48300, with AT4G17090 as intermediary
+
+KEGG annotations:
+The AT3G47010 member has KEGG ID: ath01110 and KEGG pathway: Biosynthesis of secondary metabolites
+The AT4G17090 member has KEGG ID: ath01110 and KEGG pathway: Biosynthesis of secondary metabolites
+The AT5G48300 member has KEGG ID: ath01250 and KEGG pathway: Biosynthesis of nucleotide sugars
+
+GO annotations:
+The AT3G47010 member has GO ID: GO:0005975 and GO terms: carbohydrate metabolic process
+The AT4G17090 member has GO ID: GO:0000272 and GO terms: polysaccharide catabolic process
+The AT5G48300 member has GO ID: GO:0005978 and GO terms: glycogen biosynthetic process
+----------------------------------------------------------------------------------------------------------
+
+----------------------------------------------------------------------------------------------------------
+Network number 64
+Indirect interaction
+Members: AT2G02950 and AT1G14280, with AT1G14280 as intermediary
+
+KEGG annotations:
+There are not any KEGG ID/pathway for any member of this network
+
+GO annotations:
+The AT2G02950 member has GO ID: GO:0009638 and GO terms: phototropism
+The AT1G14280 member has GO ID: GO:0009585 and GO terms: red, far-red light phototransduction
+----------------------------------------------------------------------------------------------------------
+
+----------------------------------------------------------------------------------------------------------
+Network number 65
+Indirect interaction
+Members: AT3G53900 and AT4G09010, with AT3G16250 as intermediary
+
+KEGG annotations:
+The AT3G53900 member has KEGG ID: ath01100 and KEGG pathway: Metabolic pathways
+The AT4G09010 member has KEGG ID: ath01100 and KEGG pathway: Metabolic pathways
+
+GO annotations:
+The AT3G53900 member has GO ID: GO:0006223 and GO terms: uracil salvage
+The AT3G16250 member has GO ID: GO:0006355 and GO terms: regulation of transcription, DNA-templated
+The AT4G09010 member has GO ID: GO:0006979 and GO terms: response to oxidative stress
+----------------------------------------------------------------------------------------------------------
+
+----------------------------------------------------------------------------------------------------------
+Network number 66
+Indirect interaction
+Members: AT3G26090 and AT5G01530, with AT1G29920 as intermediary
+
+KEGG annotations:
+The AT1G29920 member has KEGG ID: ath01100 and KEGG pathway: Metabolic pathways
+The AT5G01530 member has KEGG ID: ath01100 and KEGG pathway: Metabolic pathways
+
+GO annotations:
+The AT3G26090 member has GO ID: GO:0006355 and GO terms: regulation of transcription, DNA-templated
+The AT1G29920 member has GO ID: GO:0018298 and GO terms: protein-chromophore linkage
+The AT5G01530 member has GO ID: GO:0018298 and GO terms: protein-chromophore linkage
+----------------------------------------------------------------------------------------------------------
