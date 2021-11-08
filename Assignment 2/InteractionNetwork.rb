@@ -119,8 +119,6 @@ class InteractionNetwork
           elsif int_1.downcase != agi && int_2.downcase == agi && agis.include?(int_1.downcase)
             # ...save interactor 1 in this hash with the AGI used for search as key
             @@interactions[agi.upcase] = int_1.upcase
-          
-            
             
           ##### searching for INDIRECT interactions (between genes in the list with an intermediary)
           # 3. if interactor 1 is the AGI used for search and interactor 2 is not the AGI used for search and interactor 2 is not in the AGIs list...
@@ -136,10 +134,10 @@ class InteractionNetwork
                 next if array[3].match(/(A[Tt]\w[Gg]\d\d\d\d\d)/) == nil
                 int_12 = array[2].match(/(A[Tt]\w[Gg]\d\d\d\d\d)/)[0].to_s
                 int_22 = array[3].match(/(A[Tt]\w[Gg]\d\d\d\d\d)/)[0].to_s
-                if int_12.downcase == int_2.downcase && int_22.downcase != int_2.downcase && agis.include?(int_22.downcase)
+                if int_12.downcase == int_2.downcase && int_22.downcase != int_2.downcase && agis.include?(int_22.downcase) && int_22.downcase != agi
                   # save the intermediary AGI that is not in the list and indirect interactor that is in the list with AGI used for search as key
                   @@interactions[agi.upcase] = [int_2.upcase,int_22.upcase]
-                elsif int_12.downcase != int_2.downcase && int_22.downcase == int_2.downcase && agis.include?(int_12)
+                elsif int_12.downcase != int_2.downcase && int_22.downcase == int_2.downcase && agis.include?(int_12) && int_22.downcase != agi
                   # save the intermediary AGI that is not in the list and other interactor that is in the list with AGI used for search as key
                   @@interactions[agi.upcase] = [int_2.upcase,int_12.upcase]
                 end
@@ -160,9 +158,9 @@ class InteractionNetwork
                 next if array[3].match(/(A[Tt]\w[Gg]\d\d\d\d\d)/) == nil
                 int_123 = array[2].match(/(A[Tt]\w[Gg]\d\d\d\d\d)/)[0].to_s
                 int_223 = array[3].match(/(A[Tt]\w[Gg]\d\d\d\d\d)/)[0].to_s
-                if int_123.downcase == int_1.downcase && int_223.downcase != int_1.downcase && agis.include?(int_223.downcase)
+                if int_123.downcase == int_1.downcase && int_223.downcase != int_1.downcase && agis.include?(int_223.downcase) && int_223.downcase != agi
                   @@interactions[agi.upcase] = [int_1.upcase,int_223.upcase]
-                elsif int_123.downcase != int_1.downcase && int_223.downcase == int_1.downcase && agis.include?(int_123.downcase)
+                elsif int_123.downcase != int_1.downcase && int_223.downcase == int_1.downcase && agis.include?(int_123.downcase) && int_123.downcase != agi
                   @@interactions[agi.upcase] = [int_1.upcase,int_123.upcase]
                 end
               end 
@@ -217,7 +215,7 @@ class InteractionNetwork
   ## DEFINING INSTANCE METHODS ##
   ## 1. annotate KEGG ID and KEGG pathways for members of a network ##
   def annotate_kegg(members)
-    # creating an empty hash to store KEGG annotations
+    # creating an empty array to store KEGG annotations
     kegg_annotations = Hash.new
     # for each member of the network...
     members.each do |member|
@@ -228,7 +226,7 @@ class InteractionNetwork
         # iterating for each entry of this hash
         # key and value
         data[0].each do |kegg_id,kegg_p|
-          # #saving in the hash the member as key and KEGG ID and KEGG pathways as values 
+          # save key --> KEGG ID and value --> KEGG pathway in the array
           kegg_annotations[member] = [kegg_id,kegg_p]
         end 
       else 
@@ -239,7 +237,7 @@ class InteractionNetwork
   end
   ## 2. annotate GO ID and GO terms for members of a network ##
   def annotate_go(members)
-    # creating an empty hash to store GO annotations
+    # creating an empty array to store GO annotations
     go_annotations = Hash.new
     # for each member of the network...
     members.each do |member|
@@ -253,7 +251,6 @@ class InteractionNetwork
           next unless go[1].match(/P:\w+/)
           go_id = go[0]
           go_term = go[1].match(/:(.+)/)[1]
-          #saving in the hash the member as key and GO ID and GO terms as values 
           go_annotations[member] = [go_id,go_term]
         end
       else 
