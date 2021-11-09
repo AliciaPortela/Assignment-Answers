@@ -1,20 +1,33 @@
----------Analysis of direct and indirect interactions between a set of co-expressed genes----------
+                 ---------ANALYSIS OF INTERACTIONS BETWEEN A SET OF PREDICTIVELY CO-EXPRESSED GENES----------
+                 ---------------------PERFORMED BY: Alicia Portela Estévez----------------------
 
-For the 168 co-expressed genes, direct and indirect interactions between them have been analysed through PSICQUIC REST API
+INTRODUCTION
+A recent paper (DOI: 10.1371/journal.pone.0108567) executes a meta-analysis of a few thousand published co-expressed gene sets from Arabidopsis thaliana. They break these co-expression sets into ~20 sub-networks of <200 genes each, that they find consistently co-expressed with one another. One of this sub-networks has 168 predictively co-expressed genes
 
-SCHEMATIC REPRESENTATION OF INTERACTIONS:
--Direct interactions: A-B, in which A and B are genes that belong to the co-expressed set of genes
--Indirect interactions: A-B-C, in which A and C are genes that belong to the co-expressed set of genes, but not B, which is the intermediary
+OBJECTIVE
+The objective of this further analysis is testing if there is already information that links those 168 genes into known regulatory networks, either in a direct or indirect way, and annotate members of each network with any possible KEGG Pathway or GO Terms.
 
-CRITERIA FOR SEARCHING FOR INTERACTIONS:
-1. Arabidopsis thaliana species, filtered by a regex
-2. MIscore > 0.485, as mentioned in 10.1093/database/bau131
+MATERIAL & METHODS
+Materials used in this analysis are:
+1. The sub-network with 168 predicted co-expressed genes.
+2. BAR database from University of Toronto, in order to search for interactions, either direct or indirect, between the 168 co-expressed genes, through PSICQUIC REST API.
+3. UniProt database, in order to search for KEGG and GO annotations, through TOGO REST API.
 
-RESULTS:
-In total, 57 networks have been found
+Methods followed in this analysis are:
+1. Type of interactions
+In this analysis, 2 kind of interactions have been analysed:
+-Direct interactions: A-B, in which A and B are genes that belong to the co-expressed sub-network.
+-Indirect interactions: A-B-C, in which A and C are genes that belong to the co-expressed sub-network, but not B, which is the intermediary.
+2. Criteria for searching for interactions
+In this analysis, 2 criteria have been followed:
+-Interactors must belong to Arabidopsis thaliana species. It has been achieved by filtering by a regex, corresponding to the AGI locus code.
+-MIscore > 0.485, as mentioned in the article with DOI: 10.1093/database/bau131.
+
+RESULTS
+In total, 58 networks have been found
 Below, it is shown one by one the networks, with the following information:
 1. Number of network
-2. Type (direct/indirect) of interaction
+2. Type of interaction: direct/indirect
 3. Members of the network
 4. KEGG annotations: KEGG ID and KEGG pathway
 5. GO annotations: GO ID and GO terms
@@ -25,14 +38,63 @@ Indirect interaction
 Members: AT4G34840 and AT5G54270, with AT4G37980 as intermediary
 
 KEGG annotations:
-The AT4G34840 member has KEGG ID: ath01100 and KEGG pathway: Metabolic pathways
-The AT4G37980 member has KEGG ID: ath01110 and KEGG pathway: Biosynthesis of secondary metabolites
-The AT5G54270 member has KEGG ID: ath01100 and KEGG pathway: Metabolic pathways
+The AT4G34840 member has the following KEGG IDs/pathways:
+ ath00270,Cysteine and methionine metabolism 
+ ath01100,Metabolic pathways 
+The AT4G37980 member has the following KEGG IDs/pathways:
+ ath00940,Phenylpropanoid biosynthesis 
+ ath01100,Metabolic pathways 
+ ath01110,Biosynthesis of secondary metabolites 
+The AT5G54270 member has the following KEGG IDs/pathways:
+ ath00196,Photosynthesis - antenna proteins 
+ ath01100,Metabolic pathways 
 
 GO annotations:
-The AT4G34840 member has GO ID: GO:0009116 and GO terms: nucleoside metabolic process
-The AT4G37980 member has GO ID: GO:0033512 and GO terms: L-lysine catabolic process to acetyl-CoA via saccharopine
-The AT5G54270 member has GO ID: GO:0009644 and GO terms: response to high light intensity
+The AT4G34840 member has the following GO ID/terms:
+ 0019509,L-methionine salvage from methylthioadenosine 
+ 0009116,nucleoside metabolic process 
+ 0010087,phloem or xylem histogenesis 
+ 0000003,reproduction 
+ 0019509,L-methionine salvage from methylthioadenosine 
+ 0009116,nucleoside metabolic process 
+ 0010087,phloem or xylem histogenesis 
+ 0000003,reproduction 
+ 0009627,systemic acquired resistance 
+ 0019509,L-methionine salvage from methylthioadenosine 
+ 0009116,nucleoside metabolic process 
+ 0019509,L-methionine salvage from methylthioadenosine 
+ 0009116,nucleoside metabolic process 
+ 0019509,L-methionine salvage from methylthioadenosine 
+ 0009116,nucleoside metabolic process 
+ 0019509,L-methionine salvage from methylthioadenosine 
+ 0009116,nucleoside metabolic process 
+The AT4G37980 member has the following GO ID/terms:
+ 0010597,green leaf volatile biosynthetic process 
+ 0009809,lignin biosynthetic process 
+ 0009617,response to bacterium 
+ 0010597,green leaf volatile biosynthetic process 
+ 0009809,lignin biosynthetic process 
+ 0009617,response to bacterium 
+ 0033512,L-lysine catabolic process to acetyl-CoA via saccharopine 
+The AT5G54270 member has the following GO ID/terms:
+ 0015979,photosynthesis 
+ 0009768,photosynthesis, light harvesting in photosystem I 
+ 0009769,photosynthesis, light harvesting in photosystem II 
+ 0018298,protein-chromophore linkage 
+ 0010119,regulation of stomatal movement 
+ 0009737,response to abscisic acid 
+ 0009635,response to herbicide 
+ 0009644,response to high light intensity 
+ 0009416,response to light stimulus 
+ 0009765,photosynthesis, light harvesting 
+ 0018298,protein-chromophore linkage 
+ 0006412,translation 
+ 0009769,photosynthesis, light harvesting in photosystem II 
+ 0018298,protein-chromophore linkage 
+ 0010119,regulation of stomatal movement 
+ 0009737,response to abscisic acid 
+ 0009635,response to herbicide 
+ 0009644,response to high light intensity 
 ----------------------------------------------------------------------------------------------------------
 
 ----------------------------------------------------------------------------------------------------------
@@ -41,14 +103,38 @@ Indirect interaction
 Members: AT1G25155 and AT2G45170, with AT1G12900 as intermediary
 
 KEGG annotations:
-The AT1G25155 member has KEGG ID: ath01230 and KEGG pathway: Biosynthesis of amino acids
-The AT1G12900 member has KEGG ID: ath01200 and KEGG pathway: Carbon metabolism
+The AT1G25155 member has the following KEGG IDs/pathways:
+ ath00400,Phenylalanine, tyrosine and tryptophan biosynthesis 
+ ath01100,Metabolic pathways 
+ ath01110,Biosynthesis of secondary metabolites 
+ ath01230,Biosynthesis of amino acids 
+The AT1G12900 member has the following KEGG IDs/pathways:
+ ath00710,Carbon fixation in photosynthetic organisms 
+ ath01100,Metabolic pathways 
+ ath01200,Carbon metabolism 
 The AT2G45170 member has KEGG ID: ath04136 and KEGG pathway: Autophagy - other
 
 GO annotations:
-The AT1G25155 member has GO ID: GO:0000162 and GO terms: tryptophan biosynthetic process
-The AT1G12900 member has GO ID: GO:0006006 and GO terms: glucose metabolic process
-The AT2G45170 member has GO ID: GO:0006914 and GO terms: autophagy
+The AT1G25155 member has the following GO ID/terms:
+ 0006541,glutamine metabolic process 
+ 0000162,tryptophan biosynthetic process 
+The AT1G12900 member has the following GO ID/terms:
+ 0006006,glucose metabolic process 
+ 0019253,reductive pentose-phosphate cycle 
+ 0006006,glucose metabolic process 
+ 0006006,glucose metabolic process 
+ 0008643,carbohydrate transport 
+ 0006006,glucose metabolic process 
+The AT2G45170 member has the following GO ID/terms:
+ 0006914,autophagy 
+ 0006995,cellular response to nitrogen starvation 
+ 0009267,cellular response to starvation 
+ 0015031,protein transport 
+ 0045471,response to ethanol 
+ 0006914,autophagy 
+ 0009267,cellular response to starvation 
+ 0045471,response to ethanol 
+ 0006914,autophagy 
 ----------------------------------------------------------------------------------------------------------
 
 ----------------------------------------------------------------------------------------------------------
@@ -57,14 +143,38 @@ Indirect interaction
 Members: AT2G21730 and AT5G04140, with AT4G17090 as intermediary
 
 KEGG annotations:
-The AT2G21730 member has KEGG ID: ath01110 and KEGG pathway: Biosynthesis of secondary metabolites
-The AT4G17090 member has KEGG ID: ath01110 and KEGG pathway: Biosynthesis of secondary metabolites
-The AT5G04140 member has KEGG ID: ath00910 and KEGG pathway: Nitrogen metabolism
+The AT2G21730 member has the following KEGG IDs/pathways:
+ ath00940,Phenylpropanoid biosynthesis 
+ ath01100,Metabolic pathways 
+ ath01110,Biosynthesis of secondary metabolites 
+The AT4G17090 member has the following KEGG IDs/pathways:
+ ath00500,Starch and sucrose metabolism 
+ ath01100,Metabolic pathways 
+ ath01110,Biosynthesis of secondary metabolites 
+The AT5G04140 member has the following KEGG IDs/pathways:
+ ath00630,Glyoxylate and dicarboxylate metabolism 
+ ath00910,Nitrogen metabolism 
 
 GO annotations:
-The AT2G21730 member has GO ID: GO:0009809 and GO terms: lignin biosynthetic process
-The AT4G17090 member has GO ID: GO:0000272 and GO terms: polysaccharide catabolic process
-The AT5G04140 member has GO ID: GO:0006541 and GO terms: glutamine metabolic process
+The AT2G21730 member has GO ID: 0009809 and GO terms: lignin biosynthetic process
+The AT4G17090 member has the following GO ID/terms:
+ 0000024,maltose biosynthetic process 
+ 0009409,response to cold 
+ 0005983,starch catabolic process 
+ 0000272,polysaccharide catabolic process 
+The AT5G04140 member has the following GO ID/terms:
+ 0019676,ammonia assimilation cycle 
+ 0006537,glutamate biosynthetic process 
+ 0097054,L-glutamate biosynthetic process 
+ 0009853,photorespiration 
+ 0080114,positive regulation of glycine hydroxymethyltransferase activity 
+ 0009416,response to light stimulus 
+ 0009744,response to sucrose 
+ 0006537,glutamate biosynthetic process 
+ 0006537,glutamate biosynthetic process 
+ 0006541,glutamine metabolic process 
+ 0006537,glutamate biosynthetic process 
+ 0006541,glutamine metabolic process 
 ----------------------------------------------------------------------------------------------------------
 
 ----------------------------------------------------------------------------------------------------------
@@ -73,13 +183,55 @@ Indirect interaction
 Members: AT3G26090 and AT1G15820, with AT1G29920 as intermediary
 
 KEGG annotations:
-The AT1G29920 member has KEGG ID: ath01100 and KEGG pathway: Metabolic pathways
-The AT1G15820 member has KEGG ID: ath01100 and KEGG pathway: Metabolic pathways
+The AT3G26090 member has not got any KEGG ID/pathway
+The AT1G29920 member has the following KEGG IDs/pathways:
+ ath00196,Photosynthesis - antenna proteins 
+ ath01100,Metabolic pathways 
+The AT1G15820 member has the following KEGG IDs/pathways:
+ ath00196,Photosynthesis - antenna proteins 
+ ath01100,Metabolic pathways 
 
 GO annotations:
-The AT3G26090 member has GO ID: GO:0006355 and GO terms: regulation of transcription, DNA-templated
-The AT1G29920 member has GO ID: GO:0018298 and GO terms: protein-chromophore linkage
-The AT1G15820 member has GO ID: GO:0018298 and GO terms: protein-chromophore linkage
+The AT3G26090 member has the following GO ID/terms:
+ 0009867,jasmonic acid mediated signaling pathway 
+ 0009968,negative regulation of signal transduction 
+ 0043547,positive regulation of GTPase activity 
+ 0042127,regulation of cell population proliferation 
+ 0009737,response to abscisic acid 
+ 0009749,response to glucose 
+ 0009414,response to water deprivation 
+ 0010182,sugar mediated signaling pathway 
+ 0009867,jasmonic acid mediated signaling pathway 
+ 0043547,positive regulation of GTPase activity 
+ 0042127,regulation of cell population proliferation 
+ 0009737,response to abscisic acid 
+ 0009749,response to glucose 
+ 0009414,response to water deprivation 
+ 0010182,sugar mediated signaling pathway 
+ 0006355,regulation of transcription, DNA-templated 
+The AT1G29920 member has the following GO ID/terms:
+ 0009768,photosynthesis, light harvesting in photosystem I 
+ 0018298,protein-chromophore linkage 
+ 0009416,response to light stimulus 
+ 0009768,photosynthesis, light harvesting in photosystem I 
+ 0018298,protein-chromophore linkage 
+ 0009750,response to fructose 
+ 0009416,response to light stimulus 
+ 0009765,photosynthesis, light harvesting 
+ 0018298,protein-chromophore linkage 
+The AT1G15820 member has the following GO ID/terms:
+ 0010196,nonphotochemical quenching 
+ 0015979,photosynthesis 
+ 0009768,photosynthesis, light harvesting in photosystem I 
+ 0018298,protein-chromophore linkage 
+ 0009416,response to light stimulus 
+ 0010196,nonphotochemical quenching 
+ 0009765,photosynthesis, light harvesting 
+ 0018298,protein-chromophore linkage 
+ 0009765,photosynthesis, light harvesting 
+ 0018298,protein-chromophore linkage 
+ 0009765,photosynthesis, light harvesting 
+ 0018298,protein-chromophore linkage 
 ----------------------------------------------------------------------------------------------------------
 
 ----------------------------------------------------------------------------------------------------------
@@ -89,13 +241,42 @@ Members: AT3G08530 and AT1G03130, with AT4G02770 as intermediary
 
 KEGG annotations:
 The AT3G08530 member has KEGG ID: ath04144 and KEGG pathway: Endocytosis
-The AT4G02770 member has KEGG ID: ath01100 and KEGG pathway: Metabolic pathways
-The AT1G03130 member has KEGG ID: ath01100 and KEGG pathway: Metabolic pathways
+The AT4G02770 member has the following KEGG IDs/pathways:
+ ath00195,Photosynthesis 
+ ath01100,Metabolic pathways 
+The AT1G03130 member has the following KEGG IDs/pathways:
+ ath00195,Photosynthesis 
+ ath01100,Metabolic pathways 
 
 GO annotations:
-The AT3G08530 member has GO ID: GO:0016192 and GO terms: vesicle-mediated transport
-The AT4G02770 member has GO ID: GO:0015979 and GO terms: photosynthesis
-The AT1G03130 member has GO ID: GO:0015979 and GO terms: photosynthesis
+The AT3G08530 member has the following GO ID/terms:
+ 0006897,endocytosis 
+ 0006886,intracellular protein transport 
+ 0006898,receptor-mediated endocytosis 
+ 0016192,vesicle-mediated transport 
+ 0006606,protein import into nucleus 
+ 0006886,intracellular protein transport 
+ 0016192,vesicle-mediated transport 
+ 0006886,intracellular protein transport 
+ 0016192,vesicle-mediated transport 
+ 0006886,intracellular protein transport 
+ 0016192,vesicle-mediated transport 
+ 0006886,intracellular protein transport 
+ 0016192,vesicle-mediated transport 
+ 0006886,intracellular protein transport 
+ 0016192,vesicle-mediated transport 
+ 0006886,intracellular protein transport 
+ 0016192,vesicle-mediated transport 
+The AT4G02770 member has the following GO ID/terms:
+ 0140547,acquisition of seed longevity 
+ 0015979,photosynthesis 
+ 0035556,intracellular signal transduction 
+ 0015979,photosynthesis 
+ 0140547,acquisition of seed longevity 
+ 0015979,photosynthesis 
+The AT1G03130 member has the following GO ID/terms:
+ 0015979,photosynthesis 
+ 0015979,photosynthesis 
 ----------------------------------------------------------------------------------------------------------
 
 ----------------------------------------------------------------------------------------------------------
@@ -104,14 +285,46 @@ Indirect interaction
 Members: AT3G47010 and AT4G17090, with AT5G48300 as intermediary
 
 KEGG annotations:
-The AT3G47010 member has KEGG ID: ath01110 and KEGG pathway: Biosynthesis of secondary metabolites
-The AT5G48300 member has KEGG ID: ath01250 and KEGG pathway: Biosynthesis of nucleotide sugars
-The AT4G17090 member has KEGG ID: ath01110 and KEGG pathway: Biosynthesis of secondary metabolites
+The AT3G47010 member has the following KEGG IDs/pathways:
+ ath00460,Cyanoamino acid metabolism 
+ ath00500,Starch and sucrose metabolism 
+ ath00940,Phenylpropanoid biosynthesis 
+ ath01100,Metabolic pathways 
+ ath01110,Biosynthesis of secondary metabolites 
+The AT5G48300 member has the following KEGG IDs/pathways:
+ ath00500,Starch and sucrose metabolism 
+ ath00520,Amino sugar and nucleotide sugar metabolism 
+ ath01100,Metabolic pathways 
+ ath01110,Biosynthesis of secondary metabolites 
+ ath01250,Biosynthesis of nucleotide sugars 
+The AT4G17090 member has the following KEGG IDs/pathways:
+ ath00500,Starch and sucrose metabolism 
+ ath01100,Metabolic pathways 
+ ath01110,Biosynthesis of secondary metabolites 
 
 GO annotations:
-The AT3G47010 member has GO ID: GO:0005975 and GO terms: carbohydrate metabolic process
-The AT5G48300 member has GO ID: GO:0005978 and GO terms: glycogen biosynthetic process
-The AT4G17090 member has GO ID: GO:0000272 and GO terms: polysaccharide catabolic process
+The AT3G47010 member has the following GO ID/terms:
+ 0005975,carbohydrate metabolic process 
+ 0009251,glucan catabolic process 
+ 0005975,carbohydrate metabolic process 
+ 0005975,carbohydrate metabolic process 
+ 0005975,carbohydrate metabolic process 
+The AT5G48300 member has the following GO ID/terms:
+ 0005978,glycogen biosynthetic process 
+ 0048573,photoperiodism, flowering 
+ 0019252,starch biosynthetic process 
+ 0005978,glycogen biosynthetic process 
+ 0019252,starch biosynthetic process 
+ 0005978,glycogen biosynthetic process 
+ 0048573,photoperiodism, flowering 
+ 0019252,starch biosynthetic process 
+ 0006457,protein folding 
+ 0005978,glycogen biosynthetic process 
+The AT4G17090 member has the following GO ID/terms:
+ 0000024,maltose biosynthetic process 
+ 0009409,response to cold 
+ 0005983,starch catabolic process 
+ 0000272,polysaccharide catabolic process 
 ----------------------------------------------------------------------------------------------------------
 
 ----------------------------------------------------------------------------------------------------------
@@ -120,13 +333,34 @@ Indirect interaction
 Members: AT4G33710 and AT1G23740, with AT2G45170 as intermediary
 
 KEGG annotations:
-The AT4G33710 member has KEGG ID: ath04626 and KEGG pathway: Plant-pathogen interaction
+The AT4G33710 member has the following KEGG IDs/pathways:
+ ath04016,MAPK signaling pathway - plant 
+ ath04075,Plant hormone signal transduction 
+ ath04626,Plant-pathogen interaction 
 The AT2G45170 member has KEGG ID: ath04136 and KEGG pathway: Autophagy - other
+The AT1G23740 member has not got any KEGG ID/pathway
 
 GO annotations:
-The AT4G33710 member has GO ID: GO:0006952 and GO terms: defense response
-The AT2G45170 member has GO ID: GO:0006914 and GO terms: autophagy
-The AT1G23740 member has GO ID: GO:0009409 and GO terms: response to cold
+The AT4G33710 member has the following GO ID/terms:
+ 0006952,defense response 
+ 0006952,defense response 
+ 0006952,defense response 
+ 0006952,defense response 
+The AT2G45170 member has the following GO ID/terms:
+ 0006914,autophagy 
+ 0006995,cellular response to nitrogen starvation 
+ 0009267,cellular response to starvation 
+ 0015031,protein transport 
+ 0045471,response to ethanol 
+ 0006914,autophagy 
+ 0009267,cellular response to starvation 
+ 0045471,response to ethanol 
+ 0006914,autophagy 
+The AT1G23740 member has the following GO ID/terms:
+ 0009409,response to cold 
+ 0009409,response to cold 
+ 0046856,phosphatidylinositol dephosphorylation 
+ 0009409,response to cold 
 ----------------------------------------------------------------------------------------------------------
 
 ----------------------------------------------------------------------------------------------------------
@@ -135,12 +369,44 @@ Indirect interaction
 Members: AT1G53090 and AT2G46340, with AT5G15850 as intermediary
 
 KEGG annotations:
+The AT1G53090 member has not got any KEGG ID/pathway
+The AT5G15850 member has not got any KEGG ID/pathway
 The AT2G46340 member has KEGG ID: ath04712 and KEGG pathway: Circadian rhythm - plant
 
 GO annotations:
-The AT1G53090 member has GO ID: GO:0009640 and GO terms: photomorphogenesis
-The AT5G15850 member has GO ID: GO:0000398 and GO terms: mRNA splicing, via spliceosome
-The AT2G46340 member has GO ID: GO:0009640 and GO terms: photomorphogenesis
+The AT1G53090 member has the following GO ID/terms:
+ 0009640,photomorphogenesis 
+ 0009585,red, far-red light phototransduction 
+ 0009637,response to blue light 
+ 0009640,photomorphogenesis 
+ 0009640,photomorphogenesis 
+ 0009640,photomorphogenesis 
+The AT5G15850 member has the following GO ID/terms:
+ 0009909,regulation of flower development 
+ 0009909,regulation of flower development 
+ 0000398,mRNA splicing, via spliceosome 
+The AT2G46340 member has the following GO ID/terms:
+ 0009658,chloroplast organization 
+ 0010100,negative regulation of photomorphogenesis 
+ 0009640,photomorphogenesis 
+ 0010017,red or far-red light signaling pathway 
+ 0009585,red, far-red light phototransduction 
+ 2000028,regulation of photoperiodism, flowering 
+ 0009637,response to blue light 
+ 0010218,response to far red light 
+ 0010114,response to red light 
+ 0048575,short-day photoperiodism, flowering 
+ 0009658,chloroplast organization 
+ 0010100,negative regulation of photomorphogenesis 
+ 0009640,photomorphogenesis 
+ 0010017,red or far-red light signaling pathway 
+ 2000028,regulation of photoperiodism, flowering 
+ 0009637,response to blue light 
+ 0010218,response to far red light 
+ 0010114,response to red light 
+ 0048575,short-day photoperiodism, flowering 
+ 0009640,photomorphogenesis 
+ 0009640,photomorphogenesis 
 ----------------------------------------------------------------------------------------------------------
 
 ----------------------------------------------------------------------------------------------------------
@@ -149,11 +415,29 @@ Indirect interaction
 Members: AT5G52640 and AT4G12830, with AT1G23740 as intermediary
 
 KEGG annotations:
-The AT5G52640 member has KEGG ID: ath04626 and KEGG pathway: Plant-pathogen interaction
+The AT5G52640 member has the following KEGG IDs/pathways:
+ ath04141,Protein processing in endoplasmic reticulum 
+ ath04626,Plant-pathogen interaction 
+The AT1G23740 member has not got any KEGG ID/pathway
+The AT4G12830 member has not got any KEGG ID/pathway
 
 GO annotations:
-The AT5G52640 member has GO ID: GO:0006457 and GO terms: protein folding
-The AT1G23740 member has GO ID: GO:0009409 and GO terms: response to cold
+The AT5G52640 member has the following GO ID/terms:
+ 0034605,cellular response to heat 
+ 0061077,chaperone-mediated protein folding 
+ 0042742,defense response to bacterium 
+ 0045087,innate immune response 
+ 0006457,protein folding 
+ 0050821,protein stabilization 
+ 0061077,chaperone-mediated protein folding 
+ 0042742,defense response to bacterium 
+ 0006457,protein folding 
+The AT1G23740 member has the following GO ID/terms:
+ 0009409,response to cold 
+ 0009409,response to cold 
+ 0046856,phosphatidylinositol dephosphorylation 
+ 0009409,response to cold 
+The AT4G12830 member has not got any GO ID/term
 ----------------------------------------------------------------------------------------------------------
 
 ----------------------------------------------------------------------------------------------------------
@@ -162,13 +446,63 @@ Indirect interaction
 Members: AT4G32520 and AT2G21330, with AT4G37800 as intermediary
 
 KEGG annotations:
-The AT4G32520 member has KEGG ID: ath01240 and KEGG pathway: Biosynthesis of cofactors
-The AT2G21330 member has KEGG ID: ath01230 and KEGG pathway: Biosynthesis of amino acids
+The AT4G32520 member has the following KEGG IDs/pathways:
+ ath00260,Glycine, serine and threonine metabolism 
+ ath00460,Cyanoamino acid metabolism 
+ ath00630,Glyoxylate and dicarboxylate metabolism 
+ ath00670,One carbon pool by folate 
+ ath01100,Metabolic pathways 
+ ath01110,Biosynthesis of secondary metabolites 
+ ath01200,Carbon metabolism 
+ ath01230,Biosynthesis of amino acids 
+ ath01240,Biosynthesis of cofactors 
+The AT4G37800 member has not got any KEGG ID/pathway
+The AT2G21330 member has the following KEGG IDs/pathways:
+ ath00010,Glycolysis / Gluconeogenesis 
+ ath00030,Pentose phosphate pathway 
+ ath00051,Fructose and mannose metabolism 
+ ath00710,Carbon fixation in photosynthetic organisms 
+ ath01100,Metabolic pathways 
+ ath01110,Biosynthesis of secondary metabolites 
+ ath01200,Carbon metabolism 
+ ath01230,Biosynthesis of amino acids 
 
 GO annotations:
-The AT4G32520 member has GO ID: GO:0019953 and GO terms: sexual reproduction
-The AT4G37800 member has GO ID: GO:0006355 and GO terms: regulation of transcription, DNA-templated
-The AT2G21330 member has GO ID: GO:0006096 and GO terms: glycolytic process
+The AT4G32520 member has the following GO ID/terms:
+ 0046655,folic acid metabolic process 
+ 0019264,glycine biosynthetic process from serine 
+ 0006565,L-serine catabolic process 
+ 0006730,one-carbon metabolic process 
+ 0035999,tetrahydrofolate interconversion 
+ 0046653,tetrahydrofolate metabolic process 
+ 0019264,glycine biosynthetic process from serine 
+ 0035999,tetrahydrofolate interconversion 
+ 0019264,glycine biosynthetic process from serine 
+ 0035999,tetrahydrofolate interconversion 
+ 0019953,sexual reproduction 
+The AT4G37800 member has the following GO ID/terms:
+ 0042546,cell wall biogenesis 
+ 0071555,cell wall organization 
+ 0010411,xyloglucan metabolic process 
+ 0042546,cell wall biogenesis 
+ 0071555,cell wall organization 
+ 0010411,xyloglucan metabolic process 
+ 0042546,cell wall biogenesis 
+ 0071555,cell wall organization 
+ 0010411,xyloglucan metabolic process 
+ 0006355,regulation of transcription, DNA-templated 
+The AT2G21330 member has the following GO ID/terms:
+ 0030388,fructose 1,6-bisphosphate metabolic process 
+ 0006094,gluconeogenesis 
+ 0006096,glycolytic process 
+ 0046686,response to cadmium ion 
+ 0006096,glycolytic process 
+ 0071555,cell wall organization 
+ 0030244,cellulose biosynthetic process 
+ 0006096,glycolytic process 
+ 0006096,glycolytic process 
+ 0006096,glycolytic process 
+ 0006096,glycolytic process 
 ----------------------------------------------------------------------------------------------------------
 
 ----------------------------------------------------------------------------------------------------------
@@ -177,11 +511,20 @@ Indirect interaction
 Members: AT4G20790 and AT4G22890, with AT5G38990 as intermediary
 
 KEGG annotations:
-There are not any KEGG ID/pathway for any member of this network
+The AT4G20790 member has not got any KEGG ID/pathway
+The AT5G38990 member has not got any KEGG ID/pathway
+The AT4G22890 member has not got any KEGG ID/pathway
 
 GO annotations:
-The AT5G38990 member has GO ID: GO:0010038 and GO terms: response to metal ion
-The AT4G22890 member has GO ID: GO:0009773 and GO terms: photosynthetic electron transport in photosystem I
+The AT4G20790 member has not got any GO ID/term
+The AT5G38990 member has the following GO ID/terms:
+ 0046777,protein autophosphorylation 
+ 0010038,response to metal ion 
+The AT4G22890 member has the following GO ID/terms:
+ 0009773,photosynthetic electron transport in photosystem I 
+ 0009773,photosynthetic electron transport in photosystem I 
+ 0009773,photosynthetic electron transport in photosystem I 
+ 0009773,photosynthetic electron transport in photosystem I 
 ----------------------------------------------------------------------------------------------------------
 
 ----------------------------------------------------------------------------------------------------------
@@ -190,13 +533,40 @@ Indirect interaction
 Members: AT5G65430 and AT1G37130, with AT2G18700 as intermediary
 
 KEGG annotations:
-The AT2G18700 member has KEGG ID: ath01110 and KEGG pathway: Biosynthesis of secondary metabolites
-The AT1G37130 member has KEGG ID: ath01100 and KEGG pathway: Metabolic pathways
+The AT5G65430 member has not got any KEGG ID/pathway
+The AT2G18700 member has the following KEGG IDs/pathways:
+ ath00500,Starch and sucrose metabolism 
+ ath01100,Metabolic pathways 
+ ath01110,Biosynthesis of secondary metabolites 
+The AT1G37130 member has the following KEGG IDs/pathways:
+ ath00910,Nitrogen metabolism 
+ ath01100,Metabolic pathways 
 
 GO annotations:
-The AT5G65430 member has GO ID: GO:0009409 and GO terms: response to cold
-The AT2G18700 member has GO ID: GO:0005992 and GO terms: trehalose biosynthetic process
-The AT1G37130 member has GO ID: GO:0006809 and GO terms: nitric oxide biosynthetic process
+The AT5G65430 member has the following GO ID/terms:
+ 0019222,regulation of metabolic process 
+ 0050826,response to freezing 
+ 0009742,brassinosteroid mediated signaling pathway 
+ 0009409,response to cold 
+ 0009742,brassinosteroid mediated signaling pathway 
+ 0009409,response to cold 
+The AT2G18700 member has the following GO ID/terms:
+ 0016311,dephosphorylation 
+ 0005992,trehalose biosynthetic process 
+The AT1G37130 member has the following GO ID/terms:
+ 0042128,nitrate assimilation 
+ 0006809,nitric oxide biosynthetic process 
+ 0009635,response to herbicide 
+ 0009416,response to light stimulus 
+ 0009610,response to symbiotic fungus 
+ 0042128,nitrate assimilation 
+ 0006809,nitric oxide biosynthetic process 
+ 0042128,nitrate assimilation 
+ 0006809,nitric oxide biosynthetic process 
+ 0042128,nitrate assimilation 
+ 0006809,nitric oxide biosynthetic process 
+ 0042128,nitrate assimilation 
+ 0006809,nitric oxide biosynthetic process 
 ----------------------------------------------------------------------------------------------------------
 
 ----------------------------------------------------------------------------------------------------------
@@ -205,14 +575,44 @@ Indirect interaction
 Members: AT5G39320 and AT5G65010, with AT4G17090 as intermediary
 
 KEGG annotations:
-The AT5G39320 member has KEGG ID: ath01250 and KEGG pathway: Biosynthesis of nucleotide sugars
-The AT4G17090 member has KEGG ID: ath01110 and KEGG pathway: Biosynthesis of secondary metabolites
-The AT5G65010 member has KEGG ID: ath01230 and KEGG pathway: Biosynthesis of amino acids
+The AT5G39320 member has the following KEGG IDs/pathways:
+ ath00040,Pentose and glucuronate interconversions 
+ ath00053,Ascorbate and aldarate metabolism 
+ ath00520,Amino sugar and nucleotide sugar metabolism 
+ ath01100,Metabolic pathways 
+ ath01240,Biosynthesis of cofactors 
+ ath01250,Biosynthesis of nucleotide sugars 
+The AT4G17090 member has the following KEGG IDs/pathways:
+ ath00500,Starch and sucrose metabolism 
+ ath01100,Metabolic pathways 
+ ath01110,Biosynthesis of secondary metabolites 
+The AT5G65010 member has the following KEGG IDs/pathways:
+ ath00250,Alanine, aspartate and glutamate metabolism 
+ ath01100,Metabolic pathways 
+ ath01110,Biosynthesis of secondary metabolites 
+ ath01230,Biosynthesis of amino acids 
 
 GO annotations:
-The AT5G39320 member has GO ID: GO:0006065 and GO terms: UDP-glucuronate biosynthetic process
-The AT4G17090 member has GO ID: GO:0000272 and GO terms: polysaccharide catabolic process
-The AT5G65010 member has GO ID: GO:0006541 and GO terms: glutamine metabolic process
+The AT5G39320 member has the following GO ID/terms:
+ 0006024,glycosaminoglycan biosynthetic process 
+ 0006065,UDP-glucuronate biosynthetic process 
+ 0032434,regulation of proteasomal ubiquitin-dependent protein catabolic process 
+ 0006065,UDP-glucuronate biosynthetic process 
+The AT4G17090 member has the following GO ID/terms:
+ 0000024,maltose biosynthetic process 
+ 0009409,response to cold 
+ 0005983,starch catabolic process 
+ 0000272,polysaccharide catabolic process 
+The AT5G65010 member has the following GO ID/terms:
+ 0097164,ammonium ion metabolic process 
+ 0006529,asparagine biosynthetic process 
+ 0006541,glutamine metabolic process 
+ 0042538,hyperosmotic salinity response 
+ 0070981,L-asparagine biosynthetic process 
+ 0006529,asparagine biosynthetic process 
+ 0006541,glutamine metabolic process 
+ 0006529,asparagine biosynthetic process 
+ 0006541,glutamine metabolic process 
 ----------------------------------------------------------------------------------------------------------
 
 ----------------------------------------------------------------------------------------------------------
@@ -221,11 +621,52 @@ Indirect interaction
 Members: AT2G28960 and AT3G01500, with AT3G28220 as intermediary
 
 KEGG annotations:
-The AT3G01500 member has KEGG ID: ath01100 and KEGG pathway: Metabolic pathways
+The AT2G28960 member has not got any KEGG ID/pathway
+The AT3G28220 member has not got any KEGG ID/pathway
+The AT3G01500 member has the following KEGG IDs/pathways:
+ ath00910,Nitrogen metabolism 
+ ath01100,Metabolic pathways 
 
 GO annotations:
-The AT2G28960 member has GO ID: GO:0030244 and GO terms: cellulose biosynthetic process
-The AT3G01500 member has GO ID: GO:0015976 and GO terms: carbon utilization
+The AT2G28960 member has the following GO ID/terms:
+ 0048653,anther development 
+ 0006952,defense response 
+ 0007639,homeostasis of number of meristem cells 
+ 0006468,protein phosphorylation 
+ 0016032,viral process 
+ 0009738,abscisic acid-activated signaling pathway 
+ 0071485,cellular response to absence of light 
+ 0071244,cellular response to carbon dioxide 
+ 1901528,hydrogen peroxide mediated signaling pathway involved in stomatal movement 
+ 0009789,positive regulation of abscisic acid-activated signaling pathway 
+ 0090333,regulation of stomatal closure 
+ 0009737,response to abscisic acid 
+ 0009416,response to light stimulus 
+ 0007165,signal transduction 
+ 0030244,cellulose biosynthetic process 
+The AT3G28220 member has not got any GO ID/term
+The AT3G01500 member has the following GO ID/terms:
+ 0015976,carbon utilization 
+ 0042742,defense response to bacterium 
+ 0050832,defense response to fungus 
+ 2000122,negative regulation of stomatal complex development 
+ 0015979,photosynthesis 
+ 0010119,regulation of stomatal movement 
+ 0010037,response to carbon dioxide 
+ 0009409,response to cold 
+ 0015976,carbon utilization 
+ 0042742,defense response to bacterium 
+ 0050832,defense response to fungus 
+ 2000122,negative regulation of stomatal complex development 
+ 0015979,photosynthesis 
+ 0010119,regulation of stomatal movement 
+ 0010037,response to carbon dioxide 
+ 0009409,response to cold 
+ 0015976,carbon utilization 
+ 0015976,carbon utilization 
+ 0015976,carbon utilization 
+ 0015976,carbon utilization 
+ 0015976,carbon utilization 
 ----------------------------------------------------------------------------------------------------------
 
 ----------------------------------------------------------------------------------------------------------
@@ -235,13 +676,36 @@ Members: AT3G62870 and AT4G33010, with AT2G26080 as intermediary
 
 KEGG annotations:
 The AT3G62870 member has KEGG ID: ath03010 and KEGG pathway: Ribosome
-The AT2G26080 member has KEGG ID: ath01200 and KEGG pathway: Carbon metabolism
-The AT4G33010 member has KEGG ID: ath01200 and KEGG pathway: Carbon metabolism
+The AT2G26080 member has the following KEGG IDs/pathways:
+ ath00260,Glycine, serine and threonine metabolism 
+ ath00630,Glyoxylate and dicarboxylate metabolism 
+ ath01100,Metabolic pathways 
+ ath01110,Biosynthesis of secondary metabolites 
+ ath01200,Carbon metabolism 
+The AT4G33010 member has the following KEGG IDs/pathways:
+ ath00260,Glycine, serine and threonine metabolism 
+ ath00630,Glyoxylate and dicarboxylate metabolism 
+ ath01100,Metabolic pathways 
+ ath01110,Biosynthesis of secondary metabolites 
+ ath01200,Carbon metabolism 
 
 GO annotations:
-The AT3G62870 member has GO ID: GO:0042254 and GO terms: ribosome biogenesis
-The AT2G26080 member has GO ID: GO:0000398 and GO terms: mRNA splicing, via spliceosome
-The AT4G33010 member has GO ID: GO:0006546 and GO terms: glycine catabolic process
+The AT3G62870 member has the following GO ID/terms:
+ 0000470,maturation of LSU-rRNA 
+ 0042254,ribosome biogenesis 
+ 0042254,ribosome biogenesis 
+The AT2G26080 member has the following GO ID/terms:
+ 0019464,glycine decarboxylation via glycine cleavage system 
+ 0006546,glycine catabolic process 
+ 0000398,mRNA splicing, via spliceosome 
+The AT4G33010 member has the following GO ID/terms:
+ 0006546,glycine catabolic process 
+ 0019464,glycine decarboxylation via glycine cleavage system 
+ 0046686,response to cadmium ion 
+ 0006546,glycine catabolic process 
+ 0046686,response to cadmium ion 
+ 0006546,glycine catabolic process 
+ 0006546,glycine catabolic process 
 ----------------------------------------------------------------------------------------------------------
 
 ----------------------------------------------------------------------------------------------------------
@@ -250,11 +714,31 @@ Indirect interaction
 Members: AT3G49580 and AT2G17880, with AT4G02770 as intermediary
 
 KEGG annotations:
-The AT4G02770 member has KEGG ID: ath01100 and KEGG pathway: Metabolic pathways
+The AT3G49580 member has not got any KEGG ID/pathway
+The AT4G02770 member has the following KEGG IDs/pathways:
+ ath00195,Photosynthesis 
+ ath01100,Metabolic pathways 
+The AT2G17880 member has not got any KEGG ID/pathway
 
 GO annotations:
-The AT3G49580 member has GO ID: GO:0098869 and GO terms: cellular oxidant detoxification
-The AT4G02770 member has GO ID: GO:0015979 and GO terms: photosynthesis
+The AT3G49580 member has the following GO ID/terms:
+ 0098869,cellular oxidant detoxification 
+ 0010438,cellular response to sulfur starvation 
+ 0009651,response to salt stress 
+ 0098869,cellular oxidant detoxification 
+ 0010438,cellular response to sulfur starvation 
+ 0009651,response to salt stress 
+ 0098869,cellular oxidant detoxification 
+ 0008654,phospholipid biosynthetic process 
+ 0098869,cellular oxidant detoxification 
+The AT4G02770 member has the following GO ID/terms:
+ 0140547,acquisition of seed longevity 
+ 0015979,photosynthesis 
+ 0035556,intracellular signal transduction 
+ 0015979,photosynthesis 
+ 0140547,acquisition of seed longevity 
+ 0015979,photosynthesis 
+The AT2G17880 member has not got any GO ID/term
 ----------------------------------------------------------------------------------------------------------
 
 ----------------------------------------------------------------------------------------------------------
@@ -263,10 +747,26 @@ Indirect interaction
 Members: AT1G25320 and AT3G49160, with AT3G28220 as intermediary
 
 KEGG annotations:
-The AT3G49160 member has KEGG ID: ath01240 and KEGG pathway: Biosynthesis of cofactors
+The AT1G25320 member has not got any KEGG ID/pathway
+The AT3G28220 member has not got any KEGG ID/pathway
+The AT3G49160 member has the following KEGG IDs/pathways:
+ ath00010,Glycolysis / Gluconeogenesis 
+ ath00620,Pyruvate metabolism 
+ ath01100,Metabolic pathways 
+ ath01110,Biosynthesis of secondary metabolites 
+ ath01200,Carbon metabolism 
+ ath01230,Biosynthesis of amino acids 
+ ath01240,Biosynthesis of cofactors 
 
 GO annotations:
-The AT3G49160 member has GO ID: GO:0007064 and GO terms: mitotic sister chromatid cohesion
+The AT1G25320 member has not got any GO ID/term
+The AT3G28220 member has not got any GO ID/term
+The AT3G49160 member has the following GO ID/terms:
+ 0006096,glycolytic process 
+ 0051321,meiotic cell cycle 
+ 0007064,mitotic sister chromatid cohesion 
+ 0051321,meiotic cell cycle 
+ 0007064,mitotic sister chromatid cohesion 
 ----------------------------------------------------------------------------------------------------------
 
 ----------------------------------------------------------------------------------------------------------
@@ -276,10 +776,21 @@ Members: AT4G02930 and AT4G21210, with AT2G26740 as intermediary
 
 KEGG annotations:
 The AT4G02930 member has KEGG ID: ath04626 and KEGG pathway: Plant-pathogen interaction
+The AT2G26740 member has not got any KEGG ID/pathway
+The AT4G21210 member has not got any KEGG ID/pathway
 
 GO annotations:
-The AT4G02930 member has GO ID: GO:0046686 and GO terms: response to cadmium ion
-The AT2G26740 member has GO ID: GO:0009414 and GO terms: response to water deprivation
+The AT4G02930 member has the following GO ID/terms:
+ 0070125,mitochondrial translational elongation 
+ 0046686,response to cadmium ion 
+ 0006414,translational elongation 
+ 0042545,cell wall modification 
+ 0045490,pectin catabolic process 
+ 0046686,response to cadmium ion 
+The AT2G26740 member has the following GO ID/terms:
+ 0009733,response to auxin 
+ 0009414,response to water deprivation 
+The AT4G21210 member has not got any GO ID/term
 ----------------------------------------------------------------------------------------------------------
 
 ----------------------------------------------------------------------------------------------------------
@@ -288,13 +799,51 @@ Indirect interaction
 Members: AT2G23070 and AT5G14740, with AT2G39730 as intermediary
 
 KEGG annotations:
-The AT2G23070 member has KEGG ID: ath04712 and KEGG pathway: Circadian rhythm - plant
-The AT5G14740 member has KEGG ID: ath01100 and KEGG pathway: Metabolic pathways
+The AT2G23070 member has the following KEGG IDs/pathways:
+ ath03008,Ribosome biogenesis in eukaryotes 
+ ath04712,Circadian rhythm - plant 
+The AT2G39730 member has not got any KEGG ID/pathway
+The AT5G14740 member has the following KEGG IDs/pathways:
+ ath00910,Nitrogen metabolism 
+ ath01100,Metabolic pathways 
 
 GO annotations:
-The AT2G23070 member has GO ID: GO:2000028 and GO terms: regulation of photoperiodism, flowering
-The AT2G39730 member has GO ID: GO:0009416 and GO terms: response to light stimulus
-The AT5G14740 member has GO ID: GO:0015976 and GO terms: carbon utilization
+The AT2G23070 member has the following GO ID/terms:
+ 0071215,cellular response to abscisic acid stimulus 
+ 0010019,chloroplast-nucleus signaling pathway 
+ 0010187,negative regulation of seed germination 
+ 0018105,peptidyl-serine phosphorylation 
+ 0018107,peptidyl-threonine phosphorylation 
+ 0051726,regulation of cell cycle 
+ 0040008,regulation of growth 
+ 2000028,regulation of photoperiodism, flowering 
+ 0071215,cellular response to abscisic acid stimulus 
+ 0010019,chloroplast-nucleus signaling pathway 
+ 0010187,negative regulation of seed germination 
+ 0040008,regulation of growth 
+ 2000028,regulation of photoperiodism, flowering 
+The AT2G39730 member has the following GO ID/terms:
+ 0042742,defense response to bacterium 
+ 0010150,leaf senescence 
+ 0009409,response to cold 
+ 0009753,response to jasmonic acid 
+ 0009416,response to light stimulus 
+ 0042742,defense response to bacterium 
+ 0010150,leaf senescence 
+ 0009409,response to cold 
+ 0009753,response to jasmonic acid 
+ 0009416,response to light stimulus 
+The AT5G14740 member has the following GO ID/terms:
+ 0015976,carbon utilization 
+ 0042742,defense response to bacterium 
+ 0015976,carbon utilization 
+ 0015976,carbon utilization 
+ 0015976,carbon utilization 
+ 0015976,carbon utilization 
+ 0042742,defense response to bacterium 
+ 0015976,carbon utilization 
+ 0006865,amino acid transport 
+ 0015976,carbon utilization 
 ----------------------------------------------------------------------------------------------------------
 
 ----------------------------------------------------------------------------------------------------------
@@ -303,14 +852,63 @@ Indirect interaction
 Members: AT4G34840 and AT4G37980, with AT5G54270 as intermediary
 
 KEGG annotations:
-The AT4G34840 member has KEGG ID: ath01100 and KEGG pathway: Metabolic pathways
-The AT5G54270 member has KEGG ID: ath01100 and KEGG pathway: Metabolic pathways
-The AT4G37980 member has KEGG ID: ath01110 and KEGG pathway: Biosynthesis of secondary metabolites
+The AT4G34840 member has the following KEGG IDs/pathways:
+ ath00270,Cysteine and methionine metabolism 
+ ath01100,Metabolic pathways 
+The AT5G54270 member has the following KEGG IDs/pathways:
+ ath00196,Photosynthesis - antenna proteins 
+ ath01100,Metabolic pathways 
+The AT4G37980 member has the following KEGG IDs/pathways:
+ ath00940,Phenylpropanoid biosynthesis 
+ ath01100,Metabolic pathways 
+ ath01110,Biosynthesis of secondary metabolites 
 
 GO annotations:
-The AT4G34840 member has GO ID: GO:0009116 and GO terms: nucleoside metabolic process
-The AT5G54270 member has GO ID: GO:0009644 and GO terms: response to high light intensity
-The AT4G37980 member has GO ID: GO:0033512 and GO terms: L-lysine catabolic process to acetyl-CoA via saccharopine
+The AT4G34840 member has the following GO ID/terms:
+ 0019509,L-methionine salvage from methylthioadenosine 
+ 0009116,nucleoside metabolic process 
+ 0010087,phloem or xylem histogenesis 
+ 0000003,reproduction 
+ 0019509,L-methionine salvage from methylthioadenosine 
+ 0009116,nucleoside metabolic process 
+ 0010087,phloem or xylem histogenesis 
+ 0000003,reproduction 
+ 0009627,systemic acquired resistance 
+ 0019509,L-methionine salvage from methylthioadenosine 
+ 0009116,nucleoside metabolic process 
+ 0019509,L-methionine salvage from methylthioadenosine 
+ 0009116,nucleoside metabolic process 
+ 0019509,L-methionine salvage from methylthioadenosine 
+ 0009116,nucleoside metabolic process 
+ 0019509,L-methionine salvage from methylthioadenosine 
+ 0009116,nucleoside metabolic process 
+The AT5G54270 member has the following GO ID/terms:
+ 0015979,photosynthesis 
+ 0009768,photosynthesis, light harvesting in photosystem I 
+ 0009769,photosynthesis, light harvesting in photosystem II 
+ 0018298,protein-chromophore linkage 
+ 0010119,regulation of stomatal movement 
+ 0009737,response to abscisic acid 
+ 0009635,response to herbicide 
+ 0009644,response to high light intensity 
+ 0009416,response to light stimulus 
+ 0009765,photosynthesis, light harvesting 
+ 0018298,protein-chromophore linkage 
+ 0006412,translation 
+ 0009769,photosynthesis, light harvesting in photosystem II 
+ 0018298,protein-chromophore linkage 
+ 0010119,regulation of stomatal movement 
+ 0009737,response to abscisic acid 
+ 0009635,response to herbicide 
+ 0009644,response to high light intensity 
+The AT4G37980 member has the following GO ID/terms:
+ 0010597,green leaf volatile biosynthetic process 
+ 0009809,lignin biosynthetic process 
+ 0009617,response to bacterium 
+ 0010597,green leaf volatile biosynthetic process 
+ 0009809,lignin biosynthetic process 
+ 0009617,response to bacterium 
+ 0033512,L-lysine catabolic process to acetyl-CoA via saccharopine 
 ----------------------------------------------------------------------------------------------------------
 
 ----------------------------------------------------------------------------------------------------------
@@ -319,13 +917,51 @@ Indirect interaction
 Members: AT2G23070 and AT2G39730, with AT5G14740 as intermediary
 
 KEGG annotations:
-The AT2G23070 member has KEGG ID: ath04712 and KEGG pathway: Circadian rhythm - plant
-The AT5G14740 member has KEGG ID: ath01100 and KEGG pathway: Metabolic pathways
+The AT2G23070 member has the following KEGG IDs/pathways:
+ ath03008,Ribosome biogenesis in eukaryotes 
+ ath04712,Circadian rhythm - plant 
+The AT5G14740 member has the following KEGG IDs/pathways:
+ ath00910,Nitrogen metabolism 
+ ath01100,Metabolic pathways 
+The AT2G39730 member has not got any KEGG ID/pathway
 
 GO annotations:
-The AT2G23070 member has GO ID: GO:2000028 and GO terms: regulation of photoperiodism, flowering
-The AT5G14740 member has GO ID: GO:0015976 and GO terms: carbon utilization
-The AT2G39730 member has GO ID: GO:0009416 and GO terms: response to light stimulus
+The AT2G23070 member has the following GO ID/terms:
+ 0071215,cellular response to abscisic acid stimulus 
+ 0010019,chloroplast-nucleus signaling pathway 
+ 0010187,negative regulation of seed germination 
+ 0018105,peptidyl-serine phosphorylation 
+ 0018107,peptidyl-threonine phosphorylation 
+ 0051726,regulation of cell cycle 
+ 0040008,regulation of growth 
+ 2000028,regulation of photoperiodism, flowering 
+ 0071215,cellular response to abscisic acid stimulus 
+ 0010019,chloroplast-nucleus signaling pathway 
+ 0010187,negative regulation of seed germination 
+ 0040008,regulation of growth 
+ 2000028,regulation of photoperiodism, flowering 
+The AT5G14740 member has the following GO ID/terms:
+ 0015976,carbon utilization 
+ 0042742,defense response to bacterium 
+ 0015976,carbon utilization 
+ 0015976,carbon utilization 
+ 0015976,carbon utilization 
+ 0015976,carbon utilization 
+ 0042742,defense response to bacterium 
+ 0015976,carbon utilization 
+ 0006865,amino acid transport 
+ 0015976,carbon utilization 
+The AT2G39730 member has the following GO ID/terms:
+ 0042742,defense response to bacterium 
+ 0010150,leaf senescence 
+ 0009409,response to cold 
+ 0009753,response to jasmonic acid 
+ 0009416,response to light stimulus 
+ 0042742,defense response to bacterium 
+ 0010150,leaf senescence 
+ 0009409,response to cold 
+ 0009753,response to jasmonic acid 
+ 0009416,response to light stimulus 
 ----------------------------------------------------------------------------------------------------------
 
 ----------------------------------------------------------------------------------------------------------
@@ -334,13 +970,34 @@ Indirect interaction
 Members: AT4G11960 and AT1G20020, with AT4G02770 as intermediary
 
 KEGG annotations:
-The AT4G02770 member has KEGG ID: ath01100 and KEGG pathway: Metabolic pathways
-The AT1G20020 member has KEGG ID: ath01100 and KEGG pathway: Metabolic pathways
+The AT4G11960 member has not got any KEGG ID/pathway
+The AT4G02770 member has the following KEGG IDs/pathways:
+ ath00195,Photosynthesis 
+ ath01100,Metabolic pathways 
+The AT1G20020 member has the following KEGG IDs/pathways:
+ ath00195,Photosynthesis 
+ ath01100,Metabolic pathways 
 
 GO annotations:
-The AT4G11960 member has GO ID: GO:0009773 and GO terms: photosynthetic electron transport in photosystem I
-The AT4G02770 member has GO ID: GO:0015979 and GO terms: photosynthesis
-The AT1G20020 member has GO ID: GO:0006260 and GO terms: DNA replication
+The AT4G11960 member has the following GO ID/terms:
+ 0009773,photosynthetic electron transport in photosystem I 
+ 0009773,photosynthetic electron transport in photosystem I 
+ 0009773,photosynthetic electron transport in photosystem I 
+ 0009773,photosynthetic electron transport in photosystem I 
+The AT4G02770 member has the following GO ID/terms:
+ 0140547,acquisition of seed longevity 
+ 0015979,photosynthesis 
+ 0035556,intracellular signal transduction 
+ 0015979,photosynthesis 
+ 0140547,acquisition of seed longevity 
+ 0015979,photosynthesis 
+The AT1G20020 member has the following GO ID/terms:
+ 0042742,defense response to bacterium 
+ 0050832,defense response to fungus 
+ 0015979,photosynthesis 
+ 0042742,defense response to bacterium 
+ 0050832,defense response to fungus 
+ 0006260,DNA replication 
 ----------------------------------------------------------------------------------------------------------
 
 ----------------------------------------------------------------------------------------------------------
@@ -349,14 +1006,61 @@ Indirect interaction
 Members: AT4G34840 and AT2G34420, with AT5G54270 as intermediary
 
 KEGG annotations:
-The AT4G34840 member has KEGG ID: ath01100 and KEGG pathway: Metabolic pathways
-The AT5G54270 member has KEGG ID: ath01100 and KEGG pathway: Metabolic pathways
-The AT2G34420 member has KEGG ID: ath01100 and KEGG pathway: Metabolic pathways
+The AT4G34840 member has the following KEGG IDs/pathways:
+ ath00270,Cysteine and methionine metabolism 
+ ath01100,Metabolic pathways 
+The AT5G54270 member has the following KEGG IDs/pathways:
+ ath00196,Photosynthesis - antenna proteins 
+ ath01100,Metabolic pathways 
+The AT2G34420 member has the following KEGG IDs/pathways:
+ ath00196,Photosynthesis - antenna proteins 
+ ath01100,Metabolic pathways 
 
 GO annotations:
-The AT4G34840 member has GO ID: GO:0009116 and GO terms: nucleoside metabolic process
-The AT5G54270 member has GO ID: GO:0009644 and GO terms: response to high light intensity
-The AT2G34420 member has GO ID: GO:0032875 and GO terms: regulation of DNA endoreduplication
+The AT4G34840 member has the following GO ID/terms:
+ 0019509,L-methionine salvage from methylthioadenosine 
+ 0009116,nucleoside metabolic process 
+ 0010087,phloem or xylem histogenesis 
+ 0000003,reproduction 
+ 0019509,L-methionine salvage from methylthioadenosine 
+ 0009116,nucleoside metabolic process 
+ 0010087,phloem or xylem histogenesis 
+ 0000003,reproduction 
+ 0009627,systemic acquired resistance 
+ 0019509,L-methionine salvage from methylthioadenosine 
+ 0009116,nucleoside metabolic process 
+ 0019509,L-methionine salvage from methylthioadenosine 
+ 0009116,nucleoside metabolic process 
+ 0019509,L-methionine salvage from methylthioadenosine 
+ 0009116,nucleoside metabolic process 
+ 0019509,L-methionine salvage from methylthioadenosine 
+ 0009116,nucleoside metabolic process 
+The AT5G54270 member has the following GO ID/terms:
+ 0015979,photosynthesis 
+ 0009768,photosynthesis, light harvesting in photosystem I 
+ 0009769,photosynthesis, light harvesting in photosystem II 
+ 0018298,protein-chromophore linkage 
+ 0010119,regulation of stomatal movement 
+ 0009737,response to abscisic acid 
+ 0009635,response to herbicide 
+ 0009644,response to high light intensity 
+ 0009416,response to light stimulus 
+ 0009765,photosynthesis, light harvesting 
+ 0018298,protein-chromophore linkage 
+ 0006412,translation 
+ 0009769,photosynthesis, light harvesting in photosystem II 
+ 0018298,protein-chromophore linkage 
+ 0010119,regulation of stomatal movement 
+ 0009737,response to abscisic acid 
+ 0009635,response to herbicide 
+ 0009644,response to high light intensity 
+The AT2G34420 member has the following GO ID/terms:
+ 0009765,photosynthesis, light harvesting 
+ 0018298,protein-chromophore linkage 
+ 0009768,photosynthesis, light harvesting in photosystem I 
+ 0018298,protein-chromophore linkage 
+ 0009416,response to light stimulus 
+ 0032875,regulation of DNA endoreduplication 
 ----------------------------------------------------------------------------------------------------------
 
 ----------------------------------------------------------------------------------------------------------
@@ -365,13 +1069,63 @@ Indirect interaction
 Members: AT4G32520 and AT4G37800, with AT2G21330 as intermediary
 
 KEGG annotations:
-The AT4G32520 member has KEGG ID: ath01240 and KEGG pathway: Biosynthesis of cofactors
-The AT2G21330 member has KEGG ID: ath01230 and KEGG pathway: Biosynthesis of amino acids
+The AT4G32520 member has the following KEGG IDs/pathways:
+ ath00260,Glycine, serine and threonine metabolism 
+ ath00460,Cyanoamino acid metabolism 
+ ath00630,Glyoxylate and dicarboxylate metabolism 
+ ath00670,One carbon pool by folate 
+ ath01100,Metabolic pathways 
+ ath01110,Biosynthesis of secondary metabolites 
+ ath01200,Carbon metabolism 
+ ath01230,Biosynthesis of amino acids 
+ ath01240,Biosynthesis of cofactors 
+The AT2G21330 member has the following KEGG IDs/pathways:
+ ath00010,Glycolysis / Gluconeogenesis 
+ ath00030,Pentose phosphate pathway 
+ ath00051,Fructose and mannose metabolism 
+ ath00710,Carbon fixation in photosynthetic organisms 
+ ath01100,Metabolic pathways 
+ ath01110,Biosynthesis of secondary metabolites 
+ ath01200,Carbon metabolism 
+ ath01230,Biosynthesis of amino acids 
+The AT4G37800 member has not got any KEGG ID/pathway
 
 GO annotations:
-The AT4G32520 member has GO ID: GO:0019953 and GO terms: sexual reproduction
-The AT2G21330 member has GO ID: GO:0006096 and GO terms: glycolytic process
-The AT4G37800 member has GO ID: GO:0006355 and GO terms: regulation of transcription, DNA-templated
+The AT4G32520 member has the following GO ID/terms:
+ 0046655,folic acid metabolic process 
+ 0019264,glycine biosynthetic process from serine 
+ 0006565,L-serine catabolic process 
+ 0006730,one-carbon metabolic process 
+ 0035999,tetrahydrofolate interconversion 
+ 0046653,tetrahydrofolate metabolic process 
+ 0019264,glycine biosynthetic process from serine 
+ 0035999,tetrahydrofolate interconversion 
+ 0019264,glycine biosynthetic process from serine 
+ 0035999,tetrahydrofolate interconversion 
+ 0019953,sexual reproduction 
+The AT2G21330 member has the following GO ID/terms:
+ 0030388,fructose 1,6-bisphosphate metabolic process 
+ 0006094,gluconeogenesis 
+ 0006096,glycolytic process 
+ 0046686,response to cadmium ion 
+ 0006096,glycolytic process 
+ 0071555,cell wall organization 
+ 0030244,cellulose biosynthetic process 
+ 0006096,glycolytic process 
+ 0006096,glycolytic process 
+ 0006096,glycolytic process 
+ 0006096,glycolytic process 
+The AT4G37800 member has the following GO ID/terms:
+ 0042546,cell wall biogenesis 
+ 0071555,cell wall organization 
+ 0010411,xyloglucan metabolic process 
+ 0042546,cell wall biogenesis 
+ 0071555,cell wall organization 
+ 0010411,xyloglucan metabolic process 
+ 0042546,cell wall biogenesis 
+ 0071555,cell wall organization 
+ 0010411,xyloglucan metabolic process 
+ 0006355,regulation of transcription, DNA-templated 
 ----------------------------------------------------------------------------------------------------------
 
 ----------------------------------------------------------------------------------------------------------
@@ -380,14 +1134,39 @@ Indirect interaction
 Members: AT5G11920 and AT1G12900, with AT4G17090 as intermediary
 
 KEGG annotations:
-The AT5G11920 member has KEGG ID: ath01110 and KEGG pathway: Biosynthesis of secondary metabolites
-The AT4G17090 member has KEGG ID: ath01110 and KEGG pathway: Biosynthesis of secondary metabolites
-The AT1G12900 member has KEGG ID: ath01200 and KEGG pathway: Carbon metabolism
+The AT5G11920 member has the following KEGG IDs/pathways:
+ ath00052,Galactose metabolism 
+ ath00500,Starch and sucrose metabolism 
+ ath01100,Metabolic pathways 
+ ath01110,Biosynthesis of secondary metabolites 
+The AT4G17090 member has the following KEGG IDs/pathways:
+ ath00500,Starch and sucrose metabolism 
+ ath01100,Metabolic pathways 
+ ath01110,Biosynthesis of secondary metabolites 
+The AT1G12900 member has the following KEGG IDs/pathways:
+ ath00710,Carbon fixation in photosynthetic organisms 
+ ath01100,Metabolic pathways 
+ ath01200,Carbon metabolism 
 
 GO annotations:
-The AT5G11920 member has GO ID: GO:0005975 and GO terms: carbohydrate metabolic process
-The AT4G17090 member has GO ID: GO:0000272 and GO terms: polysaccharide catabolic process
-The AT1G12900 member has GO ID: GO:0006006 and GO terms: glucose metabolic process
+The AT5G11920 member has the following GO ID/terms:
+ 0005975,carbohydrate metabolic process 
+ 0005975,carbohydrate metabolic process 
+ 0005975,carbohydrate metabolic process 
+ 0005975,carbohydrate metabolic process 
+ 0005975,carbohydrate metabolic process 
+The AT4G17090 member has the following GO ID/terms:
+ 0000024,maltose biosynthetic process 
+ 0009409,response to cold 
+ 0005983,starch catabolic process 
+ 0000272,polysaccharide catabolic process 
+The AT1G12900 member has the following GO ID/terms:
+ 0006006,glucose metabolic process 
+ 0019253,reductive pentose-phosphate cycle 
+ 0006006,glucose metabolic process 
+ 0006006,glucose metabolic process 
+ 0008643,carbohydrate transport 
+ 0006006,glucose metabolic process 
 ----------------------------------------------------------------------------------------------------------
 
 ----------------------------------------------------------------------------------------------------------
@@ -396,12 +1175,37 @@ Indirect interaction
 Members: AT5G42980 and AT3G55800, with AT4G22890 as intermediary
 
 KEGG annotations:
-The AT3G55800 member has KEGG ID: ath01200 and KEGG pathway: Carbon metabolism
+The AT5G42980 member has not got any KEGG ID/pathway
+The AT4G22890 member has not got any KEGG ID/pathway
+The AT3G55800 member has the following KEGG IDs/pathways:
+ ath00710,Carbon fixation in photosynthetic organisms 
+ ath01100,Metabolic pathways 
+ ath01200,Carbon metabolism 
 
 GO annotations:
-The AT5G42980 member has GO ID: GO:0010188 and GO terms: response to microbial phytotoxin
-The AT4G22890 member has GO ID: GO:0009773 and GO terms: photosynthetic electron transport in photosystem I
-The AT3G55800 member has GO ID: GO:0005975 and GO terms: carbohydrate metabolic process
+The AT5G42980 member has the following GO ID/terms:
+ 0050832,defense response to fungus 
+ 0010286,heat acclimation 
+ 0051259,protein complex oligomerization 
+ 0006457,protein folding 
+ 0009408,response to heat 
+ 0010188,response to microbial phytotoxin 
+The AT4G22890 member has the following GO ID/terms:
+ 0009773,photosynthetic electron transport in photosystem I 
+ 0009773,photosynthetic electron transport in photosystem I 
+ 0009773,photosynthetic electron transport in photosystem I 
+ 0009773,photosynthetic electron transport in photosystem I 
+The AT3G55800 member has the following GO ID/terms:
+ 0016051,carbohydrate biosynthetic process 
+ 0042742,defense response to bacterium 
+ 0030388,fructose 1,6-bisphosphate metabolic process 
+ 0006002,fructose 6-phosphate metabolic process 
+ 0006000,fructose metabolic process 
+ 0006094,gluconeogenesis 
+ 0019253,reductive pentose-phosphate cycle 
+ 0019252,starch biosynthetic process 
+ 0005986,sucrose biosynthetic process 
+ 0005975,carbohydrate metabolic process 
 ----------------------------------------------------------------------------------------------------------
 
 ----------------------------------------------------------------------------------------------------------
@@ -410,12 +1214,44 @@ Indirect interaction
 Members: AT1G53090 and AT5G15850, with AT2G46340 as intermediary
 
 KEGG annotations:
+The AT1G53090 member has not got any KEGG ID/pathway
 The AT2G46340 member has KEGG ID: ath04712 and KEGG pathway: Circadian rhythm - plant
+The AT5G15850 member has not got any KEGG ID/pathway
 
 GO annotations:
-The AT1G53090 member has GO ID: GO:0009640 and GO terms: photomorphogenesis
-The AT2G46340 member has GO ID: GO:0009640 and GO terms: photomorphogenesis
-The AT5G15850 member has GO ID: GO:0000398 and GO terms: mRNA splicing, via spliceosome
+The AT1G53090 member has the following GO ID/terms:
+ 0009640,photomorphogenesis 
+ 0009585,red, far-red light phototransduction 
+ 0009637,response to blue light 
+ 0009640,photomorphogenesis 
+ 0009640,photomorphogenesis 
+ 0009640,photomorphogenesis 
+The AT2G46340 member has the following GO ID/terms:
+ 0009658,chloroplast organization 
+ 0010100,negative regulation of photomorphogenesis 
+ 0009640,photomorphogenesis 
+ 0010017,red or far-red light signaling pathway 
+ 0009585,red, far-red light phototransduction 
+ 2000028,regulation of photoperiodism, flowering 
+ 0009637,response to blue light 
+ 0010218,response to far red light 
+ 0010114,response to red light 
+ 0048575,short-day photoperiodism, flowering 
+ 0009658,chloroplast organization 
+ 0010100,negative regulation of photomorphogenesis 
+ 0009640,photomorphogenesis 
+ 0010017,red or far-red light signaling pathway 
+ 2000028,regulation of photoperiodism, flowering 
+ 0009637,response to blue light 
+ 0010218,response to far red light 
+ 0010114,response to red light 
+ 0048575,short-day photoperiodism, flowering 
+ 0009640,photomorphogenesis 
+ 0009640,photomorphogenesis 
+The AT5G15850 member has the following GO ID/terms:
+ 0009909,regulation of flower development 
+ 0009909,regulation of flower development 
+ 0000398,mRNA splicing, via spliceosome 
 ----------------------------------------------------------------------------------------------------------
 
 ----------------------------------------------------------------------------------------------------------
@@ -424,14 +1260,79 @@ Indirect interaction
 Members: AT4G34840 and AT3G27690, with AT5G54270 as intermediary
 
 KEGG annotations:
-The AT4G34840 member has KEGG ID: ath01100 and KEGG pathway: Metabolic pathways
-The AT5G54270 member has KEGG ID: ath01100 and KEGG pathway: Metabolic pathways
-The AT3G27690 member has KEGG ID: ath01100 and KEGG pathway: Metabolic pathways
+The AT4G34840 member has the following KEGG IDs/pathways:
+ ath00270,Cysteine and methionine metabolism 
+ ath01100,Metabolic pathways 
+The AT5G54270 member has the following KEGG IDs/pathways:
+ ath00196,Photosynthesis - antenna proteins 
+ ath01100,Metabolic pathways 
+The AT3G27690 member has the following KEGG IDs/pathways:
+ ath00196,Photosynthesis - antenna proteins 
+ ath01100,Metabolic pathways 
 
 GO annotations:
-The AT4G34840 member has GO ID: GO:0009116 and GO terms: nucleoside metabolic process
-The AT5G54270 member has GO ID: GO:0009644 and GO terms: response to high light intensity
-The AT3G27690 member has GO ID: GO:0018298 and GO terms: protein-chromophore linkage
+The AT4G34840 member has the following GO ID/terms:
+ 0019509,L-methionine salvage from methylthioadenosine 
+ 0009116,nucleoside metabolic process 
+ 0010087,phloem or xylem histogenesis 
+ 0000003,reproduction 
+ 0019509,L-methionine salvage from methylthioadenosine 
+ 0009116,nucleoside metabolic process 
+ 0010087,phloem or xylem histogenesis 
+ 0000003,reproduction 
+ 0009627,systemic acquired resistance 
+ 0019509,L-methionine salvage from methylthioadenosine 
+ 0009116,nucleoside metabolic process 
+ 0019509,L-methionine salvage from methylthioadenosine 
+ 0009116,nucleoside metabolic process 
+ 0019509,L-methionine salvage from methylthioadenosine 
+ 0009116,nucleoside metabolic process 
+ 0019509,L-methionine salvage from methylthioadenosine 
+ 0009116,nucleoside metabolic process 
+The AT5G54270 member has the following GO ID/terms:
+ 0015979,photosynthesis 
+ 0009768,photosynthesis, light harvesting in photosystem I 
+ 0009769,photosynthesis, light harvesting in photosystem II 
+ 0018298,protein-chromophore linkage 
+ 0010119,regulation of stomatal movement 
+ 0009737,response to abscisic acid 
+ 0009635,response to herbicide 
+ 0009644,response to high light intensity 
+ 0009416,response to light stimulus 
+ 0009765,photosynthesis, light harvesting 
+ 0018298,protein-chromophore linkage 
+ 0006412,translation 
+ 0009769,photosynthesis, light harvesting in photosystem II 
+ 0018298,protein-chromophore linkage 
+ 0010119,regulation of stomatal movement 
+ 0009737,response to abscisic acid 
+ 0009635,response to herbicide 
+ 0009644,response to high light intensity 
+The AT3G27690 member has the following GO ID/terms:
+ 0045893,positive regulation of transcription, DNA-templated 
+ 0006355,regulation of transcription, DNA-templated 
+ 0006355,regulation of transcription, DNA-templated 
+ 0071215,cellular response to abscisic acid stimulus 
+ 0009768,photosynthesis, light harvesting in photosystem I 
+ 0009769,photosynthesis, light harvesting in photosystem II 
+ 1903428,positive regulation of reactive oxygen species biosynthetic process 
+ 0018298,protein-chromophore linkage 
+ 0090333,regulation of stomatal closure 
+ 0009409,response to cold 
+ 0009269,response to desiccation 
+ 0010218,response to far red light 
+ 0009644,response to high light intensity 
+ 0009416,response to light stimulus 
+ 0009645,response to low light intensity stimulus 
+ 0010114,response to red light 
+ 0030104,water homeostasis 
+ 0006355,regulation of transcription, DNA-templated 
+ 0009765,photosynthesis, light harvesting 
+ 0018298,protein-chromophore linkage 
+ 0009765,photosynthesis, light harvesting 
+ 0018298,protein-chromophore linkage 
+ 0009765,photosynthesis, light harvesting 
+ 0018298,protein-chromophore linkage 
 ----------------------------------------------------------------------------------------------------------
 
 ----------------------------------------------------------------------------------------------------------
@@ -440,12 +1341,34 @@ Indirect interaction
 Members: AT3G06470 and AT2G26080, with AT1G23740 as intermediary
 
 KEGG annotations:
-The AT2G26080 member has KEGG ID: ath01200 and KEGG pathway: Carbon metabolism
+The AT3G06470 member has not got any KEGG ID/pathway
+The AT1G23740 member has not got any KEGG ID/pathway
+The AT2G26080 member has the following KEGG IDs/pathways:
+ ath00260,Glycine, serine and threonine metabolism 
+ ath00630,Glyoxylate and dicarboxylate metabolism 
+ ath01100,Metabolic pathways 
+ ath01110,Biosynthesis of secondary metabolites 
+ ath01200,Carbon metabolism 
 
 GO annotations:
-The AT3G06470 member has GO ID: GO:0006633 and GO terms: fatty acid biosynthetic process
-The AT1G23740 member has GO ID: GO:0009409 and GO terms: response to cold
-The AT2G26080 member has GO ID: GO:0000398 and GO terms: mRNA splicing, via spliceosome
+The AT3G06470 member has the following GO ID/terms:
+ 0042761,very long-chain fatty acid biosynthetic process 
+ 0006629,lipid metabolic process 
+ 0034625,fatty acid elongation, monounsaturated fatty acid 
+ 0034626,fatty acid elongation, polyunsaturated fatty acid 
+ 0019367,fatty acid elongation, saturated fatty acid 
+ 0030148,sphingolipid biosynthetic process 
+ 0042761,very long-chain fatty acid biosynthetic process 
+ 0006633,fatty acid biosynthetic process 
+The AT1G23740 member has the following GO ID/terms:
+ 0009409,response to cold 
+ 0009409,response to cold 
+ 0046856,phosphatidylinositol dephosphorylation 
+ 0009409,response to cold 
+The AT2G26080 member has the following GO ID/terms:
+ 0019464,glycine decarboxylation via glycine cleavage system 
+ 0006546,glycine catabolic process 
+ 0000398,mRNA splicing, via spliceosome 
 ----------------------------------------------------------------------------------------------------------
 
 ----------------------------------------------------------------------------------------------------------
@@ -455,12 +1378,59 @@ Members: AT4G09570 and AT3G48360, with AT3G54050 as intermediary
 
 KEGG annotations:
 The AT4G09570 member has KEGG ID: ath04626 and KEGG pathway: Plant-pathogen interaction
-The AT3G54050 member has KEGG ID: ath01200 and KEGG pathway: Carbon metabolism
+The AT3G54050 member has the following KEGG IDs/pathways:
+ ath00010,Glycolysis / Gluconeogenesis 
+ ath00030,Pentose phosphate pathway 
+ ath00051,Fructose and mannose metabolism 
+ ath00710,Carbon fixation in photosynthetic organisms 
+ ath01100,Metabolic pathways 
+ ath01110,Biosynthesis of secondary metabolites 
+ ath01200,Carbon metabolism 
+The AT3G48360 member has not got any KEGG ID/pathway
 
 GO annotations:
-The AT4G09570 member has GO ID: GO:0009789 and GO terms: positive regulation of abscisic acid-activated signaling pathway
-The AT3G54050 member has GO ID: GO:0005975 and GO terms: carbohydrate metabolic process
-The AT3G48360 member has GO ID: GO:0006857 and GO terms: oligopeptide transport
+The AT4G09570 member has the following GO ID/terms:
+ 0035556,intracellular signal transduction 
+ 0018105,peptidyl-serine phosphorylation 
+ 0009789,positive regulation of abscisic acid-activated signaling pathway 
+ 0046777,protein autophosphorylation 
+ 0009789,positive regulation of abscisic acid-activated signaling pathway 
+The AT3G54050 member has the following GO ID/terms:
+ 0030388,fructose 1,6-bisphosphate metabolic process 
+ 0006002,fructose 6-phosphate metabolic process 
+ 0006000,fructose metabolic process 
+ 0006094,gluconeogenesis 
+ 0015979,photosynthesis 
+ 0009773,photosynthetic electron transport in photosystem I 
+ 0019253,reductive pentose-phosphate cycle 
+ 0009409,response to cold 
+ 0005986,sucrose biosynthetic process 
+ 0005985,sucrose metabolic process 
+ 0030388,fructose 1,6-bisphosphate metabolic process 
+ 0009773,photosynthetic electron transport in photosystem I 
+ 0009409,response to cold 
+ 0005985,sucrose metabolic process 
+ 0005975,carbohydrate metabolic process 
+The AT3G48360 member has the following GO ID/terms:
+ 0009738,abscisic acid-activated signaling pathway 
+ 0009734,auxin-activated signaling pathway 
+ 0007623,circadian rhythm 
+ 0051973,positive regulation of telomerase activity 
+ 0016567,protein ubiquitination 
+ 0006355,regulation of transcription, DNA-templated 
+ 0009737,response to abscisic acid 
+ 0009733,response to auxin 
+ 0009743,response to carbohydrate 
+ 0009409,response to cold 
+ 0042542,response to hydrogen peroxide 
+ 0009753,response to jasmonic acid 
+ 0010167,response to nitrate 
+ 0009751,response to salicylic acid 
+ 0009651,response to salt stress 
+ 0009611,response to wounding 
+ 0010182,sugar mediated signaling pathway 
+ 0016567,protein ubiquitination 
+ 0006857,oligopeptide transport 
 ----------------------------------------------------------------------------------------------------------
 
 ----------------------------------------------------------------------------------------------------------
@@ -469,14 +1439,44 @@ Indirect interaction
 Members: AT2G16740 and AT1G61520, with AT4G37980 as intermediary
 
 KEGG annotations:
-The AT2G16740 member has KEGG ID: ath04141 and KEGG pathway: Protein processing in endoplasmic reticulum
-The AT4G37980 member has KEGG ID: ath01110 and KEGG pathway: Biosynthesis of secondary metabolites
-The AT1G61520 member has KEGG ID: ath01100 and KEGG pathway: Metabolic pathways
+The AT2G16740 member has the following KEGG IDs/pathways:
+ ath04120,Ubiquitin mediated proteolysis 
+ ath04141,Protein processing in endoplasmic reticulum 
+The AT4G37980 member has the following KEGG IDs/pathways:
+ ath00940,Phenylpropanoid biosynthesis 
+ ath01100,Metabolic pathways 
+ ath01110,Biosynthesis of secondary metabolites 
+The AT1G61520 member has the following KEGG IDs/pathways:
+ ath00196,Photosynthesis - antenna proteins 
+ ath01100,Metabolic pathways 
 
 GO annotations:
-The AT2G16740 member has GO ID: GO:0006511 and GO terms: ubiquitin-dependent protein catabolic process
-The AT4G37980 member has GO ID: GO:0033512 and GO terms: L-lysine catabolic process to acetyl-CoA via saccharopine
-The AT1G61520 member has GO ID: GO:0018298 and GO terms: protein-chromophore linkage
+The AT2G16740 member has the following GO ID/terms:
+ 0000209,protein polyubiquitination 
+ 0006511,ubiquitin-dependent protein catabolic process 
+ 0006511,ubiquitin-dependent protein catabolic process 
+The AT4G37980 member has the following GO ID/terms:
+ 0010597,green leaf volatile biosynthetic process 
+ 0009809,lignin biosynthetic process 
+ 0009617,response to bacterium 
+ 0010597,green leaf volatile biosynthetic process 
+ 0009809,lignin biosynthetic process 
+ 0009617,response to bacterium 
+ 0033512,L-lysine catabolic process to acetyl-CoA via saccharopine 
+The AT1G61520 member has the following GO ID/terms:
+ 0009768,photosynthesis, light harvesting in photosystem I 
+ 0018298,protein-chromophore linkage 
+ 0009409,response to cold 
+ 0009644,response to high light intensity 
+ 0009416,response to light stimulus 
+ 0009645,response to low light intensity stimulus 
+ 0009768,photosynthesis, light harvesting in photosystem I 
+ 0018298,protein-chromophore linkage 
+ 0009409,response to cold 
+ 0009644,response to high light intensity 
+ 0009645,response to low light intensity stimulus 
+ 0009765,photosynthesis, light harvesting 
+ 0018298,protein-chromophore linkage 
 ----------------------------------------------------------------------------------------------------------
 
 ----------------------------------------------------------------------------------------------------------
@@ -486,12 +1486,58 @@ Members: AT2G01570 and AT2G43010, with AT3G16250 as intermediary
 
 KEGG annotations:
 The AT2G01570 member has KEGG ID: ath04075 and KEGG pathway: Plant hormone signal transduction
+The AT3G16250 member has not got any KEGG ID/pathway
 The AT2G43010 member has KEGG ID: ath04075 and KEGG pathway: Plant hormone signal transduction
 
 GO annotations:
-The AT2G01570 member has GO ID: GO:0010218 and GO terms: response to far red light
-The AT3G16250 member has GO ID: GO:0006355 and GO terms: regulation of transcription, DNA-templated
-The AT2G43010 member has GO ID: GO:0010244 and GO terms: response to low fluence blue light stimulus by blue low-fluence system
+The AT2G01570 member has the following GO ID/terms:
+ 0009740,gibberellic acid mediated signaling pathway 
+ 0042538,hyperosmotic salinity response 
+ 0009867,jasmonic acid mediated signaling pathway 
+ 0033206,meiotic cytokinesis 
+ 0007275,multicellular organism development 
+ 1905614,negative regulation of developmental vegetative growth 
+ 0009938,negative regulation of gibberellic acid mediated signaling pathway 
+ 1905622,negative regulation of leaf development 
+ 0010187,negative regulation of seed germination 
+ 1900033,negative regulation of trichome patterning 
+ 0010628,positive regulation of gene expression 
+ 0045893,positive regulation of transcription, DNA-templated 
+ 0042176,regulation of protein catabolic process 
+ 2000377,regulation of reactive oxygen species metabolic process 
+ 2000033,regulation of seed dormancy process 
+ 0010029,regulation of seed germination 
+ 0006355,regulation of transcription, DNA-templated 
+ 0009737,response to abscisic acid 
+ 0009723,response to ethylene 
+ 0010218,response to far red light 
+ 0009739,response to gibberellin 
+ 0009863,salicylic acid mediated signaling pathway 
+ 0009740,gibberellic acid mediated signaling pathway 
+ 0033206,meiotic cytokinesis 
+ 0007275,multicellular organism development 
+ 1905614,negative regulation of developmental vegetative growth 
+ 0009938,negative regulation of gibberellic acid mediated signaling pathway 
+ 1905622,negative regulation of leaf development 
+ 1900033,negative regulation of trichome patterning 
+ 0010628,positive regulation of gene expression 
+ 0045893,positive regulation of transcription, DNA-templated 
+ 0042176,regulation of protein catabolic process 
+ 2000033,regulation of seed dormancy process 
+ 0010029,regulation of seed germination 
+ 0010218,response to far red light 
+The AT3G16250 member has the following GO ID/terms:
+ 0009773,photosynthetic electron transport in photosystem I 
+ 0006355,regulation of transcription, DNA-templated 
+The AT2G43010 member has the following GO ID/terms:
+ 0009704,de-etiolation 
+ 0009638,phototropism 
+ 0010161,red light signaling pathway 
+ 0010017,red or far-red light signaling pathway 
+ 0009585,red, far-red light phototransduction 
+ 0010600,regulation of auxin biosynthetic process 
+ 0010928,regulation of auxin mediated signaling pathway 
+ 0010244,response to low fluence blue light stimulus by blue low-fluence system 
 ----------------------------------------------------------------------------------------------------------
 
 ----------------------------------------------------------------------------------------------------------
@@ -500,11 +1546,52 @@ Indirect interaction
 Members: AT2G28960 and AT3G28220, with AT3G01500 as intermediary
 
 KEGG annotations:
-The AT3G01500 member has KEGG ID: ath01100 and KEGG pathway: Metabolic pathways
+The AT2G28960 member has not got any KEGG ID/pathway
+The AT3G01500 member has the following KEGG IDs/pathways:
+ ath00910,Nitrogen metabolism 
+ ath01100,Metabolic pathways 
+The AT3G28220 member has not got any KEGG ID/pathway
 
 GO annotations:
-The AT2G28960 member has GO ID: GO:0030244 and GO terms: cellulose biosynthetic process
-The AT3G01500 member has GO ID: GO:0015976 and GO terms: carbon utilization
+The AT2G28960 member has the following GO ID/terms:
+ 0048653,anther development 
+ 0006952,defense response 
+ 0007639,homeostasis of number of meristem cells 
+ 0006468,protein phosphorylation 
+ 0016032,viral process 
+ 0009738,abscisic acid-activated signaling pathway 
+ 0071485,cellular response to absence of light 
+ 0071244,cellular response to carbon dioxide 
+ 1901528,hydrogen peroxide mediated signaling pathway involved in stomatal movement 
+ 0009789,positive regulation of abscisic acid-activated signaling pathway 
+ 0090333,regulation of stomatal closure 
+ 0009737,response to abscisic acid 
+ 0009416,response to light stimulus 
+ 0007165,signal transduction 
+ 0030244,cellulose biosynthetic process 
+The AT3G01500 member has the following GO ID/terms:
+ 0015976,carbon utilization 
+ 0042742,defense response to bacterium 
+ 0050832,defense response to fungus 
+ 2000122,negative regulation of stomatal complex development 
+ 0015979,photosynthesis 
+ 0010119,regulation of stomatal movement 
+ 0010037,response to carbon dioxide 
+ 0009409,response to cold 
+ 0015976,carbon utilization 
+ 0042742,defense response to bacterium 
+ 0050832,defense response to fungus 
+ 2000122,negative regulation of stomatal complex development 
+ 0015979,photosynthesis 
+ 0010119,regulation of stomatal movement 
+ 0010037,response to carbon dioxide 
+ 0009409,response to cold 
+ 0015976,carbon utilization 
+ 0015976,carbon utilization 
+ 0015976,carbon utilization 
+ 0015976,carbon utilization 
+ 0015976,carbon utilization 
+The AT3G28220 member has not got any GO ID/term
 ----------------------------------------------------------------------------------------------------------
 
 ----------------------------------------------------------------------------------------------------------
@@ -514,12 +1601,39 @@ Members: AT4G20360 and AT2G26740, with AT2G21330 as intermediary
 
 KEGG annotations:
 The AT4G20360 member has KEGG ID: ath04626 and KEGG pathway: Plant-pathogen interaction
-The AT2G21330 member has KEGG ID: ath01230 and KEGG pathway: Biosynthesis of amino acids
+The AT2G21330 member has the following KEGG IDs/pathways:
+ ath00010,Glycolysis / Gluconeogenesis 
+ ath00030,Pentose phosphate pathway 
+ ath00051,Fructose and mannose metabolism 
+ ath00710,Carbon fixation in photosynthetic organisms 
+ ath01100,Metabolic pathways 
+ ath01110,Biosynthesis of secondary metabolites 
+ ath01200,Carbon metabolism 
+ ath01230,Biosynthesis of amino acids 
+The AT2G26740 member has not got any KEGG ID/pathway
 
 GO annotations:
-The AT4G20360 member has GO ID: GO:0006421 and GO terms: asparaginyl-tRNA aminoacylation
-The AT2G21330 member has GO ID: GO:0006096 and GO terms: glycolytic process
-The AT2G26740 member has GO ID: GO:0009414 and GO terms: response to water deprivation
+The AT4G20360 member has the following GO ID/terms:
+ 0009658,chloroplast organization 
+ 0048366,leaf development 
+ 0070125,mitochondrial translational elongation 
+ 0006414,translational elongation 
+ 0006421,asparaginyl-tRNA aminoacylation 
+The AT2G21330 member has the following GO ID/terms:
+ 0030388,fructose 1,6-bisphosphate metabolic process 
+ 0006094,gluconeogenesis 
+ 0006096,glycolytic process 
+ 0046686,response to cadmium ion 
+ 0006096,glycolytic process 
+ 0071555,cell wall organization 
+ 0030244,cellulose biosynthetic process 
+ 0006096,glycolytic process 
+ 0006096,glycolytic process 
+ 0006096,glycolytic process 
+ 0006096,glycolytic process 
+The AT2G26740 member has the following GO ID/terms:
+ 0009733,response to auxin 
+ 0009414,response to water deprivation 
 ----------------------------------------------------------------------------------------------------------
 
 ----------------------------------------------------------------------------------------------------------
@@ -529,12 +1643,59 @@ Members: AT4G09570 and AT3G54050, with AT3G48360 as intermediary
 
 KEGG annotations:
 The AT4G09570 member has KEGG ID: ath04626 and KEGG pathway: Plant-pathogen interaction
-The AT3G54050 member has KEGG ID: ath01200 and KEGG pathway: Carbon metabolism
+The AT3G48360 member has not got any KEGG ID/pathway
+The AT3G54050 member has the following KEGG IDs/pathways:
+ ath00010,Glycolysis / Gluconeogenesis 
+ ath00030,Pentose phosphate pathway 
+ ath00051,Fructose and mannose metabolism 
+ ath00710,Carbon fixation in photosynthetic organisms 
+ ath01100,Metabolic pathways 
+ ath01110,Biosynthesis of secondary metabolites 
+ ath01200,Carbon metabolism 
 
 GO annotations:
-The AT4G09570 member has GO ID: GO:0009789 and GO terms: positive regulation of abscisic acid-activated signaling pathway
-The AT3G48360 member has GO ID: GO:0006857 and GO terms: oligopeptide transport
-The AT3G54050 member has GO ID: GO:0005975 and GO terms: carbohydrate metabolic process
+The AT4G09570 member has the following GO ID/terms:
+ 0035556,intracellular signal transduction 
+ 0018105,peptidyl-serine phosphorylation 
+ 0009789,positive regulation of abscisic acid-activated signaling pathway 
+ 0046777,protein autophosphorylation 
+ 0009789,positive regulation of abscisic acid-activated signaling pathway 
+The AT3G48360 member has the following GO ID/terms:
+ 0009738,abscisic acid-activated signaling pathway 
+ 0009734,auxin-activated signaling pathway 
+ 0007623,circadian rhythm 
+ 0051973,positive regulation of telomerase activity 
+ 0016567,protein ubiquitination 
+ 0006355,regulation of transcription, DNA-templated 
+ 0009737,response to abscisic acid 
+ 0009733,response to auxin 
+ 0009743,response to carbohydrate 
+ 0009409,response to cold 
+ 0042542,response to hydrogen peroxide 
+ 0009753,response to jasmonic acid 
+ 0010167,response to nitrate 
+ 0009751,response to salicylic acid 
+ 0009651,response to salt stress 
+ 0009611,response to wounding 
+ 0010182,sugar mediated signaling pathway 
+ 0016567,protein ubiquitination 
+ 0006857,oligopeptide transport 
+The AT3G54050 member has the following GO ID/terms:
+ 0030388,fructose 1,6-bisphosphate metabolic process 
+ 0006002,fructose 6-phosphate metabolic process 
+ 0006000,fructose metabolic process 
+ 0006094,gluconeogenesis 
+ 0015979,photosynthesis 
+ 0009773,photosynthetic electron transport in photosystem I 
+ 0019253,reductive pentose-phosphate cycle 
+ 0009409,response to cold 
+ 0005986,sucrose biosynthetic process 
+ 0005985,sucrose metabolic process 
+ 0030388,fructose 1,6-bisphosphate metabolic process 
+ 0009773,photosynthetic electron transport in photosystem I 
+ 0009409,response to cold 
+ 0005985,sucrose metabolic process 
+ 0005975,carbohydrate metabolic process 
 ----------------------------------------------------------------------------------------------------------
 
 ----------------------------------------------------------------------------------------------------------
@@ -543,13 +1704,40 @@ Indirect interaction
 Members: AT5G65430 and AT2G18700, with AT1G37130 as intermediary
 
 KEGG annotations:
-The AT1G37130 member has KEGG ID: ath01100 and KEGG pathway: Metabolic pathways
-The AT2G18700 member has KEGG ID: ath01110 and KEGG pathway: Biosynthesis of secondary metabolites
+The AT5G65430 member has not got any KEGG ID/pathway
+The AT1G37130 member has the following KEGG IDs/pathways:
+ ath00910,Nitrogen metabolism 
+ ath01100,Metabolic pathways 
+The AT2G18700 member has the following KEGG IDs/pathways:
+ ath00500,Starch and sucrose metabolism 
+ ath01100,Metabolic pathways 
+ ath01110,Biosynthesis of secondary metabolites 
 
 GO annotations:
-The AT5G65430 member has GO ID: GO:0009409 and GO terms: response to cold
-The AT1G37130 member has GO ID: GO:0006809 and GO terms: nitric oxide biosynthetic process
-The AT2G18700 member has GO ID: GO:0005992 and GO terms: trehalose biosynthetic process
+The AT5G65430 member has the following GO ID/terms:
+ 0019222,regulation of metabolic process 
+ 0050826,response to freezing 
+ 0009742,brassinosteroid mediated signaling pathway 
+ 0009409,response to cold 
+ 0009742,brassinosteroid mediated signaling pathway 
+ 0009409,response to cold 
+The AT1G37130 member has the following GO ID/terms:
+ 0042128,nitrate assimilation 
+ 0006809,nitric oxide biosynthetic process 
+ 0009635,response to herbicide 
+ 0009416,response to light stimulus 
+ 0009610,response to symbiotic fungus 
+ 0042128,nitrate assimilation 
+ 0006809,nitric oxide biosynthetic process 
+ 0042128,nitrate assimilation 
+ 0006809,nitric oxide biosynthetic process 
+ 0042128,nitrate assimilation 
+ 0006809,nitric oxide biosynthetic process 
+ 0042128,nitrate assimilation 
+ 0006809,nitric oxide biosynthetic process 
+The AT2G18700 member has the following GO ID/terms:
+ 0016311,dephosphorylation 
+ 0005992,trehalose biosynthetic process 
 ----------------------------------------------------------------------------------------------------------
 
 ----------------------------------------------------------------------------------------------------------
@@ -558,12 +1746,55 @@ Indirect interaction
 Members: AT3G54670 and AT3G45780, with AT1G12900 as intermediary
 
 KEGG annotations:
-The AT1G12900 member has KEGG ID: ath01200 and KEGG pathway: Carbon metabolism
+The AT3G54670 member has not got any KEGG ID/pathway
+The AT1G12900 member has the following KEGG IDs/pathways:
+ ath00710,Carbon fixation in photosynthetic organisms 
+ ath01100,Metabolic pathways 
+ ath01200,Carbon metabolism 
+The AT3G45780 member has not got any KEGG ID/pathway
 
 GO annotations:
-The AT3G54670 member has GO ID: GO:0007062 and GO terms: sister chromatid cohesion
-The AT1G12900 member has GO ID: GO:0006006 and GO terms: glucose metabolic process
-The AT3G45780 member has GO ID: GO:0050896 and GO terms: response to stimulus
+The AT3G54670 member has the following GO ID/terms:
+ 0051301,cell division 
+ 0007059,chromosome segregation 
+ 0006281,DNA repair 
+ 0051321,meiotic cell cycle 
+ 0007064,mitotic sister chromatid cohesion 
+ 0007062,sister chromatid cohesion 
+The AT1G12900 member has the following GO ID/terms:
+ 0006006,glucose metabolic process 
+ 0019253,reductive pentose-phosphate cycle 
+ 0006006,glucose metabolic process 
+ 0006006,glucose metabolic process 
+ 0008643,carbohydrate transport 
+ 0006006,glucose metabolic process 
+The AT3G45780 member has the following GO ID/terms:
+ 0009904,chloroplast accumulation movement 
+ 0009903,chloroplast avoidance movement 
+ 0007623,circadian rhythm 
+ 0010362,negative regulation of anion channel activity by blue light 
+ 0009638,phototropism 
+ 0046777,protein autophosphorylation 
+ 0006468,protein phosphorylation 
+ 0018298,protein-chromophore linkage 
+ 0010155,regulation of proton transport 
+ 0010119,regulation of stomatal movement 
+ 0009637,response to blue light 
+ 0009904,chloroplast accumulation movement 
+ 0009903,chloroplast avoidance movement 
+ 0007623,circadian rhythm 
+ 0010362,negative regulation of anion channel activity by blue light 
+ 0009638,phototropism 
+ 0046777,protein autophosphorylation 
+ 0018298,protein-chromophore linkage 
+ 0010155,regulation of proton transport 
+ 0010119,regulation of stomatal movement 
+ 0018298,protein-chromophore linkage 
+ 0050896,response to stimulus 
+ 0018298,protein-chromophore linkage 
+ 0050896,response to stimulus 
+ 0018298,protein-chromophore linkage 
+ 0050896,response to stimulus 
 ----------------------------------------------------------------------------------------------------------
 
 ----------------------------------------------------------------------------------------------------------
@@ -573,12 +1804,32 @@ Members: AT3G62870 and AT1G68570, with AT4G33010 as intermediary
 
 KEGG annotations:
 The AT3G62870 member has KEGG ID: ath03010 and KEGG pathway: Ribosome
-The AT4G33010 member has KEGG ID: ath01200 and KEGG pathway: Carbon metabolism
+The AT4G33010 member has the following KEGG IDs/pathways:
+ ath00260,Glycine, serine and threonine metabolism 
+ ath00630,Glyoxylate and dicarboxylate metabolism 
+ ath01100,Metabolic pathways 
+ ath01110,Biosynthesis of secondary metabolites 
+ ath01200,Carbon metabolism 
+The AT1G68570 member has not got any KEGG ID/pathway
 
 GO annotations:
-The AT3G62870 member has GO ID: GO:0042254 and GO terms: ribosome biogenesis
-The AT4G33010 member has GO ID: GO:0006546 and GO terms: glycine catabolic process
-The AT1G68570 member has GO ID: GO:0006857 and GO terms: oligopeptide transport
+The AT3G62870 member has the following GO ID/terms:
+ 0000470,maturation of LSU-rRNA 
+ 0042254,ribosome biogenesis 
+ 0042254,ribosome biogenesis 
+The AT4G33010 member has the following GO ID/terms:
+ 0006546,glycine catabolic process 
+ 0019464,glycine decarboxylation via glycine cleavage system 
+ 0046686,response to cadmium ion 
+ 0006546,glycine catabolic process 
+ 0046686,response to cadmium ion 
+ 0006546,glycine catabolic process 
+ 0006546,glycine catabolic process 
+The AT1G68570 member has the following GO ID/terms:
+ 0010336,gibberellic acid homeostasis 
+ 0042128,nitrate assimilation 
+ 0010336,gibberellic acid homeostasis 
+ 0006857,oligopeptide transport 
 ----------------------------------------------------------------------------------------------------------
 
 ----------------------------------------------------------------------------------------------------------
@@ -587,12 +1838,55 @@ Indirect interaction
 Members: AT1G22920 and AT2G30950, with AT3G62410 as intermediary
 
 KEGG annotations:
-There are not any KEGG ID/pathway for any member of this network
+The AT1G22920 member has not got any KEGG ID/pathway
+The AT3G62410 member has not got any KEGG ID/pathway
+The AT2G30950 member has not got any KEGG ID/pathway
 
 GO annotations:
-The AT1G22920 member has GO ID: GO:0010093 and GO terms: specification of floral organ identity
-The AT3G62410 member has GO ID: GO:0009744 and GO terms: response to sucrose
-The AT2G30950 member has GO ID: GO:0010027 and GO terms: thylakoid membrane organization
+The AT1G22920 member has the following GO ID/terms:
+ 0010387,COP9 signalosome assembly 
+ 0010100,negative regulation of photomorphogenesis 
+ 0010971,positive regulation of G2/M transition of mitotic cell cycle 
+ 0000338,protein deneddylation 
+ 0009585,red, far-red light phototransduction 
+ 0031347,regulation of defense response 
+ 0009733,response to auxin 
+ 0010093,specification of floral organ identity 
+ 0010387,COP9 signalosome assembly 
+ 0010100,negative regulation of photomorphogenesis 
+ 0010971,positive regulation of G2/M transition of mitotic cell cycle 
+ 0000338,protein deneddylation 
+ 0031347,regulation of defense response 
+ 0009733,response to auxin 
+ 0010093,specification of floral organ identity 
+The AT3G62410 member has the following GO ID/terms:
+ 0071454,cellular response to anoxia 
+ 0070417,cellular response to cold 
+ 0034605,cellular response to heat 
+ 0080153,negative regulation of reductive pentose-phosphate cycle 
+ 0018316,peptide cross-linking via L-cystine 
+ 0065003,protein-containing complex assembly 
+ 0019253,reductive pentose-phosphate cycle 
+ 0009416,response to light stimulus 
+ 0009744,response to sucrose 
+ 0071454,cellular response to anoxia 
+ 0070417,cellular response to cold 
+ 0034605,cellular response to heat 
+ 0080153,negative regulation of reductive pentose-phosphate cycle 
+ 0065003,protein-containing complex assembly 
+ 0009416,response to light stimulus 
+ 0009744,response to sucrose 
+The AT2G30950 member has the following GO ID/terms:
+ 0009658,chloroplast organization 
+ 0007275,multicellular organism development 
+ 0010205,photoinhibition 
+ 0048564,photosystem I assembly 
+ 0010206,photosystem II repair 
+ 0030163,protein catabolic process 
+ 0006508,proteolysis 
+ 0010304,PSII associated light-harvesting complex II catabolic process 
+ 0072593,reactive oxygen species metabolic process 
+ 0010027,thylakoid membrane organization 
 ----------------------------------------------------------------------------------------------------------
 
 ----------------------------------------------------------------------------------------------------------
@@ -601,12 +1895,55 @@ Indirect interaction
 Members: AT1G22920 and AT3G62410, with AT2G30950 as intermediary
 
 KEGG annotations:
-There are not any KEGG ID/pathway for any member of this network
+The AT1G22920 member has not got any KEGG ID/pathway
+The AT2G30950 member has not got any KEGG ID/pathway
+The AT3G62410 member has not got any KEGG ID/pathway
 
 GO annotations:
-The AT1G22920 member has GO ID: GO:0010093 and GO terms: specification of floral organ identity
-The AT2G30950 member has GO ID: GO:0010027 and GO terms: thylakoid membrane organization
-The AT3G62410 member has GO ID: GO:0009744 and GO terms: response to sucrose
+The AT1G22920 member has the following GO ID/terms:
+ 0010387,COP9 signalosome assembly 
+ 0010100,negative regulation of photomorphogenesis 
+ 0010971,positive regulation of G2/M transition of mitotic cell cycle 
+ 0000338,protein deneddylation 
+ 0009585,red, far-red light phototransduction 
+ 0031347,regulation of defense response 
+ 0009733,response to auxin 
+ 0010093,specification of floral organ identity 
+ 0010387,COP9 signalosome assembly 
+ 0010100,negative regulation of photomorphogenesis 
+ 0010971,positive regulation of G2/M transition of mitotic cell cycle 
+ 0000338,protein deneddylation 
+ 0031347,regulation of defense response 
+ 0009733,response to auxin 
+ 0010093,specification of floral organ identity 
+The AT2G30950 member has the following GO ID/terms:
+ 0009658,chloroplast organization 
+ 0007275,multicellular organism development 
+ 0010205,photoinhibition 
+ 0048564,photosystem I assembly 
+ 0010206,photosystem II repair 
+ 0030163,protein catabolic process 
+ 0006508,proteolysis 
+ 0010304,PSII associated light-harvesting complex II catabolic process 
+ 0072593,reactive oxygen species metabolic process 
+ 0010027,thylakoid membrane organization 
+The AT3G62410 member has the following GO ID/terms:
+ 0071454,cellular response to anoxia 
+ 0070417,cellular response to cold 
+ 0034605,cellular response to heat 
+ 0080153,negative regulation of reductive pentose-phosphate cycle 
+ 0018316,peptide cross-linking via L-cystine 
+ 0065003,protein-containing complex assembly 
+ 0019253,reductive pentose-phosphate cycle 
+ 0009416,response to light stimulus 
+ 0009744,response to sucrose 
+ 0071454,cellular response to anoxia 
+ 0070417,cellular response to cold 
+ 0034605,cellular response to heat 
+ 0080153,negative regulation of reductive pentose-phosphate cycle 
+ 0065003,protein-containing complex assembly 
+ 0009416,response to light stimulus 
+ 0009744,response to sucrose 
 ----------------------------------------------------------------------------------------------------------
 
 ----------------------------------------------------------------------------------------------------------
@@ -615,13 +1952,37 @@ Indirect interaction
 Members: AT3G53900 and AT3G16250, with AT4G09010 as intermediary
 
 KEGG annotations:
-The AT3G53900 member has KEGG ID: ath01100 and KEGG pathway: Metabolic pathways
-The AT4G09010 member has KEGG ID: ath01100 and KEGG pathway: Metabolic pathways
+The AT3G53900 member has the following KEGG IDs/pathways:
+ ath00240,Pyrimidine metabolism 
+ ath01100,Metabolic pathways 
+The AT4G09010 member has the following KEGG IDs/pathways:
+ ath00053,Ascorbate and aldarate metabolism 
+ ath00480,Glutathione metabolism 
+ ath01100,Metabolic pathways 
+The AT3G16250 member has not got any KEGG ID/pathway
 
 GO annotations:
-The AT3G53900 member has GO ID: GO:0006223 and GO terms: uracil salvage
-The AT4G09010 member has GO ID: GO:0006979 and GO terms: response to oxidative stress
-The AT3G16250 member has GO ID: GO:0006355 and GO terms: regulation of transcription, DNA-templated
+The AT3G53900 member has the following GO ID/terms:
+ 0016036,cellular response to phosphate starvation 
+ 0032502,developmental process 
+ 0009116,nucleoside metabolic process 
+ 0044206,UMP salvage 
+ 0006223,uracil salvage 
+ 0019252,starch biosynthetic process 
+ 0009116,nucleoside metabolic process 
+ 0044206,UMP salvage 
+ 0006223,uracil salvage 
+The AT4G09010 member has the following GO ID/terms:
+ 0034599,cellular response to oxidative stress 
+ 0042744,hydrogen peroxide catabolic process 
+ 0000302,response to reactive oxygen species 
+ 0006979,response to oxidative stress 
+ 0006979,response to oxidative stress 
+ 0006979,response to oxidative stress 
+ 0006979,response to oxidative stress 
+The AT3G16250 member has the following GO ID/terms:
+ 0009773,photosynthetic electron transport in photosystem I 
+ 0006355,regulation of transcription, DNA-templated 
 ----------------------------------------------------------------------------------------------------------
 
 ----------------------------------------------------------------------------------------------------------
@@ -630,11 +1991,35 @@ Direct interaction
 Members: AT1G09340 and AT3G63140
 
 KEGG annotations:
-There are not any KEGG ID/pathway for any member of this network
+The AT1G09340 member has not got any KEGG ID/pathway
+The AT3G63140 member has not got any KEGG ID/pathway
 
 GO annotations:
-The AT1G09340 member has GO ID: GO:0006364 and GO terms: rRNA processing
-The AT3G63140 member has GO ID: GO:0006364 and GO terms: rRNA processing
+The AT1G09340 member has the following GO ID/terms:
+ 0042631,cellular response to water deprivation 
+ 0009658,chloroplast organization 
+ 0007623,circadian rhythm 
+ 0042742,defense response to bacterium 
+ 0005996,monosaccharide metabolic process 
+ 0032544,plastid translation 
+ 0000272,polysaccharide catabolic process 
+ 0045893,positive regulation of transcription, DNA-templated 
+ 0045727,positive regulation of translation 
+ 0010468,regulation of gene expression 
+ 0009409,response to cold 
+ 0009611,response to wounding 
+ 0006364,rRNA processing 
+The AT3G63140 member has the following GO ID/terms:
+ 0009658,chloroplast organization 
+ 0007623,circadian rhythm 
+ 0032544,plastid translation 
+ 0045893,positive regulation of transcription, DNA-templated 
+ 0045727,positive regulation of translation 
+ 0006364,rRNA processing 
+ 0032544,plastid translation 
+ 0045893,positive regulation of transcription, DNA-templated 
+ 0045727,positive regulation of translation 
+ 0006364,rRNA processing 
 ----------------------------------------------------------------------------------------------------------
 
 ----------------------------------------------------------------------------------------------------------
@@ -643,11 +2028,35 @@ Direct interaction
 Members: AT3G63140 and AT1G09340
 
 KEGG annotations:
-There are not any KEGG ID/pathway for any member of this network
+The AT3G63140 member has not got any KEGG ID/pathway
+The AT1G09340 member has not got any KEGG ID/pathway
 
 GO annotations:
-The AT3G63140 member has GO ID: GO:0006364 and GO terms: rRNA processing
-The AT1G09340 member has GO ID: GO:0006364 and GO terms: rRNA processing
+The AT3G63140 member has the following GO ID/terms:
+ 0009658,chloroplast organization 
+ 0007623,circadian rhythm 
+ 0032544,plastid translation 
+ 0045893,positive regulation of transcription, DNA-templated 
+ 0045727,positive regulation of translation 
+ 0006364,rRNA processing 
+ 0032544,plastid translation 
+ 0045893,positive regulation of transcription, DNA-templated 
+ 0045727,positive regulation of translation 
+ 0006364,rRNA processing 
+The AT1G09340 member has the following GO ID/terms:
+ 0042631,cellular response to water deprivation 
+ 0009658,chloroplast organization 
+ 0007623,circadian rhythm 
+ 0042742,defense response to bacterium 
+ 0005996,monosaccharide metabolic process 
+ 0032544,plastid translation 
+ 0000272,polysaccharide catabolic process 
+ 0045893,positive regulation of transcription, DNA-templated 
+ 0045727,positive regulation of translation 
+ 0010468,regulation of gene expression 
+ 0009409,response to cold 
+ 0009611,response to wounding 
+ 0006364,rRNA processing 
 ----------------------------------------------------------------------------------------------------------
 
 ----------------------------------------------------------------------------------------------------------
@@ -656,14 +2065,48 @@ Indirect interaction
 Members: AT2G32290 and AT3G47340, with AT4G17090 as intermediary
 
 KEGG annotations:
-The AT2G32290 member has KEGG ID: ath01110 and KEGG pathway: Biosynthesis of secondary metabolites
-The AT4G17090 member has KEGG ID: ath01110 and KEGG pathway: Biosynthesis of secondary metabolites
-The AT3G47340 member has KEGG ID: ath01230 and KEGG pathway: Biosynthesis of amino acids
+The AT2G32290 member has the following KEGG IDs/pathways:
+ ath00500,Starch and sucrose metabolism 
+ ath01100,Metabolic pathways 
+ ath01110,Biosynthesis of secondary metabolites 
+The AT4G17090 member has the following KEGG IDs/pathways:
+ ath00500,Starch and sucrose metabolism 
+ ath01100,Metabolic pathways 
+ ath01110,Biosynthesis of secondary metabolites 
+The AT3G47340 member has the following KEGG IDs/pathways:
+ ath00250,Alanine, aspartate and glutamate metabolism 
+ ath01100,Metabolic pathways 
+ ath01110,Biosynthesis of secondary metabolites 
+ ath01230,Biosynthesis of amino acids 
 
 GO annotations:
-The AT2G32290 member has GO ID: GO:0000272 and GO terms: polysaccharide catabolic process
-The AT4G17090 member has GO ID: GO:0000272 and GO terms: polysaccharide catabolic process
-The AT3G47340 member has GO ID: GO:0006096 and GO terms: glycolytic process
+The AT2G32290 member has the following GO ID/terms:
+ 0000272,polysaccharide catabolic process 
+ 0000272,polysaccharide catabolic process 
+The AT4G17090 member has the following GO ID/terms:
+ 0000024,maltose biosynthetic process 
+ 0009409,response to cold 
+ 0005983,starch catabolic process 
+ 0000272,polysaccharide catabolic process 
+The AT3G47340 member has the following GO ID/terms:
+ 0006529,asparagine biosynthetic process 
+ 0009063,cellular amino acid catabolic process 
+ 0043617,cellular response to sucrose starvation 
+ 0006541,glutamine metabolic process 
+ 0070981,L-asparagine biosynthetic process 
+ 0009646,response to absence of light 
+ 0009750,response to fructose 
+ 0009749,response to glucose 
+ 0009744,response to sucrose 
+ 0006529,asparagine biosynthetic process 
+ 0006541,glutamine metabolic process 
+ 0006529,asparagine biosynthetic process 
+ 0006541,glutamine metabolic process 
+ 0006529,asparagine biosynthetic process 
+ 0006541,glutamine metabolic process 
+ 0006529,asparagine biosynthetic process 
+ 0006096,glycolytic process 
+ 0006096,glycolytic process 
 ----------------------------------------------------------------------------------------------------------
 
 ----------------------------------------------------------------------------------------------------------
@@ -672,12 +2115,40 @@ Indirect interaction
 Members: AT5G42980 and AT5G35630, with AT4G22890 as intermediary
 
 KEGG annotations:
-The AT5G35630 member has KEGG ID: ath01230 and KEGG pathway: Biosynthesis of amino acids
+The AT5G42980 member has not got any KEGG ID/pathway
+The AT4G22890 member has not got any KEGG ID/pathway
+The AT5G35630 member has the following KEGG IDs/pathways:
+ ath00220,Arginine biosynthesis 
+ ath00250,Alanine, aspartate and glutamate metabolism 
+ ath00630,Glyoxylate and dicarboxylate metabolism 
+ ath00910,Nitrogen metabolism 
+ ath01100,Metabolic pathways 
+ ath01230,Biosynthesis of amino acids 
 
 GO annotations:
-The AT5G42980 member has GO ID: GO:0010188 and GO terms: response to microbial phytotoxin
-The AT4G22890 member has GO ID: GO:0009773 and GO terms: photosynthetic electron transport in photosystem I
-The AT5G35630 member has GO ID: GO:0006542 and GO terms: glutamine biosynthetic process
+The AT5G42980 member has the following GO ID/terms:
+ 0050832,defense response to fungus 
+ 0010286,heat acclimation 
+ 0051259,protein complex oligomerization 
+ 0006457,protein folding 
+ 0009408,response to heat 
+ 0010188,response to microbial phytotoxin 
+The AT4G22890 member has the following GO ID/terms:
+ 0009773,photosynthetic electron transport in photosystem I 
+ 0009773,photosynthetic electron transport in photosystem I 
+ 0009773,photosynthetic electron transport in photosystem I 
+ 0009773,photosynthetic electron transport in photosystem I 
+The AT5G35630 member has the following GO ID/terms:
+ 0007568,aging 
+ 0019676,ammonia assimilation cycle 
+ 0006542,glutamine biosynthetic process 
+ 0046686,response to cadmium ion 
+ 0006542,glutamine biosynthetic process 
+ 0006807,nitrogen compound metabolic process 
+ 0006542,glutamine biosynthetic process 
+ 0006542,glutamine biosynthetic process 
+ 0046686,response to cadmium ion 
+ 0006542,glutamine biosynthetic process 
 ----------------------------------------------------------------------------------------------------------
 
 ----------------------------------------------------------------------------------------------------------
@@ -686,13 +2157,52 @@ Indirect interaction
 Members: AT3G47620 and AT1G29910, with AT4G02770 as intermediary
 
 KEGG annotations:
-The AT4G02770 member has KEGG ID: ath01100 and KEGG pathway: Metabolic pathways
-The AT1G29910 member has KEGG ID: ath01100 and KEGG pathway: Metabolic pathways
+The AT3G47620 member has not got any KEGG ID/pathway
+The AT4G02770 member has the following KEGG IDs/pathways:
+ ath00195,Photosynthesis 
+ ath01100,Metabolic pathways 
+The AT1G29910 member has the following KEGG IDs/pathways:
+ ath00196,Photosynthesis - antenna proteins 
+ ath01100,Metabolic pathways 
 
 GO annotations:
-The AT3G47620 member has GO ID: GO:0015031 and GO terms: protein transport
-The AT4G02770 member has GO ID: GO:0015979 and GO terms: photosynthesis
-The AT1G29910 member has GO ID: GO:0018298 and GO terms: protein-chromophore linkage
+The AT3G47620 member has the following GO ID/terms:
+ 0010229,inflorescence development 
+ 0031347,regulation of defense response 
+ 0010029,regulation of seed germination 
+ 0006355,regulation of transcription, DNA-templated 
+ 0009737,response to abscisic acid 
+ 0009735,response to cytokinin 
+ 0009739,response to gibberellin 
+ 0010229,inflorescence development 
+ 0031347,regulation of defense response 
+ 0010029,regulation of seed germination 
+ 0009737,response to abscisic acid 
+ 0009735,response to cytokinin 
+ 0009739,response to gibberellin 
+ 0015031,protein transport 
+The AT4G02770 member has the following GO ID/terms:
+ 0140547,acquisition of seed longevity 
+ 0015979,photosynthesis 
+ 0035556,intracellular signal transduction 
+ 0015979,photosynthesis 
+ 0140547,acquisition of seed longevity 
+ 0015979,photosynthesis 
+The AT1G29910 member has the following GO ID/terms:
+ 0009768,photosynthesis, light harvesting in photosystem I 
+ 0018298,protein-chromophore linkage 
+ 0009416,response to light stimulus 
+ 0009768,photosynthesis, light harvesting in photosystem I 
+ 0018298,protein-chromophore linkage 
+ 0009750,response to fructose 
+ 0009416,response to light stimulus 
+ 0009765,photosynthesis, light harvesting 
+ 0018298,protein-chromophore linkage 
+ 0009765,photosynthesis, light harvesting 
+ 0018298,protein-chromophore linkage 
+ 0009733,response to auxin 
+ 0009765,photosynthesis, light harvesting 
+ 0018298,protein-chromophore linkage 
 ----------------------------------------------------------------------------------------------------------
 
 ----------------------------------------------------------------------------------------------------------
@@ -702,11 +2212,32 @@ Members: AT1G29060 and AT1G69870, with AT5G43750 as intermediary
 
 KEGG annotations:
 The AT1G29060 member has KEGG ID: ath04130 and KEGG pathway: SNARE interactions in vesicular transport
+The AT5G43750 member has not got any KEGG ID/pathway
+The AT1G69870 member has not got any KEGG ID/pathway
 
 GO annotations:
-The AT1G29060 member has GO ID: GO:0015031 and GO terms: protein transport
-The AT5G43750 member has GO ID: GO:0006979 and GO terms: response to oxidative stress
-The AT1G69870 member has GO ID: GO:0006355 and GO terms: regulation of transcription, DNA-templated
+The AT1G29060 member has the following GO ID/terms:
+ 1901002,positive regulation of response to salt stress 
+ 0015031,protein transport 
+ 0047484,regulation of response to osmotic stress 
+ 0043182,vacuolar sequestering of sodium ion 
+ 0016192,vesicle-mediated transport 
+ 0015031,protein transport 
+ 0015031,protein transport 
+ 0015031,protein transport 
+ 0015031,protein transport 
+ 0015031,protein transport 
+ 0015031,protein transport 
+ 0015031,protein transport 
+ 0015031,protein transport 
+ 0015031,protein transport 
+The AT5G43750 member has the following GO ID/terms:
+ 0006979,response to oxidative stress 
+ 0006979,response to oxidative stress 
+The AT1G69870 member has the following GO ID/terms:
+ 0042128,nitrate assimilation 
+ 0015706,nitrate transport 
+ 0006355,regulation of transcription, DNA-templated 
 ----------------------------------------------------------------------------------------------------------
 
 ----------------------------------------------------------------------------------------------------------
@@ -716,11 +2247,27 @@ Members: AT2G22425 and AT5G43750, with AT4G22890 as intermediary
 
 KEGG annotations:
 The AT2G22425 member has KEGG ID: ath03060 and KEGG pathway: Protein export
+The AT4G22890 member has not got any KEGG ID/pathway
+The AT5G43750 member has not got any KEGG ID/pathway
 
 GO annotations:
-The AT2G22425 member has GO ID: GO:0006465 and GO terms: signal peptide processing
-The AT4G22890 member has GO ID: GO:0009773 and GO terms: photosynthetic electron transport in photosystem I
-The AT5G43750 member has GO ID: GO:0006979 and GO terms: response to oxidative stress
+The AT2G22425 member has the following GO ID/terms:
+ 0045047,protein targeting to ER 
+ 0006465,signal peptide processing 
+ 0006465,signal peptide processing 
+ 0006465,signal peptide processing 
+ 0006465,signal peptide processing 
+ 0006465,signal peptide processing 
+ 0048658,anther wall tapetum development 
+ 0006465,signal peptide processing 
+The AT4G22890 member has the following GO ID/terms:
+ 0009773,photosynthetic electron transport in photosystem I 
+ 0009773,photosynthetic electron transport in photosystem I 
+ 0009773,photosynthetic electron transport in photosystem I 
+ 0009773,photosynthetic electron transport in photosystem I 
+The AT5G43750 member has the following GO ID/terms:
+ 0006979,response to oxidative stress 
+ 0006979,response to oxidative stress 
 ----------------------------------------------------------------------------------------------------------
 
 ----------------------------------------------------------------------------------------------------------
@@ -729,128 +2276,453 @@ Indirect interaction
 Members: AT5G42980 and AT3G50820, with AT4G22890 as intermediary
 
 KEGG annotations:
-The AT3G50820 member has KEGG ID: ath01100 and KEGG pathway: Metabolic pathways
+The AT5G42980 member has not got any KEGG ID/pathway
+The AT4G22890 member has not got any KEGG ID/pathway
+The AT3G50820 member has the following KEGG IDs/pathways:
+ ath00195,Photosynthesis 
+ ath01100,Metabolic pathways 
 
 GO annotations:
-The AT5G42980 member has GO ID: GO:0010188 and GO terms: response to microbial phytotoxin
-The AT4G22890 member has GO ID: GO:0009773 and GO terms: photosynthetic electron transport in photosystem I
-The AT3G50820 member has GO ID: GO:0035304 and GO terms: regulation of protein dephosphorylation
+The AT5G42980 member has the following GO ID/terms:
+ 0050832,defense response to fungus 
+ 0010286,heat acclimation 
+ 0051259,protein complex oligomerization 
+ 0006457,protein folding 
+ 0009408,response to heat 
+ 0010188,response to microbial phytotoxin 
+The AT4G22890 member has the following GO ID/terms:
+ 0009773,photosynthetic electron transport in photosystem I 
+ 0009773,photosynthetic electron transport in photosystem I 
+ 0009773,photosynthetic electron transport in photosystem I 
+ 0009773,photosynthetic electron transport in photosystem I 
+The AT3G50820 member has the following GO ID/terms:
+ 0010205,photoinhibition 
+ 0019684,photosynthesis, light reaction 
+ 0010207,photosystem II assembly 
+ 0042549,photosystem II stabilization 
+ 0035304,regulation of protein dephosphorylation 
 ----------------------------------------------------------------------------------------------------------
 
 ----------------------------------------------------------------------------------------------------------
 Network number 50
 Indirect interaction
-Members: AT3G48040 and AT3G61260, with AT3G27690 as intermediary
+Members: AT1G26830 and AT4G37610, with AT3G48360 as intermediary
 
 KEGG annotations:
-The AT3G48040 member has KEGG ID: ath04145 and KEGG pathway: Phagosome
-The AT3G27690 member has KEGG ID: ath01100 and KEGG pathway: Metabolic pathways
+The AT1G26830 member has KEGG ID: ath04120 and KEGG pathway: Ubiquitin mediated proteolysis
+The AT3G48360 member has not got any KEGG ID/pathway
+The AT4G37610 member has not got any KEGG ID/pathway
 
 GO annotations:
-The AT3G48040 member has GO ID: GO:0007264 and GO terms: small GTPase mediated signal transduction
-The AT3G27690 member has GO ID: GO:0018298 and GO terms: protein-chromophore linkage
-The AT3G61260 member has GO ID: GO:0009751 and GO terms: response to salicylic acid
+The AT1G26830 member has the following GO ID/terms:
+ 0009911,positive regulation of flower development 
+ 0016567,protein ubiquitination 
+ 0009639,response to red or far red light 
+ 0006511,ubiquitin-dependent protein catabolic process 
+ 0009911,positive regulation of flower development 
+ 0009639,response to red or far red light 
+ 0006511,ubiquitin-dependent protein catabolic process 
+ 0006355,regulation of transcription, DNA-templated 
+ 0006511,ubiquitin-dependent protein catabolic process 
+The AT3G48360 member has the following GO ID/terms:
+ 0009738,abscisic acid-activated signaling pathway 
+ 0009734,auxin-activated signaling pathway 
+ 0007623,circadian rhythm 
+ 0051973,positive regulation of telomerase activity 
+ 0016567,protein ubiquitination 
+ 0006355,regulation of transcription, DNA-templated 
+ 0009737,response to abscisic acid 
+ 0009733,response to auxin 
+ 0009743,response to carbohydrate 
+ 0009409,response to cold 
+ 0042542,response to hydrogen peroxide 
+ 0009753,response to jasmonic acid 
+ 0010167,response to nitrate 
+ 0009751,response to salicylic acid 
+ 0009651,response to salt stress 
+ 0009611,response to wounding 
+ 0010182,sugar mediated signaling pathway 
+ 0016567,protein ubiquitination 
+ 0006857,oligopeptide transport 
+The AT4G37610 member has the following GO ID/terms:
+ 0016567,protein ubiquitination 
+ 0006355,regulation of transcription, DNA-templated 
+ 0009733,response to auxin 
+ 0010200,response to chitin 
+ 0009409,response to cold 
+ 0042542,response to hydrogen peroxide 
+ 0009751,response to salicylic acid 
+ 0016567,protein ubiquitination 
+ 0009733,response to auxin 
+ 0010200,response to chitin 
+ 0009409,response to cold 
+ 0042542,response to hydrogen peroxide 
+ 0009751,response to salicylic acid 
 ----------------------------------------------------------------------------------------------------------
 
 ----------------------------------------------------------------------------------------------------------
 Network number 51
 Indirect interaction
-Members: AT4G20790 and AT5G38990, with AT5G43750 as intermediary
+Members: AT3G48040 and AT3G61260, with AT3G27690 as intermediary
 
 KEGG annotations:
-There are not any KEGG ID/pathway for any member of this network
+The AT3G48040 member has KEGG ID: ath04145 and KEGG pathway: Phagosome
+The AT3G27690 member has the following KEGG IDs/pathways:
+ ath00196,Photosynthesis - antenna proteins 
+ ath01100,Metabolic pathways 
+The AT3G61260 member has not got any KEGG ID/pathway
 
 GO annotations:
-The AT5G43750 member has GO ID: GO:0006979 and GO terms: response to oxidative stress
-The AT5G38990 member has GO ID: GO:0010038 and GO terms: response to metal ion
+The AT3G48040 member has the following GO ID/terms:
+ 0009738,abscisic acid-activated signaling pathway 
+ 0007015,actin filament organization 
+ 0030865,cortical cytoskeleton organization 
+ 0007163,establishment or maintenance of cell polarity 
+ 0009788,negative regulation of abscisic acid-activated signaling pathway 
+ 0032956,regulation of actin cytoskeleton organization 
+ 0008360,regulation of cell shape 
+ 0007264,small GTPase mediated signal transduction 
+ 0007264,small GTPase mediated signal transduction 
+ 0007264,small GTPase mediated signal transduction 
+ 0007264,small GTPase mediated signal transduction 
+The AT3G27690 member has the following GO ID/terms:
+ 0045893,positive regulation of transcription, DNA-templated 
+ 0006355,regulation of transcription, DNA-templated 
+ 0006355,regulation of transcription, DNA-templated 
+ 0071215,cellular response to abscisic acid stimulus 
+ 0009768,photosynthesis, light harvesting in photosystem I 
+ 0009769,photosynthesis, light harvesting in photosystem II 
+ 1903428,positive regulation of reactive oxygen species biosynthetic process 
+ 0018298,protein-chromophore linkage 
+ 0090333,regulation of stomatal closure 
+ 0009409,response to cold 
+ 0009269,response to desiccation 
+ 0010218,response to far red light 
+ 0009644,response to high light intensity 
+ 0009416,response to light stimulus 
+ 0009645,response to low light intensity stimulus 
+ 0010114,response to red light 
+ 0030104,water homeostasis 
+ 0006355,regulation of transcription, DNA-templated 
+ 0009765,photosynthesis, light harvesting 
+ 0018298,protein-chromophore linkage 
+ 0009765,photosynthesis, light harvesting 
+ 0018298,protein-chromophore linkage 
+ 0009765,photosynthesis, light harvesting 
+ 0018298,protein-chromophore linkage 
+The AT3G61260 member has the following GO ID/terms:
+ 0051607,defense response to virus 
+ 0051665,membrane raft localization 
+ 0009751,response to salicylic acid 
+ 0051607,defense response to virus 
+ 0051665,membrane raft localization 
+ 0009751,response to salicylic acid 
 ----------------------------------------------------------------------------------------------------------
 
 ----------------------------------------------------------------------------------------------------------
 Network number 52
 Indirect interaction
-Members: AT3G26090 and AT1G29920, with AT1G15820 as intermediary
+Members: AT4G20790 and AT5G38990, with AT5G43750 as intermediary
 
 KEGG annotations:
-The AT1G15820 member has KEGG ID: ath01100 and KEGG pathway: Metabolic pathways
-The AT1G29920 member has KEGG ID: ath01100 and KEGG pathway: Metabolic pathways
+The AT4G20790 member has not got any KEGG ID/pathway
+The AT5G43750 member has not got any KEGG ID/pathway
+The AT5G38990 member has not got any KEGG ID/pathway
 
 GO annotations:
-The AT3G26090 member has GO ID: GO:0006355 and GO terms: regulation of transcription, DNA-templated
-The AT1G15820 member has GO ID: GO:0018298 and GO terms: protein-chromophore linkage
-The AT1G29920 member has GO ID: GO:0018298 and GO terms: protein-chromophore linkage
+The AT4G20790 member has not got any GO ID/term
+The AT5G43750 member has the following GO ID/terms:
+ 0006979,response to oxidative stress 
+ 0006979,response to oxidative stress 
+The AT5G38990 member has the following GO ID/terms:
+ 0046777,protein autophosphorylation 
+ 0010038,response to metal ion 
 ----------------------------------------------------------------------------------------------------------
 
 ----------------------------------------------------------------------------------------------------------
 Network number 53
 Indirect interaction
-Members: AT2G23290 and AT4G02770, with AT1G03130 as intermediary
+Members: AT3G26090 and AT1G29920, with AT1G15820 as intermediary
 
 KEGG annotations:
-The AT1G03130 member has KEGG ID: ath01100 and KEGG pathway: Metabolic pathways
-The AT4G02770 member has KEGG ID: ath01100 and KEGG pathway: Metabolic pathways
+The AT3G26090 member has not got any KEGG ID/pathway
+The AT1G15820 member has the following KEGG IDs/pathways:
+ ath00196,Photosynthesis - antenna proteins 
+ ath01100,Metabolic pathways 
+The AT1G29920 member has the following KEGG IDs/pathways:
+ ath00196,Photosynthesis - antenna proteins 
+ ath01100,Metabolic pathways 
 
 GO annotations:
-The AT2G23290 member has GO ID: GO:0006355 and GO terms: regulation of transcription, DNA-templated
-The AT1G03130 member has GO ID: GO:0015979 and GO terms: photosynthesis
-The AT4G02770 member has GO ID: GO:0015979 and GO terms: photosynthesis
+The AT3G26090 member has the following GO ID/terms:
+ 0009867,jasmonic acid mediated signaling pathway 
+ 0009968,negative regulation of signal transduction 
+ 0043547,positive regulation of GTPase activity 
+ 0042127,regulation of cell population proliferation 
+ 0009737,response to abscisic acid 
+ 0009749,response to glucose 
+ 0009414,response to water deprivation 
+ 0010182,sugar mediated signaling pathway 
+ 0009867,jasmonic acid mediated signaling pathway 
+ 0043547,positive regulation of GTPase activity 
+ 0042127,regulation of cell population proliferation 
+ 0009737,response to abscisic acid 
+ 0009749,response to glucose 
+ 0009414,response to water deprivation 
+ 0010182,sugar mediated signaling pathway 
+ 0006355,regulation of transcription, DNA-templated 
+The AT1G15820 member has the following GO ID/terms:
+ 0010196,nonphotochemical quenching 
+ 0015979,photosynthesis 
+ 0009768,photosynthesis, light harvesting in photosystem I 
+ 0018298,protein-chromophore linkage 
+ 0009416,response to light stimulus 
+ 0010196,nonphotochemical quenching 
+ 0009765,photosynthesis, light harvesting 
+ 0018298,protein-chromophore linkage 
+ 0009765,photosynthesis, light harvesting 
+ 0018298,protein-chromophore linkage 
+ 0009765,photosynthesis, light harvesting 
+ 0018298,protein-chromophore linkage 
+The AT1G29920 member has the following GO ID/terms:
+ 0009768,photosynthesis, light harvesting in photosystem I 
+ 0018298,protein-chromophore linkage 
+ 0009416,response to light stimulus 
+ 0009768,photosynthesis, light harvesting in photosystem I 
+ 0018298,protein-chromophore linkage 
+ 0009750,response to fructose 
+ 0009416,response to light stimulus 
+ 0009765,photosynthesis, light harvesting 
+ 0018298,protein-chromophore linkage 
 ----------------------------------------------------------------------------------------------------------
 
 ----------------------------------------------------------------------------------------------------------
 Network number 54
 Indirect interaction
-Members: AT3G47010 and AT5G48300, with AT4G17090 as intermediary
+Members: AT2G23290 and AT4G02770, with AT1G03130 as intermediary
 
 KEGG annotations:
-The AT3G47010 member has KEGG ID: ath01110 and KEGG pathway: Biosynthesis of secondary metabolites
-The AT4G17090 member has KEGG ID: ath01110 and KEGG pathway: Biosynthesis of secondary metabolites
-The AT5G48300 member has KEGG ID: ath01250 and KEGG pathway: Biosynthesis of nucleotide sugars
+The AT2G23290 member has not got any KEGG ID/pathway
+The AT1G03130 member has the following KEGG IDs/pathways:
+ ath00195,Photosynthesis 
+ ath01100,Metabolic pathways 
+The AT4G02770 member has the following KEGG IDs/pathways:
+ ath00195,Photosynthesis 
+ ath01100,Metabolic pathways 
 
 GO annotations:
-The AT3G47010 member has GO ID: GO:0005975 and GO terms: carbohydrate metabolic process
-The AT4G17090 member has GO ID: GO:0000272 and GO terms: polysaccharide catabolic process
-The AT5G48300 member has GO ID: GO:0005978 and GO terms: glycogen biosynthetic process
+The AT2G23290 member has GO ID: 0006355 and GO terms: regulation of transcription, DNA-templated
+The AT1G03130 member has the following GO ID/terms:
+ 0015979,photosynthesis 
+ 0015979,photosynthesis 
+The AT4G02770 member has the following GO ID/terms:
+ 0140547,acquisition of seed longevity 
+ 0015979,photosynthesis 
+ 0035556,intracellular signal transduction 
+ 0015979,photosynthesis 
+ 0140547,acquisition of seed longevity 
+ 0015979,photosynthesis 
 ----------------------------------------------------------------------------------------------------------
 
 ----------------------------------------------------------------------------------------------------------
 Network number 55
 Indirect interaction
-Members: AT2G02950 and AT1G14280, with AT3G45780 as intermediary
+Members: AT3G47010 and AT5G48300, with AT4G17090 as intermediary
 
 KEGG annotations:
-There are not any KEGG ID/pathway for any member of this network
+The AT3G47010 member has the following KEGG IDs/pathways:
+ ath00460,Cyanoamino acid metabolism 
+ ath00500,Starch and sucrose metabolism 
+ ath00940,Phenylpropanoid biosynthesis 
+ ath01100,Metabolic pathways 
+ ath01110,Biosynthesis of secondary metabolites 
+The AT4G17090 member has the following KEGG IDs/pathways:
+ ath00500,Starch and sucrose metabolism 
+ ath01100,Metabolic pathways 
+ ath01110,Biosynthesis of secondary metabolites 
+The AT5G48300 member has the following KEGG IDs/pathways:
+ ath00500,Starch and sucrose metabolism 
+ ath00520,Amino sugar and nucleotide sugar metabolism 
+ ath01100,Metabolic pathways 
+ ath01110,Biosynthesis of secondary metabolites 
+ ath01250,Biosynthesis of nucleotide sugars 
 
 GO annotations:
-The AT2G02950 member has GO ID: GO:0009638 and GO terms: phototropism
-The AT3G45780 member has GO ID: GO:0050896 and GO terms: response to stimulus
-The AT1G14280 member has GO ID: GO:0009585 and GO terms: red, far-red light phototransduction
+The AT3G47010 member has the following GO ID/terms:
+ 0005975,carbohydrate metabolic process 
+ 0009251,glucan catabolic process 
+ 0005975,carbohydrate metabolic process 
+ 0005975,carbohydrate metabolic process 
+ 0005975,carbohydrate metabolic process 
+The AT4G17090 member has the following GO ID/terms:
+ 0000024,maltose biosynthetic process 
+ 0009409,response to cold 
+ 0005983,starch catabolic process 
+ 0000272,polysaccharide catabolic process 
+The AT5G48300 member has the following GO ID/terms:
+ 0005978,glycogen biosynthetic process 
+ 0048573,photoperiodism, flowering 
+ 0019252,starch biosynthetic process 
+ 0005978,glycogen biosynthetic process 
+ 0019252,starch biosynthetic process 
+ 0005978,glycogen biosynthetic process 
+ 0048573,photoperiodism, flowering 
+ 0019252,starch biosynthetic process 
+ 0006457,protein folding 
+ 0005978,glycogen biosynthetic process 
 ----------------------------------------------------------------------------------------------------------
 
 ----------------------------------------------------------------------------------------------------------
 Network number 56
 Indirect interaction
-Members: AT3G53900 and AT4G09010, with AT3G16250 as intermediary
+Members: AT2G02950 and AT1G14280, with AT3G45780 as intermediary
 
 KEGG annotations:
-The AT3G53900 member has KEGG ID: ath01100 and KEGG pathway: Metabolic pathways
-The AT4G09010 member has KEGG ID: ath01100 and KEGG pathway: Metabolic pathways
+The AT2G02950 member has not got any KEGG ID/pathway
+The AT3G45780 member has not got any KEGG ID/pathway
+The AT1G14280 member has not got any KEGG ID/pathway
 
 GO annotations:
-The AT3G53900 member has GO ID: GO:0006223 and GO terms: uracil salvage
-The AT3G16250 member has GO ID: GO:0006355 and GO terms: regulation of transcription, DNA-templated
-The AT4G09010 member has GO ID: GO:0006979 and GO terms: response to oxidative stress
+The AT2G02950 member has the following GO ID/terms:
+ 0009638,phototropism 
+ 0009958,positive gravitropism 
+ 0010017,red or far-red light signaling pathway 
+ 0009585,red, far-red light phototransduction 
+ 0010218,response to far red light 
+ 0010114,response to red light 
+ 0009638,phototropism 
+ 0009958,positive gravitropism 
+ 0009585,red, far-red light phototransduction 
+ 0010218,response to far red light 
+ 0010114,response to red light 
+ 0009638,phototropism 
+The AT3G45780 member has the following GO ID/terms:
+ 0009904,chloroplast accumulation movement 
+ 0009903,chloroplast avoidance movement 
+ 0007623,circadian rhythm 
+ 0010362,negative regulation of anion channel activity by blue light 
+ 0009638,phototropism 
+ 0046777,protein autophosphorylation 
+ 0006468,protein phosphorylation 
+ 0018298,protein-chromophore linkage 
+ 0010155,regulation of proton transport 
+ 0010119,regulation of stomatal movement 
+ 0009637,response to blue light 
+ 0009904,chloroplast accumulation movement 
+ 0009903,chloroplast avoidance movement 
+ 0007623,circadian rhythm 
+ 0010362,negative regulation of anion channel activity by blue light 
+ 0009638,phototropism 
+ 0046777,protein autophosphorylation 
+ 0018298,protein-chromophore linkage 
+ 0010155,regulation of proton transport 
+ 0010119,regulation of stomatal movement 
+ 0018298,protein-chromophore linkage 
+ 0050896,response to stimulus 
+ 0018298,protein-chromophore linkage 
+ 0050896,response to stimulus 
+ 0018298,protein-chromophore linkage 
+ 0050896,response to stimulus 
+The AT1G14280 member has the following GO ID/terms:
+ 0048366,leaf development 
+ 0009638,phototropism 
+ 0009585,red, far-red light phototransduction 
 ----------------------------------------------------------------------------------------------------------
 
 ----------------------------------------------------------------------------------------------------------
 Network number 57
 Indirect interaction
+Members: AT3G53900 and AT4G09010, with AT3G16250 as intermediary
+
+KEGG annotations:
+The AT3G53900 member has the following KEGG IDs/pathways:
+ ath00240,Pyrimidine metabolism 
+ ath01100,Metabolic pathways 
+The AT3G16250 member has not got any KEGG ID/pathway
+The AT4G09010 member has the following KEGG IDs/pathways:
+ ath00053,Ascorbate and aldarate metabolism 
+ ath00480,Glutathione metabolism 
+ ath01100,Metabolic pathways 
+
+GO annotations:
+The AT3G53900 member has the following GO ID/terms:
+ 0016036,cellular response to phosphate starvation 
+ 0032502,developmental process 
+ 0009116,nucleoside metabolic process 
+ 0044206,UMP salvage 
+ 0006223,uracil salvage 
+ 0019252,starch biosynthetic process 
+ 0009116,nucleoside metabolic process 
+ 0044206,UMP salvage 
+ 0006223,uracil salvage 
+The AT3G16250 member has the following GO ID/terms:
+ 0009773,photosynthetic electron transport in photosystem I 
+ 0006355,regulation of transcription, DNA-templated 
+The AT4G09010 member has the following GO ID/terms:
+ 0034599,cellular response to oxidative stress 
+ 0042744,hydrogen peroxide catabolic process 
+ 0000302,response to reactive oxygen species 
+ 0006979,response to oxidative stress 
+ 0006979,response to oxidative stress 
+ 0006979,response to oxidative stress 
+ 0006979,response to oxidative stress 
+----------------------------------------------------------------------------------------------------------
+
+----------------------------------------------------------------------------------------------------------
+Network number 58
+Indirect interaction
 Members: AT3G26090 and AT5G01530, with AT1G29920 as intermediary
 
 KEGG annotations:
-The AT1G29920 member has KEGG ID: ath01100 and KEGG pathway: Metabolic pathways
-The AT5G01530 member has KEGG ID: ath01100 and KEGG pathway: Metabolic pathways
+The AT3G26090 member has not got any KEGG ID/pathway
+The AT1G29920 member has the following KEGG IDs/pathways:
+ ath00196,Photosynthesis - antenna proteins 
+ ath01100,Metabolic pathways 
+The AT5G01530 member has the following KEGG IDs/pathways:
+ ath00196,Photosynthesis - antenna proteins 
+ ath01100,Metabolic pathways 
 
 GO annotations:
-The AT3G26090 member has GO ID: GO:0006355 and GO terms: regulation of transcription, DNA-templated
-The AT1G29920 member has GO ID: GO:0018298 and GO terms: protein-chromophore linkage
-The AT5G01530 member has GO ID: GO:0018298 and GO terms: protein-chromophore linkage
+The AT3G26090 member has the following GO ID/terms:
+ 0009867,jasmonic acid mediated signaling pathway 
+ 0009968,negative regulation of signal transduction 
+ 0043547,positive regulation of GTPase activity 
+ 0042127,regulation of cell population proliferation 
+ 0009737,response to abscisic acid 
+ 0009749,response to glucose 
+ 0009414,response to water deprivation 
+ 0010182,sugar mediated signaling pathway 
+ 0009867,jasmonic acid mediated signaling pathway 
+ 0043547,positive regulation of GTPase activity 
+ 0042127,regulation of cell population proliferation 
+ 0009737,response to abscisic acid 
+ 0009749,response to glucose 
+ 0009414,response to water deprivation 
+ 0010182,sugar mediated signaling pathway 
+ 0006355,regulation of transcription, DNA-templated 
+The AT1G29920 member has the following GO ID/terms:
+ 0009768,photosynthesis, light harvesting in photosystem I 
+ 0018298,protein-chromophore linkage 
+ 0009416,response to light stimulus 
+ 0009768,photosynthesis, light harvesting in photosystem I 
+ 0018298,protein-chromophore linkage 
+ 0009750,response to fructose 
+ 0009416,response to light stimulus 
+ 0009765,photosynthesis, light harvesting 
+ 0018298,protein-chromophore linkage 
+The AT5G01530 member has the following GO ID/terms:
+ 0009768,photosynthesis, light harvesting in photosystem I 
+ 0018298,protein-chromophore linkage 
+ 0009416,response to light stimulus 
+ 0009765,photosynthesis, light harvesting 
+ 0018298,protein-chromophore linkage 
+ 0009765,photosynthesis, light harvesting 
+ 0018298,protein-chromophore linkage 
+ 0009765,photosynthesis, light harvesting 
+ 0018298,protein-chromophore linkage 
 ----------------------------------------------------------------------------------------------------------
+
+DISCUSSION
+Given a sub-network of predictively co-expressed 168 number of genes by the article DOI: 10.1371/journal.pone.0108567, the goal of this further analysis has been checking if there is already available information in databases about direct or indirect interactions between those genes, and thus, creating sub-networks of interaction. Also, each network has been annotated with possible KEGG pathways and GO terms of its members.
+This analysis has been able to find 58 networks, most of them as a result of indirect interactions between members of the sub-network list, with only one intermediary. Thus, maximum interaction depth developed in this analysis is 2. That is to say, direct interactions include 2 members of the sub-network list (A-B), whereas indirect interactions take into account 2 members of the sub-network list (A-C), which interact through only one intermediary (B).
+Although this analysis has performed well, further studies may do deeper interaction analyses in the future, with more intermediaries, that will lead to create greater networks.
