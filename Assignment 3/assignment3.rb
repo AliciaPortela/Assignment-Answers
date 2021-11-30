@@ -1,4 +1,4 @@
-##### This script has been created by Alicia Portela Estévez #####
+##### This script has been created by Alicia Portela Estévez ##### 
 ##### It does many things: #####
 ##### 1. searches for CTTCTT repeats in exons of ArabidopsisSubNetwork_GeneList.txt gene list and adds repeats with positions as gene features #####
 ##### 2. writes a gff3 file with repeat features (AGI locus code as seqname and positions inside the gene) #####
