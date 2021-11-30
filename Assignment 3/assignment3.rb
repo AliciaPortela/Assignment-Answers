@@ -1,8 +1,9 @@
 ##### This script has been created by Alicia Portela Estévez #####
 ##### It does many things: #####
 ##### 1. searches for CTTCTT repeats in exons of ArabidopsisSubNetwork_GeneList.txt gene list and adds repeats with positions as gene features #####
-##### 2. writes a gff3 file with repeat features (AGI locus code as seqname) #####
-##### 3. writes a report with those genes (AGI locus code) that do NOT have exons with the CTTCTT repeat #####
+##### 2. writes a gff3 file with repeat features (AGI locus code as seqname and positions inside the gene) #####
+##### 3 writes a gff3 file with repeat features (Chr number as seqname and positions inside the chromosome) #####
+##### 4 writes a report with those genes (AGI locus code) that do NOT have exons with the CTTCTT repeat #####
 
 # upload all BioRuby classes
 require 'bio'
@@ -35,7 +36,7 @@ def fetch(url, headers = {accept: "*/*"}, user = "", pass="")
 end
 
 # 2. searches for 'CTTCTT' repeat in exons from each ArabidopsisSubNetwork_GeneList.txt genes and
-# adds repeats as Bio::Feature of each Bio::Sequence 
+# adds repeats as Bio::Feature object of each Bio::Sequence object
 def add_repeat_features(file)
   # new hash to store each Bio::Sequence object
   @all_biosequence = Hash.new
@@ -54,7 +55,7 @@ def add_repeat_features(file)
       # convert EMBL record to Bio::Sequence object
       bioseq = entry.to_biosequence
       # features method of Bio::Sequence Class creates Bio::Feature array objects
-      # iterating over array objects (feature = Bio::Feature object)
+      # iterating over array objects
       bioseq.features.each do |feature|
         # feature method of Bio::Feature Class is the type of feature (i.e: exon, gene...)
         # next iteration unless feature = exon
@@ -128,7 +129,7 @@ def create_features(position,strand)
   end
 end
 
-# 4. creating a gff3 file for all repeat regions 
+# 4. creating a gff3 file for all repeat regions: genes as seqname and positions inside the gene
 def gff3_file_genes(file)
   # open a file and write it line by line
   File.open(file, 'w') do |line|
@@ -173,7 +174,47 @@ def gff3_file_genes(file)
 end
 end
 
-# 5. writing a report file with genes of the ArabidopsisSubNetwork_GeneList.txt list that do NOT have exons with the CTTCTT repeat
+# 5. creating a gff3 file for all repeat regions: chromosomes as seqname and positions inside the chromosome
+def gff3_file_chr(file) 
+  File.open(file, 'w') do |line|
+  # The first line of a GFF3 file must be a comment that identifies the version
+  line.puts "##gff-version 3\n"
+  @all_biosequence.each do |gene, biosequence|
+    # primary_accession method gives the primary accession number (i.e. chromosome:TAIR10:3:5506931:5508414:1)
+    # separating them by ':' and select 3 column --> start position of gene inside the chromosome 
+    start_gene = biosequence.primary_accession.split(":")[3]
+    # number of chromosome 
+    chr = biosequence.entry_id
+    # same as before 
+    biosequence.features.each do |feature|
+      # next iteration if the name of the feature is not "myrepeat"
+      next unless feature.feature == "myrepeat"
+      source = "BioRuby"
+      qualifiers = feature.assoc
+      type = qualifiers.key('CTTCTT')
+      score = '.'
+      strand = qualifiers['strand']
+      phase = '.'
+      attributes = '.'
+      locations = feature.locations
+      location = locations.locations
+      location.each do |loc|
+        # start position of CTTCTT inside the gene 
+        start_in_gene = loc.from.to_i
+        # start position of CTTCTT inside the chromosome
+        start_in_chr = start_gene.to_i + start_in_gene
+        # end position of CTTCTT inside the gene
+        finish_in_gene = loc.to.to_i
+        # start position of CTTCTT inside the chromosome
+        finish_in_chr = start_gene.to_i + finish_in_gene
+        line.puts "Chr#{chr}\t#{source}\t#{type}\t#{start_in_chr}\t#{finish_in_chr}\t#{score}\t#{strand}\t#{phase}\t#{attributes}\n"
+      end 
+    end
+  end
+end
+end
+
+# 6. writing a report file with genes of the ArabidopsisSubNetwork_GeneList.txt list that do NOT have exons with the CTTCTT repeat
 def report(file)
   # open a file and write it line by line
   File.open(file, 'w') do |line|
@@ -197,11 +238,13 @@ def report(file)
 end
 
 ##### RUNNING THE PROGRAM #####
-##### ruby assignment3.rb ArabidopsisSubNetwork_GeneList.txt results.gff3 report.txt #####
+##### ruby assignment3.rb ArabidopsisSubNetwork_GeneList.txt results_gene.gff3 results_chr.gff3 report.txt #####
 add_repeat_features(ARGV[0])
 gff3_file_genes(ARGV[1])
-report(ARGV[2])
+gff3_file_chr(ARGV[2])
+report(ARGV[3])
 puts "'CTTCTT' repeat has been searched over each exon of #{ARGV[0]} list genes"
 puts "Found repeats have been added to Bio::Sequence as Bio::Feature object"
-puts "GFF3 (#{ARGV[1]}) file has been generated with 'CTTCTT' features"
-puts "Plain text (#{ARGV[2]}) file has been created with those genes that do not have CTTCTT repeats in their exons"
+puts "GFF3 (#{ARGV[1]}) file with 'CTTCTT' features has been generated --> with AGI locus code as seqname and positions within the gene"
+puts "GFF3 (#{ARGV[2]}) file with 'CTTCTT' features has been generated --> with Chr as seqname and positions within entire chromosome"
+puts "Plain text (#{ARGV[3]}) file has been created with those genes that do not have CTTCTT repeats in their exons"
