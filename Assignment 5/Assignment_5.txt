@@ -1,0 +1,268 @@
+__________________________________________ASSIGNMENT 5_________________________________________
+
+________________UniProt SPARQL Endpoint______________
+
+_____________________________________________________
+
+Q1: How many protein records are in UniProt?
+
+QUERY:
+PREFIX up:<http://purl.uniprot.org/core/> 
+
+SELECT (COUNT (DISTINCT ?protein) AS ?protein_number)
+WHERE 
+{
+    ?protein a up:Protein .
+}
+
+ANSWER: 
+protein_number
+"360157660"xsd:int
+_____________________________________________________
+
+Q2: How many Arabidopsis thaliana protein records are in UniProt?
+
+QUERY:
+PREFIX up: <http://purl.uniprot.org/core/>
+PREFIX taxon:<http://purl.uniprot.org/taxonomy/> 
+
+SELECT (COUNT(DISTINCT ?protein) AS ?protein_number)
+WHERE {
+    ?protein a up:Protein ;
+             up:organism taxon:3702 .
+}
+
+ANSWER:
+protein_number
+"136782"xsd:int
+
+_______________________________________________________
+
+Q3: retrieve pictures of Arabidopsis thaliana from UniProt?
+
+QUERY:
+PREFIX taxon:<http://purl.uniprot.org/taxonomy/> 
+PREFIX foaf: <http://xmlns.com/foaf/0.1/>
+
+SELECT ?image
+WHERE
+{
+    taxon:3702  foaf:depiction  ?image .
+}
+
+ANSWER: 
+"Arabidopsis.jpg" and "800px-Arabidopsis_thaliana_inflorescencias.jpg" in folder "Assignment 5"
+
+_________________________________________________________
+
+Q4: What is the description of the enzyme activity of UniProt Protein Q9SZZ8
+
+QUERY:
+PREFIX rdfs:<http://www.w3.org/2000/01/rdf-schema#>
+PREFIX uniprotkb:<http://purl.uniprot.org/uniprot/>  
+PREFIX up:<http://purl.uniprot.org/core/> 
+
+SELECT DISTINCT ?description
+WHERE
+{
+  uniprotkb:Q9SZZ8 a up:Protein ;
+                   up:annotation ?annotation .
+  
+  ?annotation a up:Function_Annotation ;
+               rdfs:comment ?description .
+ 
+ 
+}
+
+ANSWER:
+description
+"Nonheme diiron monooxygenase involved in the biosynthesis of xanthophylls. Specific for beta-ring hydroxylations of beta-carotene. Has also a low activity toward the beta- and epsilon-rings of alpha-carotene. No activity with acyclic carotenoids such as lycopene and neurosporene. Uses ferredoxin as an electron donor."xsd:string
+____________________________________________________________
+
+Q5: Retrieve the proteins ids, and date of submission, for proteins that have been
+added to UniProt this year (HINT Google for “SPARQL FILTER by date”)
+
+QUERY:
+PREFIX up:<http://purl.uniprot.org/core/>
+PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
+
+SELECT ?protein_id ?date
+WHERE
+{
+  ?protein a up:Protein ;
+           up:mnemonic ?protein_id ;
+           up:created ?date .
+  FILTER( ?date >= xsd:date("2021-01-01")) .
+}
+
+ANSWER:
+(example-first page)
+protein_id	date
+"A0A1H7ADE3_PAEPO"xsd:string	"2021-06-02"xsd:date
+"A0A1V1AIL4_ACIBA"xsd:string	"2021-06-02"xsd:date
+"A0A2Z0L603_ACIBA"xsd:string	"2021-06-02"xsd:date
+"A0A4J5GG53_STREE"xsd:string	"2021-04-07"xsd:date
+"A0A6G8SU52_AERHY"xsd:string	"2021-02-10"xsd:date
+"A0A6G8SU69_AERHY"xsd:string	"2021-02-10"xsd:date
+"A0A7C9JLR7_9BACT"xsd:string	"2021-02-10"xsd:date
+"A0A7C9JMZ7_9BACT"xsd:string	"2021-02-10"xsd:date
+"A0A7C9KUQ4_9RHIZ"xsd:string	"2021-02-10"xsd:date
+"A0A7D4HP61_NEIMU"xsd:string	"2021-02-10"xsd:date
+"A0A7D6A5N9_SERMA"xsd:string	"2021-06-02"xsd:date
+"A0A7D6FMY9_9ENTR"xsd:string	"2021-02-10"xsd:date
+"A0A7D6VKU9_CITFR"xsd:string	"2021-02-10"xsd:date
+"A0A7D6VKZ9_CITFR"xsd:string	"2021-02-10"xsd:date
+"A0A7D7EJU1_CITFR"xsd:string	"2021-02-10"xsd:date
+"A0A7D7HYH9_ECOLX"xsd:string	"2021-02-10"xsd:date
+"A0A7G5HK20_9PSED"xsd:string	"2021-02-10"xsd:date
+"A0A7G6B4J7_9BURK"xsd:string	"2021-02-10"xsd:date
+"A0A7G6T9F2_RHILI"xsd:string	"2021-02-10"xsd:date
+"A0A7G7EDL3_KLEVA"xsd:string	"2021-02-10"xsd:date
+"A0A7G8TLN3_9BACI"xsd:string	"2021-02-10"xsd:date
+"A0A7H0XTK9_RHOCA"xsd:string	"2021-02-10"xsd:date
+"A0A7H0ZDX6_PISSA"xsd:string	"2021-02-10"xsd:date
+"A0A7H1SVD2_9BACI"xsd:string	"2021-02-10"xsd:date
+"A0A7H4JPY6_9BACI"xsd:string	"2021-02-10"xsd:date
+
+__________________________________________________________
+
+Q6: How many species are in the UniProt taxonomy?
+
+QUERY:
+PREFIX up:<http://purl.uniprot.org/core/> 
+
+SELECT (COUNT (DISTINCT ?species) AS ?species_number)
+WHERE
+{
+    ?species a up:Taxon ;
+             up:rank up:Species .
+}
+
+ANSWER:
+species_number
+"2029846"xsd:int
+
+___________________________________________________________
+
+Q7: How many species have at least one protein record? (this might take a long time
+to execute, so do this one last!)
+
+QUERY:
+PREFIX up:<http://purl.uniprot.org/core/> 
+
+SELECT (COUNT(DISTINCT ?species) AS ?species_number)
+WHERE 
+{
+    ?protein a up:Protein ;
+             up:organism ?species .
+    ?species a up:Taxon ;
+             up:rank up:Species .
+}
+
+ANSWER:
+species_number
+"1057158"xsd:int
+
+____________________________________________________________
+
+Q8: find the AGI codes and gene names for all Arabidopsis thaliana proteins that
+have a protein function annotation description that mentions “pattern formation”
+
+QUERY:
+PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+PREFIX up: <http://purl.uniprot.org/uniprot/>
+PREFIX taxon: <http://purl.uniprot.org/taxonomy/>
+
+SELECT ?gene_name ?agi_code
+WHERE
+{
+    ?protein a up:Protein ;
+             up:organism taxon:3702 ;
+             up:recommendedName ?n ;
+             up:encodedBy ?gene ;
+             up:annotation ?annotation .
+    ?n up:shortName ?gene_name . 
+    ?gene up:locusName ?agi_code .
+    ?annotation a up:Function_Annotation ;
+                rdfs:comment ?comment .
+    FILTER regex( ?comment, "pattern formation","i")
+}
+
+ANSWER:
+gene_name	agi_code
+"AtSCR"xsd:string	"At3g54220"xsd:string
+"AtCUL3b"xsd:string	"At1g69670"xsd:string
+"AtSWEET8"xsd:string	"At5g40260"xsd:string
+"AtCUL3a"xsd:string	"At1g26830"xsd:string
+"AtSHR"xsd:string	"At4g37650"xsd:string
+"AtRopGEF7"xsd:string	"At5g02010"xsd:string
+
+______________________________________________________________
+
+________________MetaNetX SPARQL Endpoint______________________
+
+Q9: what is the MetaNetX Reaction identifier (starts with “mnxr”) for the UniProt
+Protein uniprotkb:Q18A79
+
+QUERY:
+PREFIX mnx: <https://rdf.metanetx.org/schema/>
+PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+PREFIX uniprotkb: <http://purl.uniprot.org/uniprot/>
+
+SELECT DISTINCT ?reac_identifier
+WHERE{
+    ?pept mnx:peptXref uniprotkb:Q18A79 .
+    ?cata mnx:pept ?pept .
+    ?gpr mnx:cata ?cata ;
+         mnx:reac ?reac .
+    ?reac rdfs:label ?reac_identifier .
+
+}
+
+ANSWER:
+reac_identifier
+"mnxr165934"
+"mnxr145046c3"
+
+_______________________________________________________________
+
+____________FEDERATED QUERY - UniProt and MetaNetX_____________
+
+Q10: What is the official Gene ID (UniProt calls this a “mnemonic”) and the MetaNetX
+Reaction identifier (mnxr…..) for the protein that has “Starch synthase” catalytic activity in Clostridium
+difficile (taxon 272563).
+
+QUERY:
+PREFIX mnx: <https://rdf.metanetx.org/schema/>
+PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+PREFIX up: <http://purl.uniprot.org/uniprot/>
+PREFIX taxon: <http://purl.uniprot.org/taxonomy/>
+
+SELECT DISTINCT ?mnemonic ?reac_label
+WHERE
+{
+  service <http://sparql.uniprot.org/sparql> {
+    ?protein a up:Protein ;
+             up:organism taxon:272563 ;
+             up:mnemonic ?mnemonic ;
+             up:classifiedWith ?goTerm .
+    ?goTerm rdfs:label ?activity .
+    filter contains(?activity, "starch synthase")
+    bind (substr(str(?protein),33) as ?ac)
+    bind (IRI(CONCAT("http://purl.uniprot.org/uniprot/",?ac)) as ?proteinRef)
+  }
+  service <https://rdf.metanetx.org/sparql> {
+    ?pept mnx:peptXref ?proteinRef .
+    ?cata mnx:pept ?pept .
+    ?gpr mnx:cata ?cata ;
+         mnx:reac ?reac .
+    ?reac rdfs:label ?reac_label .
+  }
+} 
+
+ANSWER:
+mnemonic	reac_label
+"GLGA_CLOD6"xsd:string	"mnxr165934"xsd:string
+"GLGA_CLOD6"xsd:string	"mnxr145046c3"xsd:string
+
+____________________________________________________________
